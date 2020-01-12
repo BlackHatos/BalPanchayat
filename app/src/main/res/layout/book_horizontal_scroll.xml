@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".Library"
+    android:layout_margin="1dp"
+    android:background="#282828"
+    >
+
+
+    <android.support.v7.widget.CardView
+        android:layout_width="140dp"
+        android:layout_height="180dp"
+        app:cardCornerRadius="4dp"
+        app:cardMaxElevation="2dp"
+        android:elevation="1dp"
+        android:layout_centerInParent="true"
+        app:cardBackgroundColor="#646363"
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="130dp"
+                android:scaleType="centerCrop"
+                android:id="@+id/book_image"
+                android:src="@drawable/woman"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:text="Julius Casear"
+                android:textColor="#edebeb"
+                android:autoSizeTextType="uniform"
+                android:autoSizeMinTextSize="8sp"
+                android:autoSizeMaxTextSize="15sp"
+                android:layout_below="@+id/book_image"
+                android:textStyle="bold"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="10dp"
+                android:id="@+id/book_name"
+                />
+
+
+        </RelativeLayout>
+
+
+    </android.support.v7.widget.CardView>
+
+</RelativeLayout>
