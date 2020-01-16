@@ -17,13 +17,14 @@
         android:title="Developer"
         app:showAsAction="never"/>
 
+
     <item
         android:id="@+id/search"
         android:icon="@drawable/ic_search_black_24dp"
         android:orderInCategory="100"
-        android:title="Search"
-        android:showAsAction="always"
-        app:actionViewClass="androidx.appcompat.widget.SearchView"
+        app:showAsAction="always|collapseActionView"
+        android:title="search"
+        adroid:showAsAction="always"
         app:ignore="AppCompatResource" />
 
 </menu>

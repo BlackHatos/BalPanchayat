@@ -38,13 +38,6 @@ public class MainLibrary extends AppCompatActivity {
         mtoolbar = findViewById(R.id.toolbarx);
         bottomNavigationItemView = findViewById(R.id.navigation_view);
 
-
-
-        //tests
-
-       // setSupportActionBar(mtoolbar);
-
-
         mtoolbar.inflateMenu(R.menu.menu_main);
 
         mtoolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
