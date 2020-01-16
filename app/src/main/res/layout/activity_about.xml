@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".About"
+    android:fitsSystemWindows="true"
+    android:gravity="center"
+    android:layout_gravity="center"
+    android:background="#282828">
+
+    <TextView
+        android:layout_above="@id/app_version"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/app_name"
+        android:textSize="30sp"
+        android:textColor="#6fc2bcbc"
+        android:fontFamily="sans-serif"
+        android:textStyle="bold"
+        android:text="Bal Panchayat"/>
+
+    <TextView
+        android:layout_above="@id/about_app"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/app_version"
+        android:textSize="18sp"
+        android:paddingBottom="10dp"
+        android:layout_centerHorizontal="true"
+        android:textColor="#6fc2bcbc"
+        android:text="version 1.0"/>
+
+    <ImageView
+        android:id="@+id/about_app"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:layout_centerInParent="true"
+        android:src="@drawable/team"/>
+    <LinearLayout
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/about_app"
+        android:id="@+id/linear_layout"
+        android:paddingTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/copy_right"
+            android:src="@drawable/ic_copyright_black_24dp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/company_name"
+            android:textSize="17sp"
+            android:text=" 2020 | Bal Panchayat"
+            android:textColor="#6fc2bcbc"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_below="@id/linear_layout"
+        android:layout_width="wrap_content"
+        android:textSize="15sp"
+        android:layout_height="wrap_content"
+        android:id="@+id/all_rights"
+        android:layout_centerHorizontal="true"
+        android:text="all rights reserved"
+        android:textColor="#6fc2bcbc"/>
+
+
+</RelativeLayout>

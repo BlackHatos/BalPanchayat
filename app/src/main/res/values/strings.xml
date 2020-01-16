@@ -25,7 +25,23 @@
     <string name="action_settings">Settings</string>
 
 
-    <string name="drawer_open">Open</string>
-    <string name="drawer_close">Close</string>
+    <!-- ============== dashbord activity ================-->
+    <string name="Dashboard">Dashboard</string>
+    <string name="User">Varun Dev</string>
+    <string name="profile_image">Profile Image</string>
+    <string name="Settings">Settings</string>
+    <string name="Events">Events</string>
+    <string name="Activities">Activities</string>
+    <string name="You">You</string>
+    <string name="Admin">Admin</string>
+    <string name="Library">Library</string>
+    <string name="Donate">Donate</string>
+    <string name="Team">Team</string>
+
+    <string name="contributer">
+        Contributed by
+        Shubham Maurya
+    </string>
+    <string name="testing">testing</string>
 
 </resources>

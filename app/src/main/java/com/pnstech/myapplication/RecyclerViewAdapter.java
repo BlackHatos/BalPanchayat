@@ -12,22 +12,24 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 
 import java.util.ArrayList;
 
 import pnstech.com.myapplication.R;
 
-public class HorizontalRecyclerAdapter  extends RecyclerView.Adapter<HorizontalRecyclerAdapter.ViewHolder>{
+public class RecyclerViewAdapter  extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>{
 
     private static final  String TAG = "RecyclerViewAdapter";
+    //vars
     private ArrayList<String> mNames = new ArrayList<>();
-    private ArrayList<String> mImageUris = new ArrayList<>();
+    private ArrayList<String> mImageUrls = new ArrayList<>();
     private Context mContext;
 
-    public HorizontalRecyclerAdapter(Context context,ArrayList<String> names, ArrayList<String> imageUris)
+    public RecyclerViewAdapter(Context context,ArrayList<String> names, ArrayList<String> imageUrls)
     {
         mNames = names;
-        mImageUris = imageUris;
+        mImageUrls = imageUrls;
         mContext = context;
 
     }
@@ -36,25 +38,26 @@ public class HorizontalRecyclerAdapter  extends RecyclerView.Adapter<HorizontalR
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        Log.d(TAG, "onCreateViewHolder: ");
+
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.book_horizontal_scroll,parent, false);
-        return null;
+        return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
-        Log.d(TAG, "onBindViewHolder: ");
+
         Glide.with(mContext)
                 .asBitmap()
-                .load(mImageUris.get(position))
+                .load(mImageUrls.get(position))
+                .centerInside()//fitCenter()
                 .into(holder.image);
 
-        holder.text.setText(mNames.get(position));
+        holder.name.setText(mNames.get(position));
 
         holder.image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d(TAG, "onClick: clicked on an image " +mNames.get(position));
+
                 Toast.makeText(mContext,mNames.get(position), Toast.LENGTH_SHORT).show();
             }
         });
@@ -70,12 +73,12 @@ public class HorizontalRecyclerAdapter  extends RecyclerView.Adapter<HorizontalR
     public class ViewHolder extends RecyclerView.ViewHolder{
 
         ImageView image;
-        TextView text;
+        TextView name;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             image = itemView.findViewById(R.id.book_image);
-            text = itemView.findViewById(R.id.book_name);
+            name = itemView.findViewById(R.id.book_name);
 
         }
     }

@@ -108,6 +108,7 @@
             android:textColor="#ffffff"
             android:textSize="17sp"
             android:onClick="showPopup"
+            tools:ignore="OnClick"
             android:foreground="?attr/selectableItemBackground"
             />
 
@@ -163,6 +164,8 @@
             android:clickable="true"
             android:onClick="goToLogin"
             tools:ignore="OnClick"
+            android:foreground="?attr/selectableItemBackground"
+            android:focusable="true"
             />
 
     </LinearLayout>

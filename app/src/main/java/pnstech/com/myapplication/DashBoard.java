@@ -14,12 +14,14 @@ public class DashBoard extends AppCompatActivity {
         setContentView(R.layout.activity_dash_board);
     }
 
+
     public void home(View view)
     {
-        startActivity(new Intent(DashBoard.this,HomeActivity.class));
+        startActivity(new Intent(DashBoard.this,MainActivity.class));
     }
-    public void library(View view){
 
-        startActivity(new Intent(DashBoard.this,Library.class));
+
+    public void library(View view){
+        startActivity(new Intent(DashBoard.this,MainLibrary.class));
     }
 }
