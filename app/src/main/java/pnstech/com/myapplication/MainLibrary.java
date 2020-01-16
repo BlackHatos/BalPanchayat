@@ -4,6 +4,7 @@ import android.content.Intent;
 
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -35,12 +36,17 @@ public class MainLibrary extends AppCompatActivity {
         setContentView(R.layout.activity_main_library);
 
         //creating side three dot menu
-        mtoolbar = findViewById(R.id.toolbarx);
+        mtoolbar = (Toolbar) findViewById(R.id.toolbarx);
         bottomNavigationItemView = findViewById(R.id.navigation_view);
 
-        mtoolbar.inflateMenu(R.menu.menu_main);
+//        mtoolbar.inflateMenu(R.menu.menu_main);
 
-        mtoolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+        //test
+
+        setSupportActionBar(mtoolbar);
+        ActionBar ab = getSupportActionBar();
+
+        /*mtoolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem menuItem) {
                 switch (menuItem.getItemId()) {
@@ -59,7 +65,7 @@ public class MainLibrary extends AppCompatActivity {
                 }
                 return true;
             }
-        });
+        });*/
 
 
 
@@ -90,11 +96,17 @@ public class MainLibrary extends AppCompatActivity {
 
 
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
+        getMenuInflater().inflate(R.menu.menu_main,menu);
 
+        //remaining methods
+        return super.onCreateOptionsMenu(menu);
 
+    }
 
-
-// getting images from internet
+    // getting images from internet
     private void initImageBitmaps()
     {
         mImageUrls.add("https://lithub.com/wp-content/uploads/2019/01/81SBy9jbbHL.jpg");
