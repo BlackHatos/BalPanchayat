@@ -6,7 +6,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#282828"
+    android:background="#181717"
     tools:context=".MainActivity">
 
 
@@ -18,23 +18,23 @@
         android:layout_height="match_parent">
 
         <ImageView
+            android:layout_marginTop="10dp"
             android:layout_width="115dp"
             android:layout_height="115dp"
             android:contentDescription="@string/logo"
             android:src="@drawable/team"
-            android:layout_marginTop="20dp"
             />
 
 
 
         <EditText
             android:layout_width="match_parent"
-            android:layout_height="49dp"
-            android:layout_marginTop="40dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="30dp"
             android:background="@drawable/edittext_shape"
             android:hint="@string/name"
             android:inputType="text"
-            android:padding="16dp"
+            android:paddingLeft="22dp"
             android:textSize="17sp"
             android:textColor="#e5c8c8c8"
             android:textColorHint="#b6c8c8c8"
@@ -45,12 +45,12 @@
 
         <EditText
             android:layout_width="match_parent"
-            android:layout_height="49dp"
-            android:layout_marginTop="25dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="22dp"
             android:background="@drawable/edittext_shape"
             android:hint="@string/email"
             android:inputType="text"
-            android:padding="16dp"
+            android:paddingLeft="22dp"
             android:textSize="17sp"
             android:textColor="#e5c8c8c8"
             android:textColorHint="#b6c8c8c8"
@@ -60,12 +60,12 @@
 
         <EditText
             android:layout_width="match_parent"
-            android:layout_height="49dp"
-            android:layout_marginTop="25dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="22dp"
             android:background="@drawable/edittext_shape"
             android:hint="@string/phone"
             android:inputType="text"
-            android:padding="16dp"
+            android:paddingLeft="22dp"
             android:textSize="17sp"
             android:textColor="#e5c8c8c8"
             android:textColorHint="#b6c8c8c8"
@@ -75,12 +75,12 @@
 
         <EditText
             android:layout_width="match_parent"
-            android:layout_height="49dp"
-            android:layout_marginTop="25dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="22dp"
             android:background="@drawable/edittext_shape"
             android:hint="@string/password"
             android:inputType="textPassword"
-            android:padding="16dp"
+            android:paddingLeft="22dp"
             android:textSize="17sp"
             android:textColor="#e5c8c8c8"
             android:textColorHint="#b6c8c8c8"
@@ -90,12 +90,12 @@
 
         <EditText
             android:layout_width="match_parent"
-            android:layout_height="49dp"
-            android:layout_marginTop="25dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="22dp"
             android:background="@drawable/edittext_shape"
             android:hint="@string/reenter_password"
             android:inputType="textPassword"
-            android:padding="16dp"
+            android:paddingLeft="22dp"
             android:textSize="17sp"
             android:textColor="#e5c8c8c8"
             android:textColorHint="#b6c8c8c8"
@@ -107,62 +107,38 @@
             android:id="@+id/click_to_login"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="23dp"
             android:background="@drawable/button_shape"
             android:text="@string/register_now"
             android:textColor="#ffffff"
-            android:textSize="17sp"
+            android:textSize="16sp"
             android:foreground="?attr/selectableItemBackground"
             />
 
-        <TextView
+
+        <Button
+            android:id="@+id/fb_custom_button"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/facebook_button_shape"
+            android:text="Register with facebook"
+            android:textColor="#f4e6e3e3"
+            android:foreground="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true"
+            android:onClick="fbRegister"
+            tools:ignore="OnClick"
             android:layout_marginTop="15dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/or_continue_with"
-            android:textColor="#e5c8c8c8"
-            android:textSize="17sp"
             />
 
-        <LinearLayout
-            android:layout_marginTop="20dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center"
-            >
 
-
-            <ImageView
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:src="@drawable/facebook"
-                android:layout_marginEnd="25dp"
-                android:contentDescription="@string/facebook"
-                android:foreground="?attr/selectableItemBackgroundBorderless"
-                android:clickable="true"
-                />
-
-
-
-            <ImageView
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:src="@drawable/google"
-                android:contentDescription="@string/google"
-                android:foreground="?attr/selectableItemBackgroundBorderless"
-                android:clickable="true"
-                />
-
-        </LinearLayout>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/new_login"
             android:textColor="#e5c8c8c8"
-            android:textSize="17sp"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="23dp"
             android:layout_marginBottom="20dp"
             android:clickable="true"
             android:onClick="goToLogin"

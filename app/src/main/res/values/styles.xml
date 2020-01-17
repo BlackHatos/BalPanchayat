@@ -32,4 +32,11 @@
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 
+    <!-- ===============     This for progress dialog    ================= -->
+    <style name="progressDialogTheme" parent="Base.Theme.AppCompat.Dialog.Alert">
+        <item name="android:colorAccent">@color/colorPrimary</item>
+        <item name="android:textColorPrimary">@color/text_color</item>
+        <item name="android:background">@color/colorBackground</item>
+    </style>
+
 </resources>

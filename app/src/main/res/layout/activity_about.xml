@@ -9,7 +9,7 @@
     android:fitsSystemWindows="true"
     android:gravity="center"
     android:layout_gravity="center"
-    android:background="#282828">
+    android:background="#181717">
 
     <TextView
         android:layout_above="@id/app_version"
