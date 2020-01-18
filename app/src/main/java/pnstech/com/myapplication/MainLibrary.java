@@ -39,14 +39,13 @@ public class MainLibrary extends AppCompatActivity {
         mtoolbar = (Toolbar) findViewById(R.id.toolbarx);
         bottomNavigationItemView = findViewById(R.id.navigation_view);
 
-//        mtoolbar.inflateMenu(R.menu.menu_main);
+        mtoolbar.inflateMenu(R.menu.menu_main);
 
         //test
 
-        setSupportActionBar(mtoolbar);
-        ActionBar ab = getSupportActionBar();
 
-        /*mtoolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+
+        mtoolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem menuItem) {
                 switch (menuItem.getItemId()) {
@@ -54,18 +53,10 @@ public class MainLibrary extends AppCompatActivity {
                         startActivity(new Intent(MainLibrary.this, About.class));
                         break;
 
-                        case R.id.about_developer:
-                        startActivity(new Intent(MainLibrary.this, Developer.class));
-                        break;
-
-
-                    case R.id.search:
-                      // do something
-                        break;
-                }
+                                        }
                 return true;
             }
-        });*/
+        });
 
 
 
@@ -81,8 +72,8 @@ public class MainLibrary extends AppCompatActivity {
                         startActivity(new Intent(MainLibrary.this, DashBoard.class));
                         break;
 
-                    case R.id.share:
-                        Toast.makeText(getApplicationContext(), "Wait..", Toast.LENGTH_SHORT).show();
+                    case R.id.settings:
+                        startActivity(new Intent(MainLibrary.this, Settings.class));
                         break;
                 }
                 return true;

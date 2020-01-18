@@ -17,10 +17,7 @@
         <activity
             android:name=".MainActivity"
             android:theme="@style/HideAppBar"
-            android:windowSoftInputMode="adjustPan">
-
-        </activity>
-
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".RegisterActivity"
             android:theme="@style/HideAppBar"
@@ -32,29 +29,14 @@
         <activity
             android:name=".SplashScreen"
             android:theme="@style/HideAppBar"
-            android:windowSoftInputMode="adjustPan">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:windowSoftInputMode="adjustPan"></activity>
         <activity android:name=".DashBoard" />
         <activity android:name=".MainLibrary" />
-
         <activity
-            android:name=".Developer"
-            android:theme="@style/HideAppBar">
+            android:name=".About"
+            android:theme="@style/HideAppBar" />
 
-        </activity>
-
-           <activity android:name=".About"
-            android:theme="@style/HideAppBar">
-
-        </activity>
-
-
-
+        <!--
         <meta-data android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id"/>
 
@@ -72,10 +54,21 @@
                 <data android:scheme="@string/fb_login_protocol_scheme" />
             </intent-filter>
         </activity>
+        -->
 
+        <activity android:name=".Profile"
+            android:windowSoftInputMode="adjustPan"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".Settings"
+            android:label="Settings"
+            android:theme="@style/ShowToolbar"
+            ></activity>
     </application>
-
-
 
 </manifest>

@@ -25,7 +25,6 @@
     <string name="action_settings">Settings</string>
 
 
-
     <!-- ============== dashbord activity ================-->
     <string name="Dashboard">Dashboard</string>
     <string name="User">Varun Dev</string>
@@ -47,6 +46,6 @@
 
 
     <!-- ==============  Facebook login  ============ -->
-    <string name="facebook_app_id">475358603147949</string>
-    <string name="fb_login_protocol_scheme">fb475358603147949</string>
+    <!--   <string name="facebook_app_id">475358603147949</string>
+    <string name="fb_login_protocol_scheme">fb475358603147949</string>-->
 </resources>

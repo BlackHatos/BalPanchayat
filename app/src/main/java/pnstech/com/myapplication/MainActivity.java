@@ -5,6 +5,7 @@ package pnstech.com.myapplication;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
@@ -12,7 +13,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -21,26 +22,6 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.bumptech.glide.TransitionOptions;
-import com.bumptech.glide.load.ImageHeaderParser;
-import com.facebook.AccessToken;
-import com.facebook.AccessTokenTracker;
-import com.facebook.CallbackManager;
-import com.facebook.FacebookCallback;
-import com.facebook.FacebookException;
-import com.facebook.GraphRequest;
-import com.facebook.GraphResponse;
-import com.facebook.login.LoginBehavior;
-import com.facebook.login.LoginManager;
-import com.facebook.login.LoginResult;
-import com.facebook.login.widget.LoginButton;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.lang.reflect.Array;
-import java.net.Inet4Address;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -49,10 +30,14 @@ public class MainActivity extends AppCompatActivity {
     private EditText emailPhone;
     private EditText password;
     private Button click_to_login;
-    private Button custom_login;
-    private  CallbackManager callbackManager;
+   // private Button custom_login;
+   // private  CallbackManager callbackManager;
 
-    private ProgressDialog progressDialog;
+   private ProgressDialog progressDialog;
+
+   //shared prefereneces
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,8 +47,11 @@ public class MainActivity extends AppCompatActivity {
         emailPhone = (EditText) findViewById(R.id.email_phone);
         password  = (EditText) findViewById(R.id.password);
         click_to_login = (Button) findViewById(R.id.click_to_login);
-        custom_login =  (Button) findViewById(R.id.custom_login);
-        
+       // custom_login =  (Button) findViewById(R.id.custom_login);
+
+
+
+
         progressDialog = new ProgressDialog(this,R.style.progressDialogTheme);
         progressDialog.setCanceledOnTouchOutside(false); //prevent disappearing
 
@@ -73,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                progressDialog.setMessage("Authenticating....");
+                progressDialog.setMessage("Authenticating.....");
                 progressDialog.show();
                 getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE);
 
@@ -97,7 +85,23 @@ public class MainActivity extends AppCompatActivity {
                                         {
                                             emailPhone.setText("");
                                             password.setText("");
-                                            progressDialog.dismiss();
+                                           progressDialog.dismiss();
+
+                                           /*=========================== shared preferences saving user data starts ============================*/
+
+                                            SharedPreferences sharedPreferences = getSharedPreferences("userData", MODE_PRIVATE);
+                                            SharedPreferences.Editor editor = sharedPreferences.edit();
+                                            editor.putString("userId",response_array[1]);
+                                            editor.putString("userName", response_array[2]);
+                                            editor.putString("userEmail",response_array[3]);
+                                            editor.putString("userPhone", response_array[4]);
+                                            editor.putString("userDistrict",response_array[5]);
+                                            editor.putString("userState", response_array[6]);
+                                            editor.putString("userAddress",response_array[5]+", "+response_array[6]);
+                                            editor.apply();
+
+                                            /*=========================== shared preferences saving user data starts ============================*/
+
                                             Intent intent = new Intent(MainActivity.this, DashBoard.class);
                                             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK); //finish all previous activities
                                             startActivity(intent);
@@ -135,24 +139,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        //login with fb
-
-        custom_login.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                fbLogin();
-
-            }
-        });
-
-
-    }
-
-
-
-    public void insertDataIntoDatabase()
-    {
 
     }
 
@@ -161,7 +147,7 @@ public class MainActivity extends AppCompatActivity {
 
     /*===================== Facebook login starts =============================*/
 
-    public void fbLogin()
+  /*  public void fbLogin()
     {
 
         callbackManager = CallbackManager.Factory.create();
@@ -259,13 +245,14 @@ public class MainActivity extends AppCompatActivity {
         LoginManager.getInstance().logOut();
     }
 
-
+*/
 /*===================== Facebook login end =============================*/
 
     public void goToRegister(View view)
     {
         Intent intent= new Intent(MainActivity.this, RegisterActivity.class);
         startActivity(intent);
+        finish();
     }
 
     public void getPassword(View view)

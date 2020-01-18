@@ -116,7 +116,7 @@
             />
 
 
-        <Button
+     <!--   <Button
             android:id="@+id/fb_custom_button"
             android:layout_width="match_parent"
             android:layout_height="50dp"
@@ -129,7 +129,7 @@
             android:onClick="fbRegister"
             tools:ignore="OnClick"
             android:layout_marginTop="15dp"
-            />
+            /> -->
 
 
 

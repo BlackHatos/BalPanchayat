@@ -33,10 +33,23 @@
 
 
     <!-- ===============     This for progress dialog    ================= -->
-    <style name="progressDialogTheme" parent="Base.Theme.AppCompat.Dialog.Alert">
+    <style name="progressDialogTheme" parent="Theme.AppCompat.Light.Dialog.Alert">
         <item name="android:colorAccent">@color/colorPrimary</item>
         <item name="android:textColorPrimary">@color/text_color</item>
         <item name="android:background">@color/colorBackground</item>
     </style>
+
+
+
+   <!--============== the activities that contains top toolbar =====================-->
+    <style name="ShowToolbar" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="coordinatorLayoutStyle">@style/Widget.Support.CoordinatorLayout</item>
+        <item name="floatingActionButtonStyle">@style/Widget.Design.FloatingActionButton</item>
+    </style>
+
 
 </resources>

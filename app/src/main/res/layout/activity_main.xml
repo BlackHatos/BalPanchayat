@@ -10,6 +10,7 @@
     android:padding="16dp"
     tools:context=".MainActivity">
 
+
     <ImageView
         android:layout_width="115dp"
         android:layout_height="115dp"
@@ -74,7 +75,7 @@
         />
 
 
-    <Button
+<!--    <Button
         android:id="@+id/custom_login"
         android:layout_width="match_parent"
         android:layout_height="50dp"
@@ -83,7 +84,7 @@
         android:textColor="#f4e6e3e3"
         android:foreground="?attr/selectableItemBackground"
         android:layout_marginTop="15dp"
-        />
+        /> -->
 
     <TextView
         android:layout_width="wrap_content"
@@ -96,5 +97,6 @@
         tools:ignore="OnClick"
         android:foreground="?attr/selectableItemBackground"
         android:focusable="true"/>
+
 
 </LinearLayout>
