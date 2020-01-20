@@ -60,8 +60,10 @@
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:layout_alignParentRight="true"
-                    android:src="@drawable/me"
+                    android:src="@drawable/user"
                     android:id="@+id/user_image"
+                    app:civ_border_color="#e5c8c8c8"
+                    app:civ_border_width="2dp"
                     />
 
             </RelativeLayout>

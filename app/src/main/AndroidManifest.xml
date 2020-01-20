@@ -4,6 +4,7 @@
     package="pnstech.com.myapplication">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -28,8 +29,13 @@
             android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".SplashScreen"
-            android:theme="@style/HideAppBar"
-            android:windowSoftInputMode="adjustPan"></activity>
+            android:theme="@style/HideAppBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".DashBoard" />
         <activity android:name=".MainLibrary" />
         <activity
@@ -56,19 +62,15 @@
         </activity>
         -->
 
-        <activity android:name=".Profile"
-            android:windowSoftInputMode="adjustPan"
-            >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".Settings"
+        <activity
+            android:name=".Profile"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".Settings"
             android:label="Settings"
-            android:theme="@style/ShowToolbar"
-            ></activity>
+            android:theme="@style/ShowToolbar" />
+        <activity android:name=".PaymentActivity" />
+        <activity android:name=".UploadBooks"></activity>
     </application>
 
 </manifest>

@@ -37,19 +37,21 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="25dp"
-                    android:layout_marginTop="30dp"
+                    android:layout_marginTop="32dp"
 
                     >
 
 
                     <de.hdodenhof.circleimageview.CircleImageView
-                        android:id="@+id/about_app"
-                        android:layout_width="120dp"
-                        android:layout_height="120dp"
+                        android:id="@+id/user_profile_pic"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
                         android:layout_alignParentTop="true"
                         android:layout_centerHorizontal="true"
                         android:elevation="1dp"
-                        android:src="@drawable/me" />
+                        app:civ_border_color="#e5c8c8c8"
+                        app:civ_border_width="3dp"
+                        android:src="@drawable/user" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -59,7 +61,7 @@
                         <android.support.v7.widget.CardView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="70dp"
+                            android:layout_marginTop="55dp"
                             android:paddingLeft="15dp"
                             android:paddingRight="15dp"
                             android:paddingTop="15dp"
@@ -336,9 +338,41 @@
 
 
                     <LinearLayout
+                        android:id="@+id/set_user_image"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_marginTop="15dp"
+                        android:gravity="center"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:foreground="?attr/selectableItemBackground"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginRight="10dp"
+                            android:src="@drawable/ic_image_black_24dp" />
+
+                        <TextView
+                            android:id="@+id/image_name_to_display"
+                            android:textSize="16sp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Select profile picture"
+                            android:paddingLeft="5dp"
+                            android:textColor="#e5c8c8c8"
+                            android:layout_gravity="center_vertical"
+                            />
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="15dp"
+                        android:layout_marginTop="12dp"
                         android:gravity="center"
                         android:orientation="horizontal">
 
@@ -528,7 +562,26 @@
             </LinearLayout>
 
         </RelativeLayout>
+
+
+
+
     </ScrollView>
+
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/floatButton"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="92dp"
+        android:layout_marginEnd="31dp"
+        android:backgroundTint="@color/colorPrimary"
+        android:src="@drawable/ic_control_point_black_24dp"
+        app:layout_anchor="@id/appbarx"
+        app:layout_anchorGravity="bottom" />
+
 
     <android.support.design.widget.BottomNavigationView
         android:layout_width="match_parent"

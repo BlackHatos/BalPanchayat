@@ -28,7 +28,9 @@ public class Settings extends AppCompatActivity {
     {
         SharedPreferences sharedPreferences = getSharedPreferences("userData", MODE_PRIVATE);
         sharedPreferences.edit().clear().apply();
-        startActivity(new Intent(Settings.this,MainActivity.class));
+        Intent intent = new Intent(Settings.this, MainActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK); //finish all previous activities
+        startActivity(intent);
     }
 
 }
