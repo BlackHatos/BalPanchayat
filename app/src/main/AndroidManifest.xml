@@ -30,21 +30,17 @@
         <activity
             android:name=".SplashScreen"
             android:theme="@style/HideAppBar">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
         <activity android:name=".DashBoard" />
         <activity android:name=".MainLibrary" />
         <activity
             android:name=".About"
             android:theme="@style/HideAppBar" />
-
-
         <activity
             android:name=".Profile"
             android:windowSoftInputMode="adjustPan" />
@@ -52,18 +48,12 @@
             android:name=".Settings"
             android:label="Settings"
             android:theme="@style/ShowToolbar" />
-
         <activity android:name=".PaymentActivity" />
-
-        <activity android:name=".UploadBooks"
+        <activity
+            android:name=".UploadBooks"
             android:label="Upload Book"
             android:theme="@style/ShowToolbar"
-            >
-
-
-        </activity>
-
-
+            android:windowSoftInputMode="adjustPan"></activity>
 
         <!--
  <meta-data android:name="com.facebook.sdk.ApplicationId"
@@ -83,10 +73,13 @@
          <data android:scheme="@string/fb_login_protocol_scheme" />
      </intent-filter>
  </activity>
- -->
+        -->
 
-
-
+        <activity android:name=".OnBookClick"
+            android:label="Library"
+            android:parentActivityName=".MainLibrary"
+            android:theme="@style/ShowToolbar"
+            ></activity>
     </application>
 
 </manifest>

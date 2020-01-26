@@ -92,8 +92,6 @@ private Bitmap bitmap;
                 });
 
 
-
-
     }
 
 
@@ -152,16 +150,17 @@ private Bitmap bitmap;
 
                         String response_array[] = response.split(",");
                         if(response_array[0].equals("1")) {
-                            View view = getWindow().getDecorView().getRootView();
+
+  /*                          View view = getWindow().getDecorView().getRootView();
                             //calling show popup method
                             showPopup(view); //passing view object
-
+*/
                             book_name.setText("");
                             writer_name.setText("");
                             contributer_name.setText("");
                             book_cover.setImageResource(R.drawable.ic_image_black_24dp);
                         }
-                        //Toast.makeText(getApplicationContext(), response_array[1], Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), response_array[1], Toast.LENGTH_LONG).show();
                     }
                 }, new Response.ErrorListener() { //error
             @Override
@@ -178,8 +177,6 @@ private Bitmap bitmap;
                     map.put("bookWriterKey", writer_name.getText().toString().trim());
                     map.put("bookContributerKey", contributer_name.getText().toString().trim());
                     map.put("imageKey", imageToString(bitmap));
-                    rewardCode =  getRandomString();
-                    map.put("rewardKey", rewardCode);
                     return map;
 
             }
@@ -190,6 +187,8 @@ private Bitmap bitmap;
     }
 
 
+
+   /*
     public void showPopup(View view)
     {
         final LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
@@ -216,6 +215,7 @@ private Bitmap bitmap;
     }
 
 
+
     private String getRandomString()
     {
         String random_string;
@@ -228,6 +228,5 @@ private Bitmap bitmap;
         }
 
         return sb.toString();
-    }
-
+    }*/
 }

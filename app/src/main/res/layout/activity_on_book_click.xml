@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="15dp"
+    android:paddingRight="15dp"
+    tools:context=".OnBookClick">
+
+    <ImageView
+        android:layout_marginLeft="2dp"
+        android:layout_marginTop="8dp"
+        android:layout_width="210dp"
+        android:layout_height="250dp"
+        android:src="@drawable/side_nav_bar"
+        android:id="@+id/book_cover"/>
+
+    <TextView
+        android:layout_marginLeft="2dp"
+        android:id="@+id/book_name"
+        android:textStyle="bold"
+        android:textSize="22sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="The Edge of Tomorrow"
+        android:layout_below="@id/book_cover"
+        android:layout_marginTop="8dp"
+        />
+
+
+    <TextView
+        android:layout_marginLeft="2dp"
+        android:id="@+id/book_author"
+        android:textStyle="bold"
+        android:textSize="17sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="William Shakespeare"
+        android:layout_below="@id/book_name"
+        android:layout_marginTop="1dp"
+        />
+
+
+    <TextView
+        android:layout_marginLeft="2dp"
+        android:id="@+id/book_contributer"
+        android:textStyle="bold"
+        android:textSize="15sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Contributed by Abhay Mishra"
+        android:layout_below="@id/book_author"
+        android:layout_marginTop="2dp"
+        />
+
+
+
+    <TextView
+        android:layout_marginLeft="2dp"
+        android:id="@+id/book_date"
+        android:textStyle="bold"
+        android:textSize="15sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="December 26, 2019"
+        android:layout_below="@id/book_contributer"
+        android:layout_marginTop="2dp"
+        />
+
+
+
+    <TextView
+        android:layout_marginLeft="2dp"
+        android:id="@+id/current_taker"
+        android:textStyle="bold"
+        android:textSize="15sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Currently taken by Shubham Maurya"
+        android:layout_below="@id/book_date"
+        android:layout_marginTop="2dp"
+        />
+
+    <Button
+        android:id="@+id/click_to_get_book"
+        android:foreground="?attr/selectableItemBackground"
+        android:layout_marginTop="8dp"
+        android:layout_below="@id/current_taker"
+        android:layout_width="wrap_content"
+        android:text="Request for this book"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:layout_height="50dp"
+        android:textColor="#faf8f8"
+        android:background="#ffa500"/>
+
+</RelativeLayout>

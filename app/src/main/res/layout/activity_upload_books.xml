@@ -50,7 +50,7 @@
 
 
     <EditText
-        android:id="@+id/contributer_name"
+        android:id="@+id/writer_name"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
         android:layout_below="@id/book_name"
@@ -65,10 +65,10 @@
 
 
     <EditText
-        android:id="@+id/writer_name"
+        android:id="@+id/contributer_name"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
-        android:layout_below="@id/contributer_name"
+        android:layout_below="@id/writer_name"
         android:layout_width="match_parent"
         android:hint="Contributer name"
         android:textColor="#e5c8c8c8"
@@ -80,7 +80,7 @@
 
 
     <Button
-        android:layout_below="@id/writer_name"
+        android:layout_below="@id/contributer_name"
         android:id="@+id/click_to_upload"
         android:layout_width="match_parent"
         android:layout_height="50dp"

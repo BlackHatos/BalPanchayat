@@ -18,67 +18,101 @@ import java.util.ArrayList;
 
 import pnstech.com.myapplication.R;
 
-public class RecyclerViewAdapter  extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>{
+public class RecyclerViewAdapter  extends RecyclerView.Adapter<RecyclerViewAdapter.RecyclerViewHolder>{
 
-    private static final  String TAG = "RecyclerViewAdapter";
-    //vars
-    private ArrayList<String> mNames = new ArrayList<>();
-    private ArrayList<String> mImageUrls = new ArrayList<>();
     private Context mContext;
+    private ArrayList<ReturnTags> mList;
 
-    public RecyclerViewAdapter(Context context,ArrayList<String> names, ArrayList<String> imageUrls)
+    //creating the card clicker
+    private OnItemClickListener mListener;
+
+    public interface  OnItemClickListener
     {
-        mNames = names;
-        mImageUrls = imageUrls;
-        mContext = context;
-
+        void onItemClick(int position);
     }
 
+    public void setOnItemClickListener(OnItemClickListener listener)
+    {
+        mListener = listener;
+    }
+
+    public RecyclerViewAdapter(Context mContext, ArrayList<ReturnTags> mList)
+    {
+        this.mContext = mContext;
+        this.mList = mList;
+    }
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.book_horizontal_scroll,parent, false);
-        return new ViewHolder(view);
+    public RecyclerViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int i) {
+        View v = LayoutInflater.from(mContext).inflate(R.layout.book_horizontal_scroll, parent, false);
+        return  new RecyclerViewHolder(v);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull RecyclerViewHolder holder, int position) {
+            ReturnTags currentTag = mList.get(position);
+            String imageUrl = currentTag.getImageUrl();
+            String bookName = currentTag.getBookName();
+            String bookWriter = currentTag.getBookWriter();
+            String bookContributer  = currentTag.getBookContributer();
+            String bookDate  = currentTag.getBookDate();
+            String bookId = currentTag.getbookId();
 
-        Glide.with(mContext)
-                .asBitmap()
-                .load(mImageUrls.get(position))
-                .centerInside()//fitCenter()
-                .into(holder.image);
+            holder.book_name.setText(bookName);
+            holder.book_author.setText(bookWriter);
+            holder.book_contributer.setText("Contributed by "+bookContributer);
+            holder.book_date.setText(bookDate);
+            holder.book_id.setText(bookId); //no need to do this
 
-        holder.name.setText(mNames.get(position));
+            //image fixing
 
-        holder.image.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+           Glide.with(mContext)
+                   .load(imageUrl)
+                   .fitCenter()
+                   .centerInside()
+                   .into(holder.book_image);
 
-                Toast.makeText(mContext,mNames.get(position), Toast.LENGTH_SHORT).show();
-            }
-        });
     }
 
     @Override
     public int getItemCount() {
-        return mNames.size();
+        return mList.size();
     }
 
-    //inner class
+    public class RecyclerViewHolder  extends  RecyclerView.ViewHolder{
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+        public ImageView book_image;
+        public  TextView book_name;
+        public TextView book_author;
+        public TextView book_contributer;
+        public TextView book_date;
+        public TextView book_id;
 
-        ImageView image;
-        TextView name;
-
-        public ViewHolder(@NonNull View itemView) {
+        public RecyclerViewHolder(@NonNull View itemView) {
             super(itemView);
-            image = itemView.findViewById(R.id.book_image);
-            name = itemView.findViewById(R.id.book_name);
+
+            book_image = itemView.findViewById(R.id.book_image);
+            book_name = itemView.findViewById(R.id.book_name);
+            book_author = itemView.findViewById(R.id.book_author);
+            book_contributer = itemView.findViewById(R.id.book_contributer);
+            book_date = itemView.findViewById(R.id.book_date);
+            book_id = itemView.findViewById(R.id.book_id); //book id
+
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if(mListener != null)
+                    {
+                        int position = getAdapterPosition();
+                        if(position != RecyclerView.NO_POSITION)
+                        {
+                            mListener.onItemClick(position);
+                        }
+                    }
+                }
+            });
 
         }
     }

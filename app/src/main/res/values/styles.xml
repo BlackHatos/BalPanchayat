@@ -42,7 +42,7 @@
 
 
    <!--============== the activities that contains top toolbar =====================-->
-    <style name="ShowToolbar" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="ShowToolbar" parent="Base.Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDarkx</item>

@@ -10,6 +10,9 @@
     app:cardPreventCornerOverlap="false"
     android:layout_marginBottom="8dp"
     app:cardCornerRadius="2dp"
+    android:foreground="?attr/selectableItemBackground"
+    android:clickable="true"
+    android:focusable="true"
     >
 
     <RelativeLayout
@@ -89,6 +92,14 @@
             android:layout_marginLeft="28dp"
             />
 
+
+
+        <TextView
+            android:id="@+id/book_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:text="bookId"/>
 
     </RelativeLayout>
 

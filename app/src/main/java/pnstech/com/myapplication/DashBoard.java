@@ -101,7 +101,7 @@ public class DashBoard extends AppCompatActivity {
                 }, new Response.ErrorListener() { //error
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getApplicationContext(), String.valueOf(error), Toast.LENGTH_LONG).show();
+              //  Toast.makeText(getApplicationContext(), String.valueOf(error), Toast.LENGTH_LONG).show();
 
             }
         }){
