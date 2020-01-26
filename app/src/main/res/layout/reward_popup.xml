@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#9c282828"
+    >
+
+    <LinearLayout
+        android:layout_width="290dp"
+        android:layout_height="240dp"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/popup_shape"
+        android:gravity="center"
+        android:orientation="vertical"
+        >
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Reward Code"
+            android:textColor="#fe7dbc11"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            />
+
+        <TextView
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/reward_code"
+            android:textColor="#fec7c6c6"
+            android:text=""
+            android:textSize="25sp"
+            android:textStyle="bold"
+            />
+
+
+        <Button
+            android:textColor="@color/white"
+            android:id="@+id/ok_code"
+            android:layout_marginTop="20dp"
+            android:layout_width="120dp"
+            android:layout_height="45dp"
+            android:text="ok"
+            android:foreground="?attr/selectableItemBackground"
+            android:background="@drawable/button_shape"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

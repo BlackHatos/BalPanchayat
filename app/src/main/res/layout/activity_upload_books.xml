@@ -1,9 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#181717"
+    android:padding="20dp"
+    android:gravity="center"
     tools:context=".UploadBooks">
 
-</android.support.constraint.ConstraintLayout>
+    <LinearLayout
+        android:id="@+id/linaear_layout"
+        android:layout_centerHorizontal="true"
+        android:background="#e5c8c8c8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        >
+
+    <ImageView
+        android:id="@+id/book_cover"
+        android:layout_width="170dp"
+        android:layout_height="195dp"
+       android:layout_gravity="center_horizontal"
+        android:src="@drawable/ic_image_black_24dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:scaleType="centerCrop"
+        android:foreground="?attr/selectableItemBackground"
+        />
+
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/book_name"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp"
+        android:layout_below="@id/linaear_layout"
+        android:layout_width="match_parent"
+        android:hint="Book name"
+        android:textColor="#e5c8c8c8"
+        android:textColorHint="#e5c8c8c8"
+        android:textAlignment="center"
+        android:background="@drawable/edittext_shape"
+        android:layout_height="50dp"
+        android:textSize="16sp"/>
+
+
+
+    <EditText
+        android:id="@+id/contributer_name"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/book_name"
+        android:layout_width="match_parent"
+        android:hint="Writer name"
+        android:textColor="#e5c8c8c8"
+        android:textColorHint="#e5c8c8c8"
+        android:textAlignment="center"
+        android:background="@drawable/edittext_shape"
+        android:layout_height="50dp"
+        android:textSize="16sp"/>
+
+
+    <EditText
+        android:id="@+id/writer_name"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/contributer_name"
+        android:layout_width="match_parent"
+        android:hint="Contributer name"
+        android:textColor="#e5c8c8c8"
+        android:textColorHint="#e5c8c8c8"
+        android:textAlignment="center"
+        android:background="@drawable/edittext_shape"
+        android:layout_height="50dp"
+        android:textSize="16sp"/>
+
+
+    <Button
+        android:layout_below="@id/writer_name"
+        android:id="@+id/click_to_upload"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/button_shape"
+        android:text="Upload"
+        android:textColor="#faf8f8"
+        android:textSize="16sp"
+        android:foreground="?attr/selectableItemBackground"
+        />
+
+</RelativeLayout>

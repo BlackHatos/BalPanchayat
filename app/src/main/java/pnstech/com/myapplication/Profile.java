@@ -3,26 +3,35 @@ package pnstech.com.myapplication;
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.ContentResolver;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.media.Image;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.BottomNavigationView;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Base64;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.webkit.MimeTypeMap;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.PopupWindow;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -89,6 +98,19 @@ public class Profile extends AppCompatActivity {
 
     private SharedPreferences sharedPreferences;
 
+
+    //handling popup views
+    private ImageView minimize;
+    private EditText enter_reward_code;
+    private TextView show_error;
+    private Button click_to_submit_code;
+    private FloatingActionButton reward_button;
+    private TextView congrats;
+    private TextView points;
+    private TextView total_points;
+    private String rewardCode;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -154,6 +176,18 @@ public class Profile extends AppCompatActivity {
         set_user_password.setText("");
 
 
+       //================== floating action button
+
+       reward_button = (FloatingActionButton) findViewById(R.id.reward_button);
+
+       reward_button.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View view) {
+              showRewardPopup(view);
+
+           }
+       });
+
 
 
 //=================== edit, update and cancel button visibility
@@ -163,7 +197,6 @@ public class Profile extends AppCompatActivity {
              selectImage();
             }
         });
-
 
 
    cancel_update.setOnClickListener(new View.OnClickListener() {
@@ -223,6 +256,108 @@ public class Profile extends AppCompatActivity {
 
 
 
+    //====================== the popup to enter the rewartd code
+    public void  showRewardPopup(View view)
+    {
+        final LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
+        View popupView = inflater.inflate(R.layout.get_reward_popup,null);
+
+        boolean focusable = false;
+        int width = RelativeLayout.LayoutParams.MATCH_PARENT;
+        int height = RelativeLayout.LayoutParams.MATCH_PARENT;
+        final PopupWindow popupWindow = new PopupWindow(popupView,width,height,focusable);
+        popupWindow.setAnimationStyle(R.style.windowAnimationTransition);
+        popupWindow.showAtLocation(view , Gravity.CENTER,0,0);
+        popupWindow.setFocusable(true);
+        popupWindow.update();
+
+
+        minimize = (ImageView) popupView.findViewById(R.id.minimize);
+        minimize.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                popupWindow.dismiss(); //dismiss popup on button click
+            }
+        });
+
+        enter_reward_code = (EditText) popupView.findViewById(R.id.enter_reward_code);
+        show_error = (TextView) popupView.findViewById(R.id.show_error);
+        click_to_submit_code = (Button) popupView.findViewById(R.id.click_to_submit_code);
+        congrats = (TextView)popupView.findViewById(R.id.congrats);
+        points = (TextView) popupView.findViewById(R.id.points);
+        total_points = (TextView) popupView.findViewById(R.id.total_points);
+
+
+        click_to_submit_code.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                 rewardCode = enter_reward_code.getText().toString().trim();
+                if(!rewardCode.equals(""))
+                {
+                    sendCode();
+                   // Toast.makeText(getApplicationContext(),rewardCode, Toast.LENGTH_LONG).show();
+                }
+                else
+                Toast.makeText(getApplicationContext(), "please enter the code", Toast.LENGTH_LONG).show();
+            }
+        });
+
+    }
+
+
+        private void sendCode()
+        {
+            progressDialog.setMessage("Processing....");
+            progressDialog.show();
+            getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE);
+
+            String url = "https://www.iamannitian.co.in/test/send_code.php";
+            StringRequest sr = new StringRequest(1, url,
+                    new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
+                            //splitting the string into words
+
+                            String response_array[] = response.split(",");
+                            if(response_array[0].equals("1"))
+                            {
+                                progressDialog.dismiss();
+                                //on dialog dismiss back to interaction mode
+                                getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+
+
+                            }
+                            else if(response_array[0].equals("0")) //print message if error
+                            {
+                                progressDialog.dismiss();
+                                //on dialog dismiss back to interaction mode
+                                getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+                                Toast.makeText(getApplicationContext(),response_array[1],Toast.LENGTH_LONG).show();
+                            }
+
+
+                        }
+                    }, new Response.ErrorListener() { //error
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    progressDialog.dismiss();
+                    getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+                }
+            }){
+                @Override
+                public Map<String, String> getParams() throws AuthFailureError {
+                    Map<String, String> map =  new HashMap<>();
+                    map.put("idKey",sharedPreferences.getString("userId",""));
+                    map.put("rewardKey", rewardCode);
+                    return map;
+                }
+            };
+
+            RequestQueue rq = Volley.newRequestQueue(Profile.this);
+            rq.add(sr);
+        }
+
+
     private void getImage()
     {
 
@@ -267,13 +402,9 @@ public class Profile extends AppCompatActivity {
     }
 
 
-
-
-
-
     //==================== selecting and uploading image
 
-    public void selectImage()
+    private void selectImage()
     {
         Intent img = new Intent();
         img.setType("image/*");
@@ -292,6 +423,7 @@ public class Profile extends AppCompatActivity {
 
            try {
                bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), path);
+               user_profile_pic.setImageBitmap(bitmap);
 
            } catch (IOException e) {
                e.printStackTrace();
@@ -300,7 +432,7 @@ public class Profile extends AppCompatActivity {
     }
 
 
-    public void setImageName(Uri path)
+    private void setImageName(Uri path)
     {
 
         //getting a random number each time
@@ -331,7 +463,7 @@ public class Profile extends AppCompatActivity {
 
 
 
-    public void updateProfile()
+    private void updateProfile()
     {
 
         progressDialog.setMessage("Processing....");
@@ -385,11 +517,8 @@ public class Profile extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
                 progressDialog.dismiss();
-                //on dialog dismiss back to interaction mode
                 getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
-                Toast.makeText(getApplicationContext(), "failed to update", Toast.LENGTH_SHORT).show();
-
-            }
+                     }
         }){
             @Override
             public Map<String, String> getParams() throws AuthFailureError {
@@ -419,7 +548,6 @@ public class Profile extends AppCompatActivity {
         RequestQueue rq = Volley.newRequestQueue(Profile.this);
         rq.add(sr);
     }
-
 
 
 }

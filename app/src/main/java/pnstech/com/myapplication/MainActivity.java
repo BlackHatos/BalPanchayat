@@ -97,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
                                             editor.putString("userPhone", response_array[4]);
                                             editor.putString("userDistrict",response_array[5]);
                                             editor.putString("userState", response_array[6]);
-                                            editor.putString("imageName",response_array[7]);
+                                            editor.putString("userType",response_array[7]);
                                             editor.putString("userAddress",response_array[5]+", "+response_array[6]);
                                             editor.apply();
 

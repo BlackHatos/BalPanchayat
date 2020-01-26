@@ -9,10 +9,15 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Base64;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.PopupWindow;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,6 +37,7 @@ public class DashBoard extends AppCompatActivity {
     private ImageView user_image;
     private BottomNavigationView bottomNavigationItemView;
     private SharedPreferences sharedPreferences;
+    private Button leave_admin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -112,17 +118,7 @@ public class DashBoard extends AppCompatActivity {
     }
 
 
-
-
-    /*=========================== shared preferences saving user data starts ============================*/
-
-
-
-    /*=========================== shared preferences saving user data ends ============================*/
-
-
     //mthod to visit to profile
-
     public void goToProfile(View view){
         startActivity(new Intent(DashBoard.this,Profile.class));
     }
@@ -137,5 +133,42 @@ public class DashBoard extends AppCompatActivity {
     //method to go to Admin...........
 
 
+    public void goToAdmin(View view)
+    {
+        String code = sharedPreferences.getString("userType","");
+        if(code.equals("1"))
+        {
+            //go to upload image
+            startActivity(new Intent(DashBoard.this, UploadBooks.class));
+        }
+        else
+        {
+            notAllowedPopup(view);
+        }
+    }
+
+
+
+    public void   notAllowedPopup(View view)
+    {
+        final LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
+        View popupView = inflater.inflate(R.layout.not_admin,null);
+        boolean focusable = false;
+        int width = RelativeLayout.LayoutParams.MATCH_PARENT;
+        int height = RelativeLayout.LayoutParams.MATCH_PARENT;
+        final PopupWindow popupWindow = new PopupWindow(popupView,width,height,focusable);
+        popupWindow.setAnimationStyle(R.style.windowAnimationTransition);
+        popupWindow.showAtLocation(view , Gravity.CENTER,0,0);
+
+
+        leave_admin = (Button) popupView.findViewById(R.id.leave_admin);
+        leave_admin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                popupWindow.dismiss(); //dismiss popup on button click
+            }
+        });
+
+    }
 
 }
