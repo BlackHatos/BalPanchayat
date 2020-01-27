@@ -90,7 +90,11 @@ public class MainLibrary extends AppCompatActivity  implements RecyclerViewAdapt
                         startActivity(new Intent(MainLibrary.this, About.class));
                         break;
 
-                                        }
+                    case R.id.search:
+                        startActivity(new Intent(MainLibrary.this, SearchActivity.class));
+                        break;
+
+                        }
                 return true;
             }
         });
@@ -111,6 +115,9 @@ public class MainLibrary extends AppCompatActivity  implements RecyclerViewAdapt
 
                     case R.id.settings:
                         startActivity(new Intent(MainLibrary.this, Settings.class));
+                        break;
+                    case R.id.search:
+                        startActivity(new Intent(MainLibrary.this, SearchActivity.class));
                         break;
                 }
                 return true;

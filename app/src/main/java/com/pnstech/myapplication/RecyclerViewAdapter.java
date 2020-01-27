@@ -80,6 +80,12 @@ public class RecyclerViewAdapter  extends RecyclerView.Adapter<RecyclerViewAdapt
         return mList.size();
     }
 
+    public void filterList(ArrayList<ReturnTags> filteredList)
+    {
+        mList = filteredList;
+        notifyDataSetChanged();
+    }
+
     public class RecyclerViewHolder  extends  RecyclerView.ViewHolder{
 
         public ImageView book_image;
