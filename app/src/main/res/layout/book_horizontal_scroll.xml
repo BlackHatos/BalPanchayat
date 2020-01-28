@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     app:cardMaxElevation="2dp"
     android:elevation="1dp"
-    app:cardBackgroundColor="#646363"
+    app:cardBackgroundColor="#53686c"
     app:cardPreventCornerOverlap="false"
     android:layout_marginBottom="8dp"
     app:cardCornerRadius="2dp"
@@ -36,13 +36,13 @@
                 android:layout_height="20dp"
                 android:text="Julius Casear"
                 android:textColor="#edebeb"
-                android:textSize="16sp"
+                android:textSize="17sp"
                 android:textStyle="bold"
                 android:layout_marginTop="20dp"
                 android:id="@+id/book_name"
                android:layout_toEndOf="@+id/book_image"
                android:layout_centerHorizontal="true"
-               android:layout_marginLeft="28dp"
+               android:layout_marginLeft="20dp"
                 />
 
 
@@ -53,12 +53,12 @@
             android:textColor="#edebeb"
             android:textSize="15sp"
             android:textStyle="bold"
-            android:layout_marginTop="7dp"
+            android:layout_marginTop="5dp"
             android:id="@+id/book_author"
             android:layout_toEndOf="@+id/book_image"
             android:layout_below="@id/book_name"
             android:layout_centerHorizontal="true"
-            android:layout_marginLeft="28dp"
+            android:layout_marginLeft="20dp"
             />
 
 
@@ -69,12 +69,12 @@
             android:textColor="#edebeb"
             android:textSize="15sp"
             android:textStyle="bold"
-            android:layout_marginTop="7dp"
+            android:layout_marginTop="5dp"
             android:id="@+id/book_contributer"
             android:layout_toEndOf="@+id/book_image"
             android:layout_below="@id/book_author"
             android:layout_centerHorizontal="true"
-            android:layout_marginLeft="28dp"
+            android:layout_marginLeft="20dp"
             />
 
         <TextView
@@ -84,12 +84,12 @@
             android:textColor="#edebeb"
             android:textSize="15sp"
             android:textStyle="bold"
-            android:layout_marginTop="7dp"
+            android:layout_marginTop="5dp"
             android:id="@+id/book_date"
             android:layout_toEndOf="@+id/book_image"
             android:layout_below="@id/book_contributer"
             android:layout_centerHorizontal="true"
-            android:layout_marginLeft="28dp"
+            android:layout_marginLeft="20dp"
             />
 
 

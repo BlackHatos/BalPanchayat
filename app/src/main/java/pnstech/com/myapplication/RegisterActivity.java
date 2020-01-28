@@ -30,7 +30,6 @@ public class RegisterActivity extends AppCompatActivity {
     private EditText email;
     private EditText phone;
     private EditText password;
-    private EditText confirm_password;
     private Button click_to_login;
 
     private ProgressDialog progressDialog;
@@ -45,7 +44,6 @@ public class RegisterActivity extends AppCompatActivity {
         email = (EditText) findViewById(R.id.email);
         phone = (EditText) findViewById(R.id.phone);
         password = (EditText) findViewById(R.id.password);
-        confirm_password = (EditText) findViewById(R.id.confirm_password);
         click_to_login = (Button) findViewById(R.id.click_to_login);
 
         progressDialog = new ProgressDialog(this, R.style.progressDialogTheme);
@@ -62,8 +60,7 @@ public class RegisterActivity extends AppCompatActivity {
                  getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE);
 
                 if(name.getText().toString().equals("")  || email.getText().toString().equals("")
-                        || phone.getText().toString().equals("") || password.getText().toString().equals("")
-                        || confirm_password.getText().toString().equals("")  ){
+                        || phone.getText().toString().equals("") || password.getText().toString().equals("")){
 
                     progressDialog.dismiss();
                     //on dialog dismiss back to interaction mode
@@ -72,9 +69,7 @@ public class RegisterActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Please fill out the credentials", Toast.LENGTH_SHORT).show();
                 }
                 else{
-                    if(password.getText().toString().trim().equals(confirm_password.getText().toString().trim()))
-                    {
-                        String url = "https://www.iamannitian.co.in/test/register.php";
+                       String url = "https://www.iamannitian.co.in/test/register.php";
                         StringRequest sr = new StringRequest(1, url,
                                 new Response.Listener<String>() {
                                     @Override
@@ -88,7 +83,6 @@ public class RegisterActivity extends AppCompatActivity {
                                             email.setText("");
                                             phone.setText("");
                                             password.setText("");
-                                            confirm_password.setText("");
                                             progressDialog.dismiss();
 
                                             /*=========================== shared preferences saving user data starts ============================*/
@@ -144,16 +138,6 @@ public class RegisterActivity extends AppCompatActivity {
 
                         RequestQueue rq = Volley.newRequestQueue(RegisterActivity.this);
                         rq.add(sr);
-                    }
-                    else
-                    {
-                        password.setText("");
-                        confirm_password.setText("");
-                        progressDialog.dismiss();
-                        getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
-                        Toast.makeText(getApplicationContext(), "password do not match", Toast.LENGTH_SHORT).show();
-                    }
-
                 }
 
 

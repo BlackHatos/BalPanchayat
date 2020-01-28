@@ -25,7 +25,9 @@
             android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".ForgotPassword"
-            android:theme="@style/HideAppBar"
+            android:parentActivityName=".MainActivity"
+            android:label="Forgot Password"
+            android:theme="@style/ShowToolbar"
             android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".SplashScreen"
@@ -48,7 +50,6 @@
             android:name=".Settings"
             android:label="Settings"
             android:theme="@style/ShowToolbar" />
-        <activity android:name=".PaymentActivity" />
         <activity
             android:name=".UploadBooks"
             android:label="Upload Book"
@@ -78,9 +79,10 @@
         <activity
             android:name=".OnBookClick"
             android:label="Library"
-            android:parentActivityName=".MainLibrary"
             android:theme="@style/ShowToolbar" />
-        <activity android:name=".SearchActivity"></activity>
+        <activity android:name=".SearchActivity">
+
+        </activity>
     </application>
 
 </manifest>

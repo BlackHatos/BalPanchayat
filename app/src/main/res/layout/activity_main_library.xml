@@ -58,12 +58,12 @@
 
     <android.support.design.widget.FloatingActionButton
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        android:id="@+id/floatButton"
+        android:id="@+id/message_button"
         app:layout_anchor="@id/appbarx"
         app:layout_anchorGravity="bottom|right"
-        android:src="@drawable/ic_star_black_24dp"
+        android:src="@drawable/ic_message_black_24dp"
         android:backgroundTint="@color/colorPrimary"
         />
 
@@ -88,7 +88,7 @@
         app:itemBackground="@color/colorPrimaryDark"
         app:itemTextColor="@drawable/selector"
         app:itemIconTint="@drawable/selector"
-        app:menu="@menu/menu_navigation"
+        app:menu="@menu/search_menu"
         android:layout_alignParentBottom="true"
         app:layout_behavior="@string/hide_bottom_view_on_scroll_behavior"
         />

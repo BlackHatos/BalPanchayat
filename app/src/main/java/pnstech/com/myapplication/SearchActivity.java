@@ -46,6 +46,7 @@ public class SearchActivity extends AppCompatActivity  implements RecyclerViewAd
 
     public static final String EXTRA_URL = "imageUrl";
     public static final String EXTRA_BOOK_NAME = "bookName";
+
     public static final String EXTRA_BOOK_AUTHOR = "bookWriter";
     public static final String EXTRA_BOOK_CONTRIBUTER = "bookContributer";
     public static final String EXTRA_BOOK_DATE = "bookDate";

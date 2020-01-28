@@ -36,8 +36,8 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="25dp"
-                    android:layout_marginTop="32dp"
+                    android:layout_marginBottom="28dp"
+                    android:layout_marginTop="40dp"
 
                     >
 
@@ -102,66 +102,45 @@
                                     android:textStyle="bold"
                                     />
 
+
                                 <LinearLayout
+                                    android:layout_marginBottom="12dp"
+                                    android:layout_marginTop="14dp"
+                                    android:orientation="horizontal"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginTop="15dp"
-                                    android:gravity="center"
-                                    android:orientation="horizontal">
+                                    android:gravity="center">
 
 
-                                    <LinearLayout
-                                        android:layout_width="130dp"
-                                        android:layout_height="100dp"
-                                        android:background="@drawable/profile_background"
-                                        android:gravity="center"
-                                        android:orientation="vertical">
-
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:layout_gravity="center_horizontal"
-                                            android:text="180"
-                                            android:textSize="24sp"
-                                            android:textStyle="bold" />
-
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:layout_gravity="center_horizontal"
-                                            android:text="Points"
-                                            android:textStyle="bold" />
-
-                                    </LinearLayout>
+                                    <ImageView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:src="@drawable/ic_star_black_24dp"/>
 
 
-                                    <LinearLayout
-                                        android:layout_width="130dp"
-                                        android:layout_height="100dp"
-                                        android:layout_marginLeft="5dp"
-                                        android:background="@drawable/profile_background_2"
-                                        android:gravity="center"
-                                        android:orientation="vertical">
+                                    <ImageView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:src="@drawable/ic_star_black_24dp"/>
 
+                                    <ImageView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:src="@drawable/ic_star_black_24dp"/>
 
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:layout_gravity="center_horizontal"
-                                            android:text="50"
-                                            android:textSize="24sp"
-                                            android:textStyle="bold" />
+                                    <ImageView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:src="@drawable/ic_star_black_24dp"/>
 
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:layout_gravity="center_horizontal"
-                                            android:text="Contributions"
-                                            android:textStyle="bold" />
-
-                                    </LinearLayout>
+                                    <ImageView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:src="@drawable/ic_star_black_24dp"/>
 
                                 </LinearLayout>
+
+
 
                             </LinearLayout>
 
@@ -218,8 +197,8 @@
                         >
 
                         <ImageView
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
+                            android:layout_width="26dp"
+                            android:layout_height="26dp"
                             android:layout_gravity="center_vertical"
                             android:layout_marginRight="10dp"
                             android:src="@drawable/ic_home_black_24dp"
@@ -241,13 +220,13 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="7dp"
                         android:orientation="horizontal"
                         >
 
                         <ImageView
-                            android:layout_width="29dp"
-                            android:layout_height="29dp"
+                            android:layout_width="22dp"
+                            android:layout_height="22dp"
                             android:layout_gravity="center_vertical"
                             android:layout_marginRight="10dp"
                             android:src="@drawable/ic_email_black_24dp"
@@ -269,13 +248,13 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="7dp"
                         android:orientation="horizontal"
                         >
 
                         <ImageView
-                            android:layout_width="29dp"
-                            android:layout_height="29dp"
+                            android:layout_width="22dp"
+                            android:layout_height="22dp"
                             android:layout_gravity="center_vertical"
                             android:layout_marginRight="10dp"
                             android:src="@drawable/ic_phone_in_talk_black_24dp"
@@ -405,8 +384,8 @@
                         android:orientation="horizontal">
 
                         <ImageView
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
+                            android:layout_width="29dp"
+                            android:layout_height="29dp"
                             android:layout_gravity="center_vertical"
                             android:layout_marginRight="10dp"
                             android:src="@drawable/ic_email_black_24dp" />
@@ -430,8 +409,8 @@
                         android:orientation="horizontal">
 
                         <ImageView
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
+                            android:layout_width="29dp"
+                            android:layout_height="29dp"
                             android:layout_gravity="center_vertical"
                             android:layout_marginRight="10dp"
                             android:src="@drawable/ic_phone_in_talk_black_24dp" />
@@ -570,15 +549,15 @@
 
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/reward_button"
+        android:id="@+id/message_button"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:layout_marginBottom="92dp"
         android:layout_marginEnd="31dp"
         android:backgroundTint="@color/colorPrimary"
-        android:src="@drawable/ic_control_point_black_24dp"
+        android:src="@drawable/ic_message_black_24dp"
         app:layout_anchor="@id/appbarx"
         app:layout_anchorGravity="bottom"
         android:onClick="getReward"

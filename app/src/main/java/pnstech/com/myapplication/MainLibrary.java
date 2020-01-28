@@ -3,8 +3,12 @@ package pnstech.com.myapplication;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 
+import android.net.Uri;
 import android.support.annotation.NonNull;
+import android.support.design.internal.BottomNavigationItemView;
+import android.support.design.internal.BottomNavigationMenuView;
 import android.support.design.widget.BottomNavigationView;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -35,13 +39,14 @@ import org.json.JSONObject;
 import java.lang.ref.ReferenceQueue;
 import java.util.ArrayList;
 
+import static android.view.View.GONE;
+import static android.view.View.VISIBLE;
 import static com.android.volley.Request.*;
 
 public class MainLibrary extends AppCompatActivity  implements RecyclerViewAdapter.OnItemClickListener{
 
     private Toolbar mtoolbar;
-    private BottomNavigationView bottomNavigationItemView;
-
+    private FloatingActionButton message_button;
 
     public static final String EXTRA_URL = "imageUrl";
     public static final String EXTRA_BOOK_NAME = "bookName";
@@ -58,11 +63,32 @@ public class MainLibrary extends AppCompatActivity  implements RecyclerViewAdapt
     private RequestQueue requestQueue;
 
 
+    //notification badge
+    private BottomNavigationView bottomNavigationView;
+    private View notificationBadge;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_library);
 
+        message_button = (FloatingActionButton) findViewById(R.id.message_button);
+
+
+        message_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(android.content.Intent.ACTION_SEND);
+                intent.setData(Uri.parse("mailto:"));
+                String[] to = {"pnssoftwares7@gmail.com"};
+                intent.putExtra(Intent.EXTRA_EMAIL, to);
+                intent.putExtra(Intent.EXTRA_SUBJECT, "Have You Any Query Or Suggestion?");
+                intent.putExtra(Intent.EXTRA_TEXT, "Write Here....");
+                intent.setType("message/rfc822");// this is must
+                Intent.createChooser(intent, "Choose Email"); //second argument is optional
+                startActivity(intent);
+            }
+        });
 
         recyclerView =  findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true); //recycler view dont change its width and height
@@ -74,7 +100,7 @@ public class MainLibrary extends AppCompatActivity  implements RecyclerViewAdapt
 
         //creating side three dot menu
         mtoolbar = (Toolbar) findViewById(R.id.toolbarx);
-        bottomNavigationItemView = findViewById(R.id.navigation_view);
+        bottomNavigationView = findViewById(R.id.navigation_view);
 
         mtoolbar.inflateMenu(R.menu.menu_main);
 
@@ -90,10 +116,6 @@ public class MainLibrary extends AppCompatActivity  implements RecyclerViewAdapt
                         startActivity(new Intent(MainLibrary.this, About.class));
                         break;
 
-                    case R.id.search:
-                        startActivity(new Intent(MainLibrary.this, SearchActivity.class));
-                        break;
-
                         }
                 return true;
             }
@@ -101,7 +123,7 @@ public class MainLibrary extends AppCompatActivity  implements RecyclerViewAdapt
 
 
 
-        bottomNavigationItemView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch (menuItem.getItemId()) {
@@ -116,18 +138,39 @@ public class MainLibrary extends AppCompatActivity  implements RecyclerViewAdapt
                     case R.id.settings:
                         startActivity(new Intent(MainLibrary.this, Settings.class));
                         break;
+
                     case R.id.search:
                         startActivity(new Intent(MainLibrary.this, SearchActivity.class));
                         break;
+
+                    case R.id.profile:
+                        startActivity(new Intent(MainLibrary.this, Profile.class));
+                        break;
+
                 }
                 return true;
             }
             });
 
         setUpToolbarMenu(); //enabling three dot menu
-
+       showBadge();
     }
 
+
+
+    public void showBadge() //showq notfication badge
+    {
+        BottomNavigationMenuView menuView = (BottomNavigationMenuView) bottomNavigationView.getChildAt(0);
+        BottomNavigationItemView itemView = (BottomNavigationItemView) menuView.getChildAt(0);
+        notificationBadge = LayoutInflater.from(this).inflate(R.layout.notification_badge, menuView,false);
+        itemView.addView(notificationBadge);
+    }
+
+    private void refreshBadge()  //refresh badge
+    {
+        boolean badgeVisible = notificationBadge.getVisibility() != VISIBLE;
+        notificationBadge.setVisibility(badgeVisible ? VISIBLE : GONE);
+    }
 
 
     private void parseJson()

@@ -13,6 +13,8 @@ import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.internal.BottomNavigationItemView;
+import android.support.design.internal.BottomNavigationMenuView;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -56,10 +58,12 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+import static android.view.View.GONE;
+import static android.view.View.VISIBLE;
+
 public class Profile extends AppCompatActivity {
 
     private ProgressDialog progressDialog;
-    private BottomNavigationView bottomNavigationItemView;
     private LinearLayout edit_profile;
     private  LinearLayout update_profile;
     private LinearLayout cancel_update;
@@ -104,18 +108,22 @@ public class Profile extends AppCompatActivity {
     private EditText enter_reward_code;
     private TextView show_error;
     private Button click_to_submit_code;
-    private FloatingActionButton reward_button;
+    private FloatingActionButton message_button;
     private TextView congrats;
     private TextView points;
     private TextView total_points;
     private String rewardCode;
 
 
+
+    private BottomNavigationView bottomNavigationView;
+    private View notificationBadge;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
-        bottomNavigationItemView = findViewById(R.id.navigation_view);
+        bottomNavigationView = findViewById(R.id.navigation_view);
 
         //progress dialog
         progressDialog = new ProgressDialog(this, R.style.progressDialogTheme);
@@ -127,7 +135,6 @@ public class Profile extends AppCompatActivity {
         hide_profile = (LinearLayout) findViewById(R.id.hide_profile);
         show_profile = (LinearLayout) findViewById(R.id.show_profile);
         cancel_update = (LinearLayout) findViewById(R.id.cancel_update);
-
 
 
         //default profile section
@@ -178,13 +185,20 @@ public class Profile extends AppCompatActivity {
 
        //================== floating action button
 
-       reward_button = (FloatingActionButton) findViewById(R.id.reward_button);
+       message_button = (FloatingActionButton) findViewById(R.id.message_button);
 
-       reward_button.setOnClickListener(new View.OnClickListener() {
+       message_button.setOnClickListener(new View.OnClickListener() {
            @Override
-           public void onClick(View view) {
-              showRewardPopup(view);
-
+           public void onClick(View view) { //send email message
+               Intent intent = new Intent(android.content.Intent.ACTION_SEND);
+               intent.setData(Uri.parse("mailto:"));
+               String[] to = {"pnssoftwares7@gmail.com"};
+               intent.putExtra(Intent.EXTRA_EMAIL, to);
+               intent.putExtra(Intent.EXTRA_SUBJECT, "Have You Any Query Or Suggestion?");
+               intent.putExtra(Intent.EXTRA_TEXT, "Write Here....");
+               intent.setType("message/rfc822");// this is must
+               Intent.createChooser(intent, "Choose Email"); //second argument is optional
+               startActivity(intent);
            }
        });
 
@@ -229,7 +243,7 @@ public class Profile extends AppCompatActivity {
         });
 
         //===========================  bottom navigation
-        bottomNavigationItemView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch (menuItem.getItemId()) {
@@ -251,10 +265,28 @@ public class Profile extends AppCompatActivity {
 
 
         getImage(); //getting profile picture of the user
-
+      showBadge();
     }
 
 
+
+
+    public void showBadge() //showq notfication badge
+    {
+        BottomNavigationMenuView menuView = (BottomNavigationMenuView) bottomNavigationView.getChildAt(0);
+        BottomNavigationItemView itemView = (BottomNavigationItemView) menuView.getChildAt(0);
+        notificationBadge = LayoutInflater.from(this).inflate(R.layout.notification_badge, menuView,false);
+        itemView.addView(notificationBadge);
+    }
+
+    private void refreshBadge()  //refresh badge
+    {
+        boolean badgeVisible = notificationBadge.getVisibility() != VISIBLE;
+        notificationBadge.setVisibility(badgeVisible ? VISIBLE : GONE);
+    }
+
+
+/*
 
     //====================== the popup to enter the rewartd code
     public void  showRewardPopup(View view)
@@ -303,9 +335,9 @@ public class Profile extends AppCompatActivity {
         });
 
     }
+*/
 
-
-        private void sendCode()
+     /*   private void sendCode()
         {
             progressDialog.setMessage("Processing....");
             progressDialog.show();
@@ -356,7 +388,7 @@ public class Profile extends AppCompatActivity {
             RequestQueue rq = Volley.newRequestQueue(Profile.this);
             rq.add(sr);
         }
-
+*/
 
     private void getImage()
     {

@@ -2,9 +2,12 @@ package pnstech.com.myapplication;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 public class Settings extends AppCompatActivity {
 
@@ -14,9 +17,35 @@ public class Settings extends AppCompatActivity {
         setContentView(R.layout.activity_settings);
     }
 
-    public void gotoShare(View view)
+    public void goToShare(View view) //sharing tbe app link to the wjatsapp
     {
-          //
+        final PackageManager pm=getPackageManager();
+        final Intent a = new Intent(Intent.ACTION_SEND);
+        Toast.makeText(getApplicationContext(), "Wait..", Toast.LENGTH_LONG).show();
+
+
+
+        a.setType("text/link");
+        String shareBody = "Download BalPanchayat app for regular updates."+
+                "\n\t\t\t\t\t-Team BalPanchayat"+
+                "\n"+"----------------------------"+"\n"+
+                "https://www.iamannitian.co.in";
+
+        String shareSub = "Team BalPanchayat";
+        a.putExtra(Intent.EXTRA_SUBJECT, shareSub);
+        a.putExtra(Intent.EXTRA_TEXT, shareBody);
+        try {
+
+            PackageInfo info=pm.getPackageInfo("com.whatsapp", PackageManager.GET_META_DATA);
+            a.setPackage("com.whatsapp");//important it will select only whatsapp
+        }catch (PackageManager.NameNotFoundException e) {
+            Toast.makeText(getApplicationContext(), "plese install whatsapp", Toast.LENGTH_SHORT)
+                    .show();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        startActivity(a);
+
     }
 
     public void goToAbout(View view)

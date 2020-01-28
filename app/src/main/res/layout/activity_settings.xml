@@ -18,11 +18,11 @@
         android:onClick="goToShare"
         android:layout_width="match_parent"
         android:layout_height="55dp"
-        android:paddingLeft="15dp"
         android:foreground="?attr/selectableItemBackground"
         android:orientation="horizontal">
 
         <TextView
+            android:textAlignment="center"
             android:layout_gravity="center_vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -45,11 +45,11 @@
         android:onClick="goToAbout"
         android:layout_width="match_parent"
         android:layout_height="55dp"
-        android:paddingLeft="15dp"
         android:foreground="?attr/selectableItemBackground"
         android:orientation="horizontal">
 
         <TextView
+            android:textAlignment="center"
             android:layout_gravity="center_vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -73,11 +73,11 @@
         android:onClick="goToLogout"
         android:layout_width="match_parent"
         android:layout_height="55dp"
-        android:paddingLeft="15dp"
         android:foreground="?attr/selectableItemBackground"
         android:orientation="horizontal">
 
         <TextView
+            android:textAlignment="center"
             android:layout_gravity="center_vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

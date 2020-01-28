@@ -1,24 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#181717"
+    android:padding="16dp"
     tools:context=".MainActivity">
 
 
+
     <LinearLayout
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
         android:gravity="center"
         android:orientation="vertical"
-        android:padding="16dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <ImageView
-            android:layout_marginTop="10dp"
             android:layout_width="115dp"
             android:layout_height="115dp"
             android:contentDescription="@string/logo"
@@ -88,20 +91,6 @@
             />
 
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="22dp"
-            android:background="@drawable/edittext_shape"
-            android:hint="@string/reenter_password"
-            android:inputType="textPassword"
-            android:paddingLeft="22dp"
-            android:textSize="17sp"
-            android:textColor="#e5c8c8c8"
-            android:textColorHint="#b6c8c8c8"
-            android:id="@+id/confirm_password"
-            />
-
 
         <Button
             android:id="@+id/click_to_login"
@@ -139,7 +128,6 @@
             android:text="@string/new_login"
             android:textColor="#e5c8c8c8"
             android:layout_marginTop="23dp"
-            android:layout_marginBottom="20dp"
             android:clickable="true"
             android:onClick="goToLogin"
             tools:ignore="OnClick"
@@ -149,5 +137,8 @@
 
     </LinearLayout>
 
-</ScrollView>
+
+</RelativeLayout>
+
+
 

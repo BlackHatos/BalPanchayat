@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#181717"
     tools:context=".SearchActivity">
 
 
@@ -13,9 +14,12 @@
         android:id="@+id/search_view"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:hint="Search"
-        android:textSize="15sp"
+        android:hint="Search.."
+        android:textSize="16sp"
         android:paddingLeft="25dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:background="#ffa500"
         />
 
 

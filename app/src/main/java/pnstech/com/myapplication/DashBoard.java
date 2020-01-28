@@ -5,6 +5,8 @@ import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.support.annotation.NonNull;
+import android.support.design.internal.BottomNavigationItemView;
+import android.support.design.internal.BottomNavigationMenuView;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -31,13 +33,20 @@ import com.android.volley.toolbox.Volley;
 import java.util.HashMap;
 import java.util.Map;
 
+import static android.view.View.GONE;
+import static android.view.View.VISIBLE;
+
 public class DashBoard extends AppCompatActivity {
 
     private TextView user_name;
     private ImageView user_image;
-    private BottomNavigationView bottomNavigationItemView;
     private SharedPreferences sharedPreferences;
     private Button leave_admin;
+
+
+    private BottomNavigationView bottomNavigationView;
+    private View notificationBadge;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,10 +55,10 @@ public class DashBoard extends AppCompatActivity {
         user_name = (TextView) findViewById(R.id.user_name);
         user_image = (ImageView) findViewById(R.id.user_image);
 
-        bottomNavigationItemView = findViewById(R.id.navigation_view);
+        bottomNavigationView = findViewById(R.id.navigation_view);
 
 
-        bottomNavigationItemView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch (menuItem.getItemId()) {
@@ -63,6 +72,9 @@ public class DashBoard extends AppCompatActivity {
                     case R.id.settings:
                         startActivity(new Intent(DashBoard.this, Settings.class));
                         break;
+                    case R.id.profile:
+                        startActivity(new Intent(DashBoard.this, Profile.class));
+                        break;
                 }
                 return true;
             }
@@ -73,6 +85,22 @@ public class DashBoard extends AppCompatActivity {
          user_name.setText(sharedPreferences.getString("userName", ""));
 
          getImage();
+         showBadge();
+    }
+
+
+    public void showBadge() //showq notfication badge
+    {
+        BottomNavigationMenuView menuView = (BottomNavigationMenuView) bottomNavigationView.getChildAt(0);
+        BottomNavigationItemView itemView = (BottomNavigationItemView) menuView.getChildAt(0);
+        notificationBadge = LayoutInflater.from(this).inflate(R.layout.notification_badge, menuView,false);
+        itemView.addView(notificationBadge);
+    }
+
+    private void refreshBadge()  //refresh badge
+    {
+        boolean badgeVisible = notificationBadge.getVisibility() != VISIBLE;
+        notificationBadge.setVisibility(badgeVisible ? VISIBLE : GONE);
     }
 
 
