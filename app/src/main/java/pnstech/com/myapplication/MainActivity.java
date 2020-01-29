@@ -38,7 +38,6 @@ public class MainActivity extends AppCompatActivity {
    //shared prefereneces
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,7 +47,6 @@ public class MainActivity extends AppCompatActivity {
         password  = (EditText) findViewById(R.id.password);
         click_to_login = (Button) findViewById(R.id.click_to_login);
        // custom_login =  (Button) findViewById(R.id.custom_login);
-
 
 
 
@@ -87,6 +85,9 @@ public class MainActivity extends AppCompatActivity {
                                             password.setText("");
                                            progressDialog.dismiss();
 
+
+
+
                                            /*=========================== shared preferences saving user data starts ============================*/
 
                                             SharedPreferences sharedPreferences = getSharedPreferences("userData", MODE_PRIVATE);
@@ -99,10 +100,14 @@ public class MainActivity extends AppCompatActivity {
                                             editor.putString("userState", response_array[6]);
                                             editor.putString("userType",response_array[7]);
                                             editor.putString("userAddress",response_array[5]+", "+response_array[6]);
+
+                                            //also get notify count
+
+                                            editor.putString("notifyCount",response_array[8]);
+
                                             editor.apply();
 
                                             /*=========================== shared preferences saving user data starts ============================*/
-
                                             Intent intent = new Intent(MainActivity.this, DashBoard.class);
                                             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK); //finish all previous activities
                                             startActivity(intent);

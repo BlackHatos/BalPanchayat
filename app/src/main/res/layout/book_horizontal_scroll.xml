@@ -18,7 +18,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="14dp"
+        android:padding="10dp"
         >
 
             <ImageView
@@ -33,63 +33,61 @@
 
         <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="20dp"
+                android:layout_height="wrap_content"
                 android:text="Julius Casear"
                 android:textColor="#edebeb"
-                android:textSize="17sp"
+                android:textSize="18sp"
                 android:textStyle="bold"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="22dp"
                 android:id="@+id/book_name"
                android:layout_toEndOf="@+id/book_image"
                android:layout_centerHorizontal="true"
-               android:layout_marginLeft="20dp"
+               android:layout_marginLeft="15dp"
                 />
 
 
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="20dp"
+            android:layout_height="wrap_content"
             android:text="William Shakespeare"
             android:textColor="#edebeb"
             android:textSize="15sp"
             android:textStyle="bold"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="1dp"
             android:id="@+id/book_author"
             android:layout_toEndOf="@+id/book_image"
             android:layout_below="@id/book_name"
             android:layout_centerHorizontal="true"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="15dp"
             />
 
 
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="20dp"
+            android:layout_height="wrap_content"
             android:text="Contributed by Shubham"
             android:textColor="#edebeb"
             android:textSize="15sp"
-            android:textStyle="bold"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="1dp"
             android:id="@+id/book_contributer"
             android:layout_toEndOf="@+id/book_image"
             android:layout_below="@id/book_author"
             android:layout_centerHorizontal="true"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="15dp"
             />
 
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="20dp"
+            android:layout_height="wrap_content"
             android:text="December 26, 2020"
             android:textColor="#edebeb"
-            android:textSize="15sp"
-            android:textStyle="bold"
-            android:layout_marginTop="5dp"
+            android:textSize="12sp"
+            android:layout_marginTop="4dp"
             android:id="@+id/book_date"
             android:layout_toEndOf="@+id/book_image"
             android:layout_below="@id/book_contributer"
             android:layout_centerHorizontal="true"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="15dp"
             />
 
 

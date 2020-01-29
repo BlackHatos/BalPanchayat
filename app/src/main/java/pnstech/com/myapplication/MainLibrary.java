@@ -1,6 +1,7 @@
 package pnstech.com.myapplication;
 
 import android.annotation.SuppressLint;
+import android.app.Notification;
 import android.content.Intent;
 
 import android.net.Uri;
@@ -128,7 +129,7 @@ public class MainLibrary extends AppCompatActivity  implements RecyclerViewAdapt
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch (menuItem.getItemId()) {
                     case R.id.notify:
-                        Toast.makeText(getApplicationContext(), "No notifications yet", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(MainLibrary.this, pnstech.com.myapplication.Notification.class));
                         break;
 
                     case R.id.home:
@@ -146,6 +147,7 @@ public class MainLibrary extends AppCompatActivity  implements RecyclerViewAdapt
                     case R.id.profile:
                         startActivity(new Intent(MainLibrary.this, Profile.class));
                         break;
+
 
                 }
                 return true;
@@ -215,7 +217,7 @@ public class MainLibrary extends AppCompatActivity  implements RecyclerViewAdapt
                     {
                         error.printStackTrace();
                     }
-                        });
+                         });
 
           requestQueue.add(request);
     }

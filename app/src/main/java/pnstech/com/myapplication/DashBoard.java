@@ -1,5 +1,6 @@
 package pnstech.com.myapplication;
 
+import android.app.Notification;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
@@ -17,6 +18,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
@@ -34,6 +36,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static android.view.View.GONE;
+import static android.view.View.OVER_SCROLL_ALWAYS;
 import static android.view.View.VISIBLE;
 
 public class DashBoard extends AppCompatActivity {
@@ -43,10 +46,8 @@ public class DashBoard extends AppCompatActivity {
     private SharedPreferences sharedPreferences;
     private Button leave_admin;
 
-
     private BottomNavigationView bottomNavigationView;
     private View notificationBadge;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,8 +64,9 @@ public class DashBoard extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch (menuItem.getItemId()) {
                     case R.id.notify:
-                        Toast.makeText(getApplicationContext(), "No notifications yet", Toast.LENGTH_SHORT).show();
-                        break;
+                       removeBadge(); //call remove badge method
+                        startActivity(new Intent(DashBoard.this, pnstech.com.myapplication.Notification.class));
+                      break;
 
                     case R.id.home:
                         //startActivity(new Intent(DashBoard.this, DashBoard.class));
@@ -84,12 +86,56 @@ public class DashBoard extends AppCompatActivity {
          sharedPreferences = getSharedPreferences("userData", MODE_PRIVATE);
          user_name.setText(sharedPreferences.getString("userName", ""));
 
+         //================= setting badge count started
+        String notifyCount = sharedPreferences.getString("notifyCount", "");
+        final LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
+        View badgeView = inflater.inflate(R.layout.notification_badge,null);
+        TextView badge_count = (TextView)badgeView.findViewById(R.id.notify_count);
+         if(!notifyCount.equals("0"))
+         {
+             badge_count.setText(notifyCount+"+");
+             //Toast.makeText(getApplicationContext(), (CharSequence) badgeView.findViewById(R.id.notification_badge), Toast.LENGTH_LONG).show();
+         }
+       //================== settigbn badge count finished
+
          getImage();
          showBadge();
     }
 
 
-    public void showBadge() //showq notfication badge
+
+    public void removeBadge()
+    {
+        String url = "https://www.iamannitian.co.in/test/remove_badge.php";
+        StringRequest sr = new StringRequest(1, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+                        if(response.equals("1"))
+                            notificationBadge.setVisibility(GONE);
+                    }
+                }, new Response.ErrorListener() { //error
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                //  Toast.makeText(getApplicationContext(), String.valueOf(error), Toast.LENGTH_LONG).show();
+
+            }
+        }){
+            @Override
+            public Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> map =  new HashMap<>();
+                map.put("idKey",sharedPreferences.getString("userId",""));
+                return map;
+            }
+        };
+
+        RequestQueue rq = Volley.newRequestQueue(DashBoard.this);
+        rq.add(sr);
+    }
+
+
+    public void showBadge() //show notfication badge
     {
         BottomNavigationMenuView menuView = (BottomNavigationMenuView) bottomNavigationView.getChildAt(0);
         BottomNavigationItemView itemView = (BottomNavigationItemView) menuView.getChildAt(0);
@@ -97,11 +143,6 @@ public class DashBoard extends AppCompatActivity {
         itemView.addView(notificationBadge);
     }
 
-    private void refreshBadge()  //refresh badge
-    {
-        boolean badgeVisible = notificationBadge.getVisibility() != VISIBLE;
-        notificationBadge.setVisibility(badgeVisible ? VISIBLE : GONE);
-    }
 
 
     private void getImage()

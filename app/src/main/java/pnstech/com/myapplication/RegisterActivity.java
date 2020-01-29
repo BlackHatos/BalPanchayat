@@ -97,6 +97,10 @@ public class RegisterActivity extends AppCompatActivity {
                                             editor.putString("userState", response_array[6]);
                                             editor.putString("userType",response_array[7]);
                                             editor.putString("userAddress",response_array[5]+", "+response_array[6]);
+
+
+                                            editor.putString("notifyCount",response_array[8]);
+
                                             editor.apply();
 
                                             /*=========================== shared preferences saving user data starts ============================*/

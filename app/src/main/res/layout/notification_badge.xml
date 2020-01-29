@@ -5,16 +5,18 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/notification_badge"
+        android:textAlignment="center"
+        android:id="@+id/notify_count"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="top|center_horizontal"
         android:layout_marginLeft="11dp"
         android:layout_marginStart="11dp"
         android:gravity="center"
-        android:padding="3dp"
         android:background="@drawable/badge_shape"
-        android:text="9+"
+        android:text="9"
+        android:paddingLeft="4dp"
+        android:paddingRight="4dp"
         android:textColor="@color/white"
         android:textSize="11sp" />
 

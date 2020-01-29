@@ -10,9 +10,12 @@ import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Base64;
 import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -36,6 +39,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class UploadBooks extends AppCompatActivity {
+
+    private Toolbar mtoolbar;
+
 private ImageView book_cover;
 private final int IMAGE_REQUEST_CODE = 1;
 private Bitmap bitmap;
@@ -71,6 +77,8 @@ private Bitmap bitmap;
         });
 
 
+
+
         //======================= setting upload button
 
                 click_to_upload.setOnClickListener(new View.OnClickListener() {
@@ -93,6 +101,31 @@ private Bitmap bitmap;
 
 
     }
+
+
+    //tool bar
+
+
+    //testing
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId())
+        {
+            case R.id.send_notify:
+                startActivity(new Intent(UploadBooks.this,SendNotification.class));
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+    //testing
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.admin_menu, menu);
+        return true;
+    }
+
 
 
     //==================== selecting and uploading image

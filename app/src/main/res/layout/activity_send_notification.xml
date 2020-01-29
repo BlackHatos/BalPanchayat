@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:background="#181717"
+    tools:context=".SendNotification">
+
+
+<EditText
+    android:hint="Type your message here..."
+    android:paddingLeft="15dp"
+    android:layout_centerVertical="true"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/send_notify"
+    android:textSize="16sp"
+    android:padding="20sp"
+    android:background="@drawable/send_notfy_edit_text"
+    android:textColor="#e5c8c8c8"
+    android:textColorHint="#fad4d3d3"
+    />
+
+
+    <Button
+        android:id="@+id/send_notification_button"
+        android:layout_marginTop="15dp"
+        android:layout_below="@id/send_notify"
+        android:background="@drawable/send_notify_button"
+        android:layout_width="match_parent"
+        android:text="Send"
+        android:textColor="#faf8f8"
+        android:layout_height="50dp" />
+
+</RelativeLayout>

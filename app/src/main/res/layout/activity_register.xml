@@ -7,7 +7,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#181717"
+    android:background="#efefee"
     android:padding="16dp"
     tools:context=".MainActivity">
 
@@ -22,8 +22,8 @@
         android:layout_height="match_parent">
 
         <ImageView
-            android:layout_width="115dp"
-            android:layout_height="115dp"
+            android:layout_width="110dp"
+            android:layout_height="110dp"
             android:contentDescription="@string/logo"
             android:src="@drawable/team"
             />
@@ -39,8 +39,8 @@
             android:inputType="text"
             android:paddingLeft="22dp"
             android:textSize="17sp"
-            android:textColor="#e5c8c8c8"
-            android:textColorHint="#b6c8c8c8"
+            android:textColor="#ec646464"
+            android:textColorHint="#b66c6b6b"
             android:id="@+id/name"
             />
 
@@ -55,8 +55,8 @@
             android:inputType="text"
             android:paddingLeft="22dp"
             android:textSize="17sp"
-            android:textColor="#e5c8c8c8"
-            android:textColorHint="#b6c8c8c8"
+            android:textColor="#ec646464"
+            android:textColorHint="#b66c6b6b"
             android:id="@+id/email"
             />
 
@@ -70,8 +70,8 @@
             android:inputType="text"
             android:paddingLeft="22dp"
             android:textSize="17sp"
-            android:textColor="#e5c8c8c8"
-            android:textColorHint="#b6c8c8c8"
+            android:textColor="#ec646464"
+            android:textColorHint="#b66c6b6b"
             android:id="@+id/phone"
             />
 
@@ -85,8 +85,8 @@
             android:inputType="textPassword"
             android:paddingLeft="22dp"
             android:textSize="17sp"
-            android:textColor="#e5c8c8c8"
-            android:textColorHint="#b6c8c8c8"
+            android:textColor="#ec646464"
+            android:textColorHint="#b66c6b6b"
             android:id="@+id/password"
             />
 
@@ -99,7 +99,7 @@
             android:layout_marginTop="23dp"
             android:background="@drawable/button_shape"
             android:text="@string/register_now"
-            android:textColor="#ffffff"
+            android:textColor="#f4f4f4"
             android:textSize="16sp"
             android:foreground="?attr/selectableItemBackground"
             />
@@ -126,7 +126,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/new_login"
-            android:textColor="#e5c8c8c8"
+            android:textColor="#595757"
             android:layout_marginTop="23dp"
             android:clickable="true"
             android:onClick="goToLogin"

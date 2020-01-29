@@ -25,8 +25,8 @@
             android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".ForgotPassword"
-            android:parentActivityName=".MainActivity"
             android:label="Forgot Password"
+            android:parentActivityName=".MainActivity"
             android:theme="@style/ShowToolbar"
             android:windowSoftInputMode="adjustPan" />
         <activity
@@ -51,8 +51,9 @@
             android:label="Settings"
             android:theme="@style/ShowToolbar" />
         <activity
+            android:parentActivityName=".DashBoard"
             android:name=".UploadBooks"
-            android:label="Upload Book"
+            android:label="Upload Books"
             android:theme="@style/ShowToolbar"
             android:windowSoftInputMode="adjustPan" />
 
@@ -80,9 +81,19 @@
             android:name=".OnBookClick"
             android:label="Library"
             android:theme="@style/ShowToolbar" />
-        <activity android:name=".SearchActivity">
+        <activity android:name=".SearchActivity" />
 
-        </activity>
+        <activity
+            android:name=".Notification"
+            android:label="Notifications"
+            android:theme="@style/ShowToolbar"></activity>
+
+        <activity android:name=".SendNotification"
+            android:parentActivityName=".UploadBooks"
+            android:label="Send Notification"
+            android:theme="@style/ShowToolbar"
+            ></activity>
+
     </application>
 
 </manifest>

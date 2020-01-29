@@ -367,12 +367,19 @@
 
     </ScrollView>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:layout_above="@id/navigation_view"
+        android:background="@drawable/bottom_nav_shadow"
+        />
 
     <android.support.design.widget.BottomNavigationView
+        app:labelVisibilityMode="labeled"
+        app:itemBackground="@color/navigation_background"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/navigation_view"
-        app:itemBackground="@color/colorPrimaryDark"
         app:itemTextColor="@drawable/selector"
         app:itemIconTint="@drawable/selector"
         app:menu="@menu/menu_navigation"

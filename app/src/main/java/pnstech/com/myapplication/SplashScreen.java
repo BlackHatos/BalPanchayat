@@ -16,7 +16,7 @@ import java.security.NoSuchAlgorithmException;
 
 public class SplashScreen extends AppCompatActivity {
 
-    public static int SPLASH_TIME_OUT=3000;
+    public static int SPLASH_TIME_OUT=100;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
