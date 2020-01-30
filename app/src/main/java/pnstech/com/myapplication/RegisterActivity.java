@@ -66,7 +66,7 @@ public class RegisterActivity extends AppCompatActivity {
                     //on dialog dismiss back to interaction mode
                     getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
 
-                    Toast.makeText(getApplicationContext(), "Please fill out the credentials", Toast.LENGTH_SHORT).show();
+                    //oast.makeText(getApplicationContext(), "Please fill out the credentials", Toast.LENGTH_SHORT).show();
                 }
                 else{
                        String url = "https://www.iamannitian.co.in/test/register.php";

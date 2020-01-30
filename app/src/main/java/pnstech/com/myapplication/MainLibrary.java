@@ -144,10 +144,6 @@ public class MainLibrary extends AppCompatActivity  implements RecyclerViewAdapt
                         startActivity(new Intent(MainLibrary.this, SearchActivity.class));
                         break;
 
-                    case R.id.profile:
-                        startActivity(new Intent(MainLibrary.this, Profile.class));
-                        break;
-
 
                 }
                 return true;

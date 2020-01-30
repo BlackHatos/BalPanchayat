@@ -6,7 +6,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#181717"
+    android:background="#efefee"
     tools:context=".MainLibrary"
     >
 
@@ -22,7 +22,6 @@
         android:layout_height="250dp"
         android:fitsSystemWindows="true"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
-
 
 
         <android.support.design.widget.CollapsingToolbarLayout
@@ -53,10 +52,10 @@
         </android.support.design.widget.CollapsingToolbarLayout>
 
 
-
     </android.support.design.widget.AppBarLayout>
 
     <android.support.design.widget.FloatingActionButton
+        android:elevation="8dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
@@ -65,8 +64,8 @@
         app:layout_anchorGravity="bottom|right"
         android:src="@drawable/ic_message_black_24dp"
         android:backgroundTint="@color/colorPrimary"
+        android:background="@color/colorPrimary"
         />
-
 
 
         <android.support.v7.widget.RecyclerView
@@ -81,10 +80,9 @@
 
 </android.support.design.widget.CoordinatorLayout>
 
-
     <View
         android:layout_width="match_parent"
-        android:layout_height="25dp"
+        android:layout_height="3dp"
         android:layout_above="@id/navigation_view"
         android:background="@drawable/bottom_nav_shadow"
         />
@@ -101,6 +99,5 @@
         android:layout_alignParentBottom="true"
         app:layout_behavior="@string/hide_bottom_view_on_scroll_behavior"
         />
-
 
 </RelativeLayout>

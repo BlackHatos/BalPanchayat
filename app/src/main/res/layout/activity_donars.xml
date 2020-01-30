@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#efefee"
+    tools:context=".Donars">
+
+    <RelativeLayout
+        android:id="@+id/toolBarx"
+        android:layout_centerVertical="true"
+        android:padding="5dp"
+        android:layout_alignParentTop="true"
+        android:elevation="4dp"
+        android:background="@color/colorPrimary"
+        android:layout_width="match_parent"
+        android:layout_height="60dp">
+
+
+        <TextView
+            android:id="@+id/donar_quote"
+            android:layout_marginLeft="15dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginRight="10dp"
+            android:textStyle="bold"
+            android:textSize="34sp"
+            android:textColor="@color/white"
+            android:text="Donate With Love"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:foreground="?attr/selectableItemBackground"
+            android:onClick="gotToPayment"
+            tools:ignore="OnClick"
+            android:layout_marginRight="20dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_gravity="right"
+            android:background="@drawable/donate_button_shape"
+            android:textColor="@color/white"
+            android:text="Donate Now"
+            android:layout_width="120dp"
+            android:layout_height="40dp" />
+
+    </RelativeLayout>
+
+
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_below="@id/toolBarx"
+        android:layout_marginBottom="1dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/donation_recycler_view"
+        android:orientation="vertical"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        />
+
+
+</RelativeLayout>

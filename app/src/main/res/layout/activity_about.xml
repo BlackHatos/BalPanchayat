@@ -9,7 +9,8 @@
     android:fitsSystemWindows="true"
     android:gravity="center"
     android:layout_gravity="center"
-    android:background="#181717">
+    android:background="#efefee"
+    >
 
     <TextView
         android:layout_above="@id/app_version"
@@ -18,7 +19,7 @@
         android:layout_centerHorizontal="true"
         android:id="@+id/app_name"
         android:textSize="30sp"
-        android:textColor="#6fc2bcbc"
+        android:textColor="#606060"
         android:fontFamily="sans-serif"
         android:textStyle="bold"
         android:text="Bal Panchayat"/>
@@ -31,15 +32,16 @@
         android:textSize="18sp"
         android:paddingBottom="10dp"
         android:layout_centerHorizontal="true"
-        android:textColor="#6fc2bcbc"
+        android:textColor="#606060"
         android:text="version 1.0"/>
 
     <ImageView
         android:id="@+id/about_app"
-        android:layout_width="130dp"
-        android:layout_height="130dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:layout_centerInParent="true"
         android:src="@drawable/team"/>
+
     <LinearLayout
         android:layout_centerHorizontal="true"
         android:layout_below="@id/about_app"
@@ -60,7 +62,7 @@
             android:id="@+id/company_name"
             android:textSize="17sp"
             android:text=" 2020 | Bal Panchayat"
-            android:textColor="#6fc2bcbc"/>
+            android:textColor="#606060"/>
 
     </LinearLayout>
 
@@ -72,7 +74,92 @@
         android:id="@+id/all_rights"
         android:layout_centerHorizontal="true"
         android:text="all rights reserved"
-        android:textColor="#6fc2bcbc"/>
+        android:textColor="#606060"/>
 
+
+    <TextView
+        android:layout_below="@id/all_rights"
+        android:layout_width="wrap_content"
+        android:textSize="15sp"
+        android:layout_height="wrap_content"
+        android:id="@+id/developer"
+        android:layout_centerHorizontal="true"
+        android:text="Developed by Shubham Maurya"
+        android:textColor="#606060"/>
+
+
+
+    <TextView
+        android:layout_below="@id/developer"
+        android:layout_width="wrap_content"
+        android:textSize="15sp"
+        android:layout_height="wrap_content"
+        android:id="@+id/ceo"
+        android:layout_centerHorizontal="true"
+        android:text="ceo &amp; founder pnstech"
+        android:textColor="#606060"/>
+
+
+    <LinearLayout
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:layout_below="@id/ceo"
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_marginRight="10dp"
+            android:src="@drawable/github"
+            android:clickable="true"
+            android:focusable="true"
+            android:id="@+id/github"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:onClick="goToGit"
+            tools:ignore="OnClick"
+            />
+
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_marginRight="10dp"
+            android:src="@drawable/linkedin"
+            android:clickable="true"
+            android:focusable="true"
+            android:id="@+id/linkedin"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:onClick="goToLinked"
+            tools:ignore="OnClick"
+            />
+
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_marginRight="10dp"
+            android:src="@drawable/instagram"
+            android:clickable="true"
+            android:focusable="true"
+            android:id="@+id/instagram"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:onClick="goToInsta"
+            tools:ignore="OnClick"
+            />
+
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:src="@drawable/facebook"
+            android:clickable="true"
+            android:focusable="true"
+            android:id="@+id/facebook"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:onClick="goToFb"
+            tools:ignore="OnClick"
+            />
+
+
+
+    </LinearLayout>
 
 </RelativeLayout>

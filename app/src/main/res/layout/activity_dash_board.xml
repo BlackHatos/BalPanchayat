@@ -6,7 +6,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/backg"
+    android:background="@drawable/backbg"
     android:orientation="vertical"
     tools:context=".MainActivity">
 
@@ -38,7 +38,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="22sp"
-                    android:textColor="#6f6f6f"
+                    android:textColor="#f4eaeaea"
                     android:textStyle="bold"
                     android:fontFamily="sans-serif"/>
 
@@ -48,7 +48,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="16sp"
-                    android:textColor="#6f6f6f"
+                    android:textColor="#f4eaeaea"
                     android:textStyle="bold"
                     android:fontFamily="sans-serif"
                     android:id="@+id/user_name"
@@ -62,7 +62,7 @@
                     android:layout_alignParentRight="true"
                     android:src="@drawable/user"
                     android:id="@+id/user_image"
-                    app:civ_border_color="#e5c8c8c8"
+                    app:civ_border_color="#efefee"
                     app:civ_border_width="2dp"
                     />
 
@@ -77,7 +77,6 @@
                 android:columnOrderPreserved="false"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#00ffffff"
                 android:layout_marginBottom="30dp"
                 >
 
@@ -88,7 +87,7 @@
                     android:layout_height="wrap_content"
                     android:layout_columnWeight="1"
                     android:layout_rowWeight="1"
-                    app:cardElevation="60dp"
+                    app:cardElevation="1dp"
                     app:cardCornerRadius="12dp"
                     android:layout_margin="12dp"
                     app:cardBackgroundColor="#53686c"
@@ -135,7 +134,7 @@
                     android:layout_height="wrap_content"
                     android:layout_columnWeight="1"
                     android:layout_rowWeight="1"
-                    app:cardElevation="60dp"
+                    app:cardElevation="1dp"
                     app:cardCornerRadius="12dp"
                     android:layout_margin="12dp"
                     app:cardBackgroundColor="#53686c"
@@ -185,7 +184,7 @@
                     android:layout_height="wrap_content"
                     android:layout_columnWeight="1"
                     android:layout_rowWeight="1"
-                    app:cardElevation="60dp"
+                    app:cardElevation="1dp"
                     app:cardCornerRadius="12dp"
                     android:layout_margin="12dp"
                     app:cardBackgroundColor="#53686c"
@@ -232,12 +231,14 @@
                     android:layout_height="wrap_content"
                     android:layout_columnWeight="1"
                     android:layout_rowWeight="1"
-                    app:cardElevation="60dp"
+                    app:cardElevation="1dp"
                     app:cardCornerRadius="12dp"
                     android:layout_margin="12dp"
                     app:cardBackgroundColor="#53686c"
                     android:foreground="?attr/selectableItemBackground"
                     android:clickable="true"
+                    android:onClick="goToDonate"
+                    tools:ignore="OnClick"
                     >
 
                     <LinearLayout
@@ -276,7 +277,7 @@
                     android:layout_height="wrap_content"
                     android:layout_columnWeight="1"
                     android:layout_rowWeight="1"
-                    app:cardElevation="60dp"
+                    app:cardElevation="1dp"
                     app:cardCornerRadius="12dp"
                     android:layout_margin="12dp"
                     app:cardBackgroundColor="#53686c"
@@ -321,7 +322,6 @@
                     android:layout_height="wrap_content"
                     android:layout_columnWeight="1"
                     android:layout_rowWeight="1"
-                    app:cardElevation="60dp"
                     app:cardCornerRadius="12dp"
                     android:layout_margin="12dp"
                     app:cardBackgroundColor="#53686c"

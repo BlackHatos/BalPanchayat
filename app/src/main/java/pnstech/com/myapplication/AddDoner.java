@@ -2,7 +2,6 @@ package pnstech.com.myapplication;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.design.internal.BottomNavigationItemView;
 import android.support.design.internal.BottomNavigationMenuView;
@@ -10,12 +9,11 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -28,35 +26,40 @@ import com.android.volley.toolbox.Volley;
 import java.util.HashMap;
 import java.util.Map;
 
-public class SendNotification extends AppCompatActivity {
+public class AddDoner extends AppCompatActivity {
 
-    private EditText send_notify;
-    private Button send_notify_button;
+    private TextView donar_name;
+    private TextView donation_ammount;
+    private Button click_to_add;
     private ProgressDialog progressDialog;
+
 
     private BottomNavigationView bottomNavigationView;
     private View notificationBadge;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_send_notification);
-
-        bottomNavigationView = findViewById(R.id.navigation_view);
-
-
-        send_notify = (EditText) findViewById(R.id.send_notify);
-        send_notify_button = (Button) findViewById(R.id.send_notification_button);
+        setContentView(R.layout.activity_add_doner);
 
         progressDialog = new ProgressDialog(this, R.style.progressDialogTheme);
         progressDialog.setCanceledOnTouchOutside(false); //prevent disappearing
 
-        send_notify_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                sendNotification();
-            }
-        });
+
+        bottomNavigationView = findViewById(R.id.navigation_view);
+
+        donar_name = (TextView)findViewById(R.id.donar_name);
+        donation_ammount = (TextView)findViewById(R.id.donation_ammount);
+        click_to_add = (Button) findViewById(R.id.click_to_add);
+
+         click_to_add.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View view) {
+                 addDoner();
+             }
+         });
+
 
 
         //===========================  bottom navigation
@@ -65,19 +68,19 @@ public class SendNotification extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch (menuItem.getItemId()) {
                     case R.id.notify:
-                        startActivity(new Intent(SendNotification.this, pnstech.com.myapplication.Notification.class));
+                        startActivity(new Intent(AddDoner.this, pnstech.com.myapplication.Notification.class));
                         break;
 
                     case R.id.donars:
-                        startActivity(new Intent(SendNotification.this, Donars.class));
+                        startActivity(new Intent(AddDoner.this, Donars.class));
                         break;
 
                     case R.id.settings:
-                        startActivity(new Intent(SendNotification.this, Settings.class));
+                        startActivity(new Intent(AddDoner.this, Settings.class));
                         break;
 
                     case R.id.library:
-                        startActivity(new Intent(SendNotification.this, MainLibrary.class));
+                        startActivity(new Intent(AddDoner.this, MainLibrary.class));
                         break;
 
                 }
@@ -91,64 +94,6 @@ public class SendNotification extends AppCompatActivity {
     }
 
 
-    private void sendNotification()
-    {
-        progressDialog.setMessage("Processing....");
-        progressDialog.show();
-        // disable user interaction when progressdialog appears
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE);
-
-
-        if(send_notify.getText().toString().equals(""))
-        {
-            progressDialog.dismiss();
-            getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
-            Toast.makeText(getApplicationContext(), "please write something", Toast.LENGTH_SHORT).show();
-        }
-        else
-        {
-
-            String url  = "https://iamannitian.co.in/test/send_notification.php";
-            StringRequest sr = new StringRequest(1, url,
-                    new Response.Listener<String>() {
-                        @Override
-                        public void onResponse(String response) {
-
-                            progressDialog.dismiss();
-                            getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
-
-                            String response_array[] = response.split(",");
-                            if(response_array[0].equals("1"))
-                            {
-                                send_notify.setText("");
-                            }
-
-                            Toast.makeText(getApplicationContext(),response_array[1], Toast.LENGTH_SHORT).show();
-
-                        }
-                    }, new Response.ErrorListener() { //error
-                @Override
-                public void onErrorResponse(VolleyError error) {
-                    progressDialog.dismiss();
-                    getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
-                    Toast.makeText(getApplicationContext(), "sent fail", Toast.LENGTH_SHORT).show();
-                }
-            }){
-                @Override
-                public Map<String, String> getParams() throws AuthFailureError {
-                    Map<String, String> map =  new HashMap<>();
-                    map.put("notifyKey", send_notify.getText().toString().trim());
-                    return map;
-                }
-            };
-
-            RequestQueue rq = Volley.newRequestQueue(SendNotification.this);
-            rq.add(sr);
-        }
-
-
-    }
-
 
     public void showBadge() //show notfication badge
     {
@@ -160,32 +105,65 @@ public class SendNotification extends AppCompatActivity {
 
 
 
-    //tool bar
+
+    public void addDoner()
+    {
+        progressDialog.setMessage("Processing....");
+        progressDialog.show();
+        // disable user interaction when progressdialog appears
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE);
 
 
-    //testing
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId())
+        if(donar_name.getText().toString().equals("") || donation_ammount.getText().toString().equals(""))
         {
-            case R.id.send_notify:
-                startActivity(new Intent(SendNotification.this,UploadBooks.class));
-                break;
-
-            case R.id.add_donar:
-                startActivity(new Intent(SendNotification.this,AddDoner.class));
-                break;
+            progressDialog.dismiss();
+            getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+          //  Toast.makeText(getApplicationContext(), "please write something", Toast.LENGTH_SHORT).show();
         }
-        return super.onOptionsItemSelected(item);
+        else
+        {
+
+            String url  = "https://iamannitian.co.in/test/add_donar.php";
+            StringRequest sr = new StringRequest(1, url,
+                    new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
+
+                            progressDialog.dismiss();
+                            getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+
+                            String response_array[] = response.split(",");
+                            if(response_array[0].equals("1"))
+                            {
+                                donar_name.setText("");
+                                donation_ammount.setText("");
+                            }
+
+                            Toast.makeText(getApplicationContext(),response_array[1], Toast.LENGTH_SHORT).show();
+
+                        }
+                    }, new Response.ErrorListener() { //error
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    progressDialog.dismiss();
+                    getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+                    Toast.makeText(getApplicationContext(), "failed to add", Toast.LENGTH_SHORT).show();
+                }
+            }){
+                @Override
+                public Map<String, String> getParams() throws AuthFailureError {
+                    Map<String, String> map =  new HashMap<>();
+                    map.put("donarKey", donar_name.getText().toString().trim());
+                    map.put("ammountKey", donation_ammount.getText().toString().trim());
+                    return map;
+                }
+            };
+
+            RequestQueue rq = Volley.newRequestQueue(AddDoner.this);
+            rq.add(sr);
+        }
+
+
     }
-    //testing
-
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.admin_menu, menu);
-        return true;
-    }
-
 
 }

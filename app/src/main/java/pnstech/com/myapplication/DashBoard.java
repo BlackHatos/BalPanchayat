@@ -201,19 +201,23 @@ public class DashBoard extends AppCompatActivity {
 
     //method to go to Admin...........
 
-
     public void goToAdmin(View view)
     {
         String code = sharedPreferences.getString("userType","");
         if(code.equals("1"))
         {
             //go to upload image
-            startActivity(new Intent(DashBoard.this, UploadBooks.class));
+            startActivity(new Intent(DashBoard.this, SendNotification.class));
         }
         else
         {
             notAllowedPopup(view);
         }
+    }
+
+    public void goToDonate(View view)
+    {
+        startActivity(new Intent(DashBoard.this,Donars.class));
     }
 
 

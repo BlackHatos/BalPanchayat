@@ -17,8 +17,8 @@
         />
 
     <item
-        android:icon="@drawable/ic_account_box_black_24dp"
         android:id="@+id/profile"
+        android:icon="@drawable/ic_account_circle_black_24dp"
         android:title="Profile" />
 
     <item

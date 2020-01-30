@@ -7,7 +7,11 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Handler;
 import android.provider.MediaStore;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.internal.BottomNavigationItemView;
+import android.support.design.internal.BottomNavigationMenuView;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -40,8 +44,6 @@ import java.util.Map;
 
 public class UploadBooks extends AppCompatActivity {
 
-    private Toolbar mtoolbar;
-
 private ImageView book_cover;
 private final int IMAGE_REQUEST_CODE = 1;
 private Bitmap bitmap;
@@ -50,14 +52,20 @@ private Bitmap bitmap;
     private EditText book_name;
     private EditText writer_name;
     private EditText contributer_name;
-    private TextView reward_code;
-    private String rewardCode;
-    private Button ok_code;
+
+
+    private BottomNavigationView bottomNavigationView;
+    private View notificationBadge;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_upload_books);
+
+
+        bottomNavigationView = findViewById(R.id.navigation_view);
+
 
         progressDialog = new ProgressDialog(this, R.style.progressDialogTheme);
         progressDialog.setCanceledOnTouchOutside(false); //prevent disappearing
@@ -77,8 +85,6 @@ private Bitmap bitmap;
         });
 
 
-
-
         //======================= setting upload button
 
                 click_to_upload.setOnClickListener(new View.OnClickListener() {
@@ -94,38 +100,42 @@ private Bitmap bitmap;
                         }
                         else
                         {
-                            Toast.makeText(getApplicationContext(), "please fill out the details",Toast.LENGTH_SHORT).show();
+                           //Toast.makeText(getApplicationContext(), "please fill out the details",Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
 
 
+
+        //===========================  bottom navigation
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                switch (menuItem.getItemId()) {
+                    case R.id.notify:
+                        startActivity(new Intent(UploadBooks.this, pnstech.com.myapplication.Notification.class));
+                        break;
+
+                    case R.id.donars:
+                        startActivity(new Intent(UploadBooks.this, Donars.class));
+                        break;
+                    case R.id.settings:
+                        startActivity(new Intent(UploadBooks.this, Settings.class));
+                        break;
+
+                    case R.id.library:
+                        startActivity(new Intent(UploadBooks.this, MainLibrary.class));
+                        break;
+
+                }
+                return true;
+            }
+        });
+
+
+                showBadge();
+
     }
-
-
-    //tool bar
-
-
-    //testing
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId())
-        {
-            case R.id.send_notify:
-                startActivity(new Intent(UploadBooks.this,SendNotification.class));
-                break;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-    //testing
-
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.admin_menu, menu);
-        return true;
-    }
-
 
 
     //==================== selecting and uploading image
@@ -184,10 +194,7 @@ private Bitmap bitmap;
                         String response_array[] = response.split(",");
                         if(response_array[0].equals("1")) {
 
-  /*                          View view = getWindow().getDecorView().getRootView();
-                            //calling show popup method
-                            showPopup(view); //passing view object
-*/
+
                             book_name.setText("");
                             writer_name.setText("");
                             contributer_name.setText("");
@@ -220,46 +227,12 @@ private Bitmap bitmap;
     }
 
 
-
-   /*
-    public void showPopup(View view)
+    public void showBadge() //showq notfication badge
     {
-        final LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
-        View popupView = inflater.inflate(R.layout.reward_popup,null);
-
-        reward_code = (TextView) popupView.findViewById(R.id.reward_code); //popup code
-        reward_code.setText(rewardCode);
-        boolean focusable = false;
-        int width = RelativeLayout.LayoutParams.MATCH_PARENT;
-        int height = RelativeLayout.LayoutParams.MATCH_PARENT;
-        final PopupWindow popupWindow = new PopupWindow(popupView,width,height,focusable);
-          popupWindow.setAnimationStyle(R.style.windowAnimationTransition);
-        popupWindow.showAtLocation(view , Gravity.CENTER,0,0);
-
-
-        ok_code = (Button) popupView.findViewById(R.id.ok_code);
-        ok_code.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                popupWindow.dismiss(); //dismiss popup on button click
-            }
-        });
-
+        BottomNavigationMenuView menuView = (BottomNavigationMenuView) bottomNavigationView.getChildAt(0);
+        BottomNavigationItemView itemView = (BottomNavigationItemView) menuView.getChildAt(0);
+        notificationBadge = LayoutInflater.from(this).inflate(R.layout.notification_badge, menuView,false);
+        itemView.addView(notificationBadge);
     }
 
-
-
-    private String getRandomString()
-    {
-        String random_string;
-        String alphaNumericString  =  "ABCDEFGHIJKLMNOPQRSTUVWXYZ"+"0123456789"+"abcdefghijklmnopqrstuvwx";
-        StringBuilder sb  = new StringBuilder(6);
-        for(int i=0; i<6; i++)
-        {
-            int index = (int) (alphaNumericString.length() * Math.random());
-            sb.append(alphaNumericString.charAt(index));
-        }
-
-        return sb.toString();
-    }*/
 }

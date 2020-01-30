@@ -43,8 +43,6 @@
    <!--============== the activities that contains top toolbar =====================-->
     <style name="ShowToolbar" parent="Base.Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
-        <item name="android:textColor">#f3c8c8c8</item>
-        <item name="android:itemBackground">#181717</item>
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>

@@ -5,10 +5,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
-    android:background="#181717"
+    android:background="#efefee"
     tools:context=".SendNotification">
 
+    <RelativeLayout
+        android:padding="16dp"
+        android:layout_marginBottom="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
 <EditText
     android:hint="Type your message here..."
@@ -20,10 +24,9 @@
     android:textSize="16sp"
     android:padding="20sp"
     android:background="@drawable/send_notfy_edit_text"
-    android:textColor="#e5c8c8c8"
-    android:textColorHint="#fad4d3d3"
+    android:textColor="#ec646464"
+    android:textColorHint="#b66c6b6b"
     />
-
 
     <Button
         android:id="@+id/send_notification_button"
@@ -32,7 +35,30 @@
         android:background="@drawable/send_notify_button"
         android:layout_width="match_parent"
         android:text="Send"
-        android:textColor="#faf8f8"
-        android:layout_height="50dp" />
+        android:textColor="#f4f4f4"
+        android:layout_height="55dp" />
+
+    </RelativeLayout>
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:layout_above="@id/navigation_view"
+        android:background="@drawable/bottom_nav_shadow"
+        />
+    <android.support.design.widget.BottomNavigationView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/navigation_view"
+        app:labelVisibilityMode="labeled"
+        app:itemBackground="@color/navigation_background"
+        app:itemTextColor="@drawable/selector"
+        app:itemIconTint="@drawable/selector"
+        app:menu="@menu/admin_nav"
+        android:layout_alignParentBottom="true"
+        app:layout_behavior="@string/hide_bottom_view_on_scroll_behavior"
+        />
+
 
 </RelativeLayout>

@@ -411,10 +411,10 @@ public class Profile extends AppCompatActivity {
                intent.setData(Uri.parse("mailto:"));
                String[] to = {"pnssoftwares7@gmail.com"};
                intent.putExtra(Intent.EXTRA_EMAIL, to);
-               intent.putExtra(Intent.EXTRA_SUBJECT, "Have You Any Query Or Suggestion?");
-               intent.putExtra(Intent.EXTRA_TEXT, "Write Here....");
+               intent.putExtra(Intent.EXTRA_SUBJECT, "Have you any query or suggestion?");
+               intent.putExtra(Intent.EXTRA_TEXT, "Write here....");
                intent.setType("message/rfc822");// this is must
-               Intent.createChooser(intent, "Choose Email"); //second argument is optional
+               Intent.createChooser(intent, "Choose email"); //second argument is optional
                startActivity(intent);
            }
        });
@@ -490,7 +490,7 @@ public class Profile extends AppCompatActivity {
                 }, new Response.ErrorListener() { //error
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getApplicationContext(), String.valueOf(error), Toast.LENGTH_LONG).show();
+              //  Toast.makeText(getApplicationContext(), String.valueOf(error), Toast.LENGTH_LONG).show();
                 progressDialog.dismiss();
                 getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
 

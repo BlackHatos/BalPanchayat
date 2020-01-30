@@ -7,8 +7,14 @@
     <item
         android:id="@+id/send_notify"
         android:orderInCategory="100"
-        android:title="Send Notification"
+        android:title="Upload Books"
         app:showAsAction="never"/>
 
+
+    <item
+        android:id="@+id/add_donar"
+        android:orderInCategory="100"
+        android:title="Add Doner"
+        app:showAsAction="never"/>
 
 </menu>

@@ -51,9 +51,9 @@
             android:label="Settings"
             android:theme="@style/ShowToolbar" />
         <activity
-            android:parentActivityName=".DashBoard"
             android:name=".UploadBooks"
             android:label="Upload Books"
+            android:parentActivityName=".SendNotification"
             android:theme="@style/ShowToolbar"
             android:windowSoftInputMode="adjustPan" />
 
@@ -82,18 +82,27 @@
             android:label="Library"
             android:theme="@style/ShowToolbar" />
         <activity android:name=".SearchActivity" />
-
         <activity
             android:name=".Notification"
             android:label="Notifications"
-            android:theme="@style/ShowToolbar"></activity>
-
-        <activity android:name=".SendNotification"
-            android:parentActivityName=".UploadBooks"
+            android:theme="@style/ShowToolbar" />
+        <activity
+            android:name=".SendNotification"
             android:label="Send Notification"
+            android:parentActivityName=".DashBoard"
+            android:theme="@style/ShowToolbar" />
+        <activity
+            android:name=".Donate"
+            android:label="Payment Method"
+            android:parentActivityName=".Donars"
+            android:theme="@style/ShowToolbar" />
+        <activity android:name=".Donars" />
+        <activity android:name=".AddDoner"
+            android:label="Add Doner"
             android:theme="@style/ShowToolbar"
-            ></activity>
+            android:parentActivityName=".SendNotification">
 
+        </activity>
     </application>
 
 </manifest>

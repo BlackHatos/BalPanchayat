@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
                 {
                     progressDialog.dismiss();
                     getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
-                    Toast.makeText(getApplicationContext(), "please fill out the credentials", Toast.LENGTH_SHORT).show();
+                  //  Toast.makeText(getApplicationContext(), "please fill out the credentials", Toast.LENGTH_SHORT).show();
                 }
                 else
                     {

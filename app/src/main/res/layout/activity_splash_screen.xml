@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#181717"
+    android:background="@color/colorPrimary"
     android:gravity="center"
     android:orientation="vertical"
     android:padding="16dp"
@@ -12,8 +12,8 @@
 
 
     <ImageView
-        android:layout_width="125dp"
-        android:layout_height="125dp"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
         android:contentDescription="@string/logo"
         android:src="@drawable/team"
         />
@@ -22,7 +22,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Bal Panchayat"
-        android:textColor="#e5c8c8c8"
+        android:textColor="#eaeaea"
         android:layout_marginTop="8dp"
         android:fontFamily="sans-serif"
         android:textSize="35sp"
@@ -38,9 +38,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
             android:text="@string/powered_by"
-            android:textColor="#e5c8c8c8"
+            android:textColor="#eaeaea"
            android:textSize="15sp"
-            android:layout_marginTop="1dp"
             />
     </LinearLayout>
 
