@@ -7,14 +7,20 @@
     <item
         android:id="@+id/send_notify"
         android:orderInCategory="100"
-        android:title="Upload Books"
+        android:title="Upload Book"
         app:showAsAction="never"/>
 
 
     <item
         android:id="@+id/add_donar"
         android:orderInCategory="100"
-        android:title="Add Doner"
+        android:title="Add Donar"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/add_member"
+        android:orderInCategory="100"
+        android:title="Add Member"
         app:showAsAction="never"/>
 
 </menu>

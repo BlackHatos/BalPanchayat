@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:padding="16dp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#efefee"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".AddTeamMember">
+
+
+        <LinearLayout
+            android:id="@+id/linaear_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/toolbarx"
+            android:background="#e5c8c8c8"
+            android:gravity="center">
+
+
+            <ImageView
+                android:id="@+id/member_pic"
+                android:layout_width="170dp"
+                android:layout_height="195dp"
+                android:layout_gravity="center_horizontal"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_image_black_24dp" />
+
+        </LinearLayout>
+
+
+        <EditText
+            android:id="@+id/member_name"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="25dp"
+            android:background="@drawable/edittext_shape"
+            android:hint="Member name"
+            android:textAlignment="center"
+            android:textColor="#ec646464"
+            android:textColorHint="#b66c6b6b"
+            android:textSize="16sp" />
+
+
+        <EditText
+            android:id="@+id/member_position"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/edittext_shape"
+            android:hint="Member Position"
+            android:textAlignment="center"
+            android:textColor="#ec646464"
+            android:textColorHint="#b66c6b6b"
+            android:textSize="16sp" />
+
+
+        <EditText
+            android:id="@+id/member_phone"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/edittext_shape"
+            android:hint="Contact"
+            android:textAlignment="center"
+            android:textColor="#ec646464"
+            android:textColorHint="#b66c6b6b"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/click_to_add"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/button_shape"
+            android:foreground="?attr/selectableItemBackground"
+            android:text="Add"
+            android:textColor="#f4f4f4"
+            android:textSize="16sp" />
+
+
+</LinearLayout>

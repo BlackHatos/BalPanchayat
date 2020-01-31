@@ -5,10 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="#9c282828"
+    android:background="#00282828"
     >
 
     <LinearLayout
+        android:elevation="15dp"
         android:layout_width="290dp"
         android:layout_height="240dp"
         android:layout_centerVertical="true"
@@ -19,17 +20,22 @@
         >
 
 
+        <ImageView
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:src="@drawable/ic_info_outline_black_24dp"/>
+
         <TextView
+            android:id="@+id/message"
             android:padding="15dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="You Are Not Allowed To Access Admin Panel"
-            android:textColor="#fe7dbc11"
-            android:textSize="25sp"
+            android:text="you are not allowed to access admin panel"
+            android:textColor="#494949"
+            android:textSize="18sp"
             android:textStyle="bold"
             android:textAlignment="center"
             />
-
 
         <Button
             android:textColor="@color/white"
@@ -39,7 +45,7 @@
             android:layout_height="45dp"
             android:text="ok"
             android:foreground="?attr/selectableItemBackground"
-            android:background="@drawable/button_shape"/>
+            android:background="@drawable/donate_button_shape"/>
 
     </LinearLayout>
 

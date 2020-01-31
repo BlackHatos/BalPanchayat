@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+
+    <android.support.v7.widget.CardView
+        android:foreground="?attr/selectableItemBackground"
+        app:cardBackgroundColor="#f2f2f2"
+        android:id="@+id/card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardPreventCornerOverlap="false"
+        android:elevation="15dp"
+        >
+
+        <LinearLayout
+            android:padding="16dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                app:civ_border_width="2dp"
+                app:civ_border_color="#949494"
+                android:id="@+id/pic"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+               app:civ_border_overlay="true"
+                android:src="@drawable/me"/>
+
+            <View
+                android:id="@+id/viewy"
+                android:layout_marginTop="12dp"
+                android:layout_width="130dp"
+                android:layout_height="2dp"
+                android:background="#ff0000"/>
+
+
+            <TextView
+                android:layout_marginTop="8dp"
+                android:textStyle="bold"
+                android:text="Shubham Maurya"
+                android:id="@+id/member_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:textSize="17sp"
+                android:textColor="#565656"
+                />
+
+            <TextView
+                android:textColor="#565656"
+                android:layout_marginTop="2dp"
+                android:text="Ceo &amp; founder pnstech"
+                android:textAlignment="center"
+                android:id="@+id/position_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                />
+
+
+            <TextView
+                android:textColor="#565656"
+                android:layout_marginTop="2dp"
+                android:text="Contact: +91-9913631205"
+                android:textAlignment="center"
+                android:id="@+id/member_phoe"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                />
+
+            <TextView
+                android:visibility="gone"
+                android:layout_marginTop="2dp"
+                android:text="Ceo &amp; founder pnstech"
+                android:textAlignment="center"
+                android:id="@+id/member_id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                />
+
+
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+    <View
+        android:layout_below="@id/card"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#c8d6d6d6"
+        />
+
+</RelativeLayout>

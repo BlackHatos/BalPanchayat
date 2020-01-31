@@ -90,10 +90,10 @@ public class DashBoard extends AppCompatActivity {
         String notifyCount = sharedPreferences.getString("notifyCount", "");
         final LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
         View badgeView = inflater.inflate(R.layout.notification_badge,null);
-        TextView badge_count = (TextView)badgeView.findViewById(R.id.notify_count);
+        TextView badge_count = badgeView.findViewById(R.id.notify_count);
          if(!notifyCount.equals("0"))
          {
-             badge_count.setText(notifyCount+"+");
+             badge_count.setText(notifyCount);
              //Toast.makeText(getApplicationContext(), (CharSequence) badgeView.findViewById(R.id.notification_badge), Toast.LENGTH_LONG).show();
          }
        //================== settigbn badge count finished
@@ -101,8 +101,6 @@ public class DashBoard extends AppCompatActivity {
          getImage();
          showBadge();
     }
-
-
 
     public void removeBadge()
     {
@@ -139,11 +137,9 @@ public class DashBoard extends AppCompatActivity {
     {
         BottomNavigationMenuView menuView = (BottomNavigationMenuView) bottomNavigationView.getChildAt(0);
         BottomNavigationItemView itemView = (BottomNavigationItemView) menuView.getChildAt(0);
-        notificationBadge = LayoutInflater.from(this).inflate(R.layout.notification_badge, menuView,false);
+        notificationBadge = LayoutInflater.from(this).inflate(R.layout.activity_notify_baadge, menuView,false);
         itemView.addView(notificationBadge);
     }
-
-
 
     private void getImage()
     {
@@ -220,6 +216,10 @@ public class DashBoard extends AppCompatActivity {
         startActivity(new Intent(DashBoard.this,Donars.class));
     }
 
+    public void goToTeam(View view)
+    {
+        startActivity(new Intent(DashBoard.this, Team.class));
+    }
 
 
     public void   notAllowedPopup(View view)
@@ -232,7 +232,6 @@ public class DashBoard extends AppCompatActivity {
         final PopupWindow popupWindow = new PopupWindow(popupView,width,height,focusable);
         popupWindow.setAnimationStyle(R.style.windowAnimationTransition);
         popupWindow.showAtLocation(view , Gravity.CENTER,0,0);
-
 
         leave_admin = (Button) popupView.findViewById(R.id.leave_admin);
         leave_admin.setOnClickListener(new View.OnClickListener() {

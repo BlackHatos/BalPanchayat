@@ -97,12 +97,22 @@
             android:parentActivityName=".Donars"
             android:theme="@style/ShowToolbar" />
         <activity android:name=".Donars" />
-        <activity android:name=".AddDoner"
+        <activity
+            android:name=".AddDoner"
             android:label="Add Doner"
-            android:theme="@style/ShowToolbar"
-            android:parentActivityName=".SendNotification">
-
-        </activity>
+            android:parentActivityName=".SendNotification"
+            android:theme="@style/ShowToolbar" />
+        <activity
+            android:name=".Team"
+            android:label="Our Team"
+            android:parentActivityName=".DashBoard"
+            android:theme="@style/ShowToolbar" />
+        <activity
+            android:name=".AddTeamMember"
+            android:label="Add Team Member"
+            android:parentActivityName=".SendNotification"
+            android:theme="@style/ShowToolbar" />
+        <activity android:name=".NotifyBaadge"></activity>
     </application>
 
 </manifest>

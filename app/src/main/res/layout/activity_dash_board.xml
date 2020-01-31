@@ -283,6 +283,8 @@
                     app:cardBackgroundColor="#53686c"
                     android:foreground="?attr/selectableItemBackground"
                     android:clickable="true"
+                    android:onClick="goToTeam"
+                    tools:ignore="OnClick"
                     >
 
                     <LinearLayout

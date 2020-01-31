@@ -1,36 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#efefee"
+    tools:context=".UploadBooks"
+    android:layout_gravity="center"
     android:gravity="center"
-    tools:context=".UploadBooks">
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginBottom="60dp"
-       >
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:padding="16dp">
+    android:orientation="vertical"
+    android:padding="16dp"
+    >
 
 
             <LinearLayout
                 android:id="@+id/linaear_layout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/toolbarx"
-                android:layout_centerHorizontal="true"
                 android:background="#e5c8c8c8"
                 android:gravity="center">
 
@@ -39,7 +25,6 @@
                     android:id="@+id/book_cover"
                     android:layout_width="170dp"
                     android:layout_height="195dp"
-                    android:layout_gravity="center_horizontal"
                     android:clickable="true"
                     android:focusable="true"
                     android:foreground="?attr/selectableItemBackground"
@@ -54,7 +39,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_below="@id/linaear_layout"
-                android:layout_centerHorizontal="true"
                 android:layout_marginTop="25dp"
                 android:background="@drawable/edittext_shape"
                 android:hint="Book name"
@@ -69,7 +53,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_below="@id/book_name"
-                android:layout_centerHorizontal="true"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/edittext_shape"
                 android:hint="Writer name"
@@ -83,8 +66,6 @@
                 android:id="@+id/contributer_name"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:layout_below="@id/writer_name"
-                android:layout_centerHorizontal="true"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/edittext_shape"
                 android:hint="Contributer name"
@@ -108,27 +89,4 @@
 
 
         </LinearLayout>
-    </ScrollView>
 
-
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="3dp"
-        android:layout_above="@id/navigation_view"
-        android:background="@drawable/bottom_nav_shadow"
-        />
-    <android.support.design.widget.BottomNavigationView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/navigation_view"
-        app:labelVisibilityMode="labeled"
-        app:itemBackground="@color/navigation_background"
-        app:itemTextColor="@drawable/selector"
-        app:itemIconTint="@drawable/selector"
-        app:menu="@menu/admin_nav"
-        android:layout_alignParentBottom="true"
-        app:layout_behavior="@string/hide_bottom_view_on_scroll_behavior"
-        />
-
-</RelativeLayout>

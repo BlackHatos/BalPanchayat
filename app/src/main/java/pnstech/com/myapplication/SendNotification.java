@@ -146,7 +146,6 @@ public class SendNotification extends AppCompatActivity {
             rq.add(sr);
         }
 
-
     }
 
 
@@ -174,6 +173,10 @@ public class SendNotification extends AppCompatActivity {
 
             case R.id.add_donar:
                 startActivity(new Intent(SendNotification.this,AddDoner.class));
+                break;
+
+            case R.id.add_member:
+                startActivity(new Intent(SendNotification.this,AddTeamMember.class));
                 break;
         }
         return super.onOptionsItemSelected(item);
