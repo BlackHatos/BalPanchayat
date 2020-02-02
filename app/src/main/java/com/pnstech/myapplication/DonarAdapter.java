@@ -31,7 +31,6 @@ public class DonarAdapter  extends RecyclerView.Adapter<DonarAdapter.DonarViewHo
     private Context mContext;
     private ArrayList<ReturnDonarTags> mList;
 
-
     public DonarAdapter(Context mContext, ArrayList<ReturnDonarTags> mList)
     {
         this.mContext = mContext;
@@ -56,7 +55,6 @@ public class DonarAdapter  extends RecyclerView.Adapter<DonarAdapter.DonarViewHo
         String donationDate = currentTag.getDonationDate();
         String donationAmmount = currentTag.getDonationAmmount();
 
-
         holder.donation_id.setText(donationId);
         holder.donation_date.setText(donationDate);
         holder.donation_ammount.setText("Donated Rs. "+donationAmmount+"/-");
@@ -76,7 +74,6 @@ public class DonarAdapter  extends RecyclerView.Adapter<DonarAdapter.DonarViewHo
     public int getItemCount() {
         return mList.size();
     }
-
 
     public class DonarViewHolder  extends  RecyclerView.ViewHolder{
 
@@ -108,10 +105,9 @@ public class DonarAdapter  extends RecyclerView.Adapter<DonarAdapter.DonarViewHo
         }
     }
 
-
     public void deleteCardk(final String idx, final int position)
     {
-        String url = "https://www.iamannitian.co.in/test/delete_donar.php";
+       String url = "https://www.iamannitian.co.in/test/delete_donar.php";
         StringRequest sr = new StringRequest(1, url,
                 new Response.Listener<String>() {
                     @Override

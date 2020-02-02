@@ -7,6 +7,8 @@
     >
 
     <android.support.v7.widget.CardView
+        android:clickable="true"
+        android:focusable="true"
         android:foreground="?attr/selectableItemBackground"
         app:cardBackgroundColor="#f2f2f2"
         android:id="@+id/card"

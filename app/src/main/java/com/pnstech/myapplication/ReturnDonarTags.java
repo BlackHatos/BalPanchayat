@@ -12,7 +12,7 @@ public class ReturnDonarTags {
     {
         this.donarName = donarName;
         this.donationAmmount = donationAmmount;
-        this.donationAmmount = donationAmmount;
+        this.donationID = donationID;
         this.donationDate = donationDate;
     }
 
