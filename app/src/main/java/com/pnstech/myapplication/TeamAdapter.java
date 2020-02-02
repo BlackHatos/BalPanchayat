@@ -1,6 +1,7 @@
 package com.pnstech.myapplication;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -11,10 +12,18 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import pnstech.com.myapplication.R;
 
@@ -37,12 +46,12 @@ public class TeamAdapter  extends RecyclerView.Adapter<TeamAdapter.TeamViewHolde
     }
 
     @Override
-    public void onBindViewHolder(@NonNull TeamViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull TeamViewHolder holder, final int position) {
         ReturnTeamTags currentTag = mList.get(position);
         String imageUrl = currentTag.getImageUrl(); //return image url
         String memberName = currentTag.getMemberName();
         String  positionName = currentTag.getMemberPosition();
-        String memberId  = currentTag.getMemberId();
+        final String memberId  = currentTag.getMemberId();
         String memberPhone = currentTag.getMemberPhone();
 
 
@@ -58,6 +67,15 @@ public class TeamAdapter  extends RecyclerView.Adapter<TeamAdapter.TeamViewHolde
                 .fitCenter()
                 .centerInside()
                 .into(holder.pic);
+
+        holder.delete_memeber.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                deleteCardZ(memberId,position);
+            }
+        });
+
 
     }
 
@@ -79,6 +97,7 @@ public class TeamAdapter  extends RecyclerView.Adapter<TeamAdapter.TeamViewHolde
         public TextView position_name;
         public TextView member_id;
         public TextView member_phone;
+        public TextView delete_memeber;
 
         public TeamViewHolder(@NonNull View itemView)
         {
@@ -88,7 +107,50 @@ public class TeamAdapter  extends RecyclerView.Adapter<TeamAdapter.TeamViewHolde
             position_name = itemView.findViewById(R.id.position_name);
             member_id = itemView.findViewById(R.id.member_id);
             member_phone = itemView.findViewById(R.id.member_phoe);
+            delete_memeber =  itemView.findViewById(R.id.delete_member);
+
+            if(pnstech.com.myapplication.Team.USER_TYPEY.equals("1"))
+            {
+                delete_memeber.setVisibility(View.VISIBLE);
+            }
+
         }
+    }
+
+    public void deleteCardZ(final String idx, final int position)
+    {
+        String url = "https://www.iamannitian.co.in/test/delete_member.php";
+        StringRequest sr = new StringRequest(1, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+                        if(response.equals("1"))
+                        {
+                            mList.remove(position);
+                            notifyDataSetChanged();
+                        }
+                        else
+                        {
+                            Toast.makeText(mContext,"failed to delete", Toast.LENGTH_LONG).show();
+                        }
+                    }
+                }, new Response.ErrorListener() { //error
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        }){
+            @Override
+            public Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> map =  new HashMap<>();
+                map.put("idKey",idx);
+                return map;
+            }
+        };
+
+        RequestQueue rq = Volley.newRequestQueue(mContext);
+        rq.add(sr);
     }
 
 }

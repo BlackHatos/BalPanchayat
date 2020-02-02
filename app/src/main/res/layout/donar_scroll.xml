@@ -79,6 +79,23 @@
                 />
 
 
+            <TextView
+                android:visibility="gone"
+               android:clickable="true"
+                android:focusable="true"
+                android:fontFamily="sans-serif"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Delete"
+                android:textColor="#ff0000"
+                android:textSize="17sp"
+                android:id="@+id/delete_donar"
+                android:layout_below="@id/donation_date"
+                android:layout_marginRight="12dp"
+                android:layout_marginTop="9dp"
+                android:layout_alignParentRight="true"
+                />
+
 
             <TextView
                 android:fontFamily="sans-serif"
@@ -93,7 +110,6 @@
                 android:layout_marginTop="5dp"
                 android:layout_alignParentRight="true"
                 />
-
 
             <TextView
                 android:id="@+id/donation_id"

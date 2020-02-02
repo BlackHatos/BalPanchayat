@@ -4,31 +4,31 @@ import android.annotation.SuppressLint;
 import android.app.Notification;
 import android.content.Intent;
 
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.design.internal.BottomNavigationItemView;
 import android.support.design.internal.BottomNavigationMenuView;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
+import android.widget.TextView;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.pnstech.myapplication.RecyclerViewAdapter;
 import com.pnstech.myapplication.ReturnTags;
@@ -37,17 +37,18 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.lang.ref.ReferenceQueue;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import static android.view.View.GONE;
-import static android.view.View.VISIBLE;
-import static com.android.volley.Request.*;
+;
 
 public class MainLibrary extends AppCompatActivity  implements RecyclerViewAdapter.OnItemClickListener{
 
     private Toolbar mtoolbar;
     private FloatingActionButton message_button;
+    private SharedPreferences sharedPreferences;
 
     public static final String EXTRA_URL = "imageUrl";
     public static final String EXTRA_BOOK_NAME = "bookName";
@@ -68,8 +69,15 @@ public class MainLibrary extends AppCompatActivity  implements RecyclerViewAdapt
     private BottomNavigationView bottomNavigationView;
     private View notificationBadge;
 
+
+    public static String USER_TYPE;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_library);
 
@@ -107,8 +115,6 @@ public class MainLibrary extends AppCompatActivity  implements RecyclerViewAdapt
 
         //test
 
-
-
         mtoolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem menuItem) {
@@ -123,12 +129,13 @@ public class MainLibrary extends AppCompatActivity  implements RecyclerViewAdapt
         });
 
 
-
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch (menuItem.getItemId()) {
                     case R.id.notify:
+                        removeBadge();
+                        notificationBadge.setVisibility(GONE);
                         startActivity(new Intent(MainLibrary.this, pnstech.com.myapplication.Notification.class));
                         break;
 
@@ -143,8 +150,6 @@ public class MainLibrary extends AppCompatActivity  implements RecyclerViewAdapt
                     case R.id.search:
                         startActivity(new Intent(MainLibrary.this, SearchActivity.class));
                         break;
-
-
                 }
                 return true;
             }
@@ -152,23 +157,71 @@ public class MainLibrary extends AppCompatActivity  implements RecyclerViewAdapt
 
         setUpToolbarMenu(); //enabling three dot menu
        showBadge();
+
+
+       // getting user type
+        sharedPreferences = getSharedPreferences("userData", MODE_PRIVATE);
+
+        USER_TYPE = sharedPreferences.getString("userType","");
     }
 
 
-
-    public void showBadge() //showq notfication badge
+    public void showBadge() //show notfication badge
     {
         BottomNavigationMenuView menuView = (BottomNavigationMenuView) bottomNavigationView.getChildAt(0);
         BottomNavigationItemView itemView = (BottomNavigationItemView) menuView.getChildAt(0);
         notificationBadge = LayoutInflater.from(this).inflate(R.layout.notification_badge, menuView,false);
+
+        sharedPreferences = getSharedPreferences("userData", MODE_PRIVATE);
+        String notifyCount = sharedPreferences.getString("notifyCount", "");
+
+        TextView badge_count =  notificationBadge.findViewById(R.id.notify_count);
+
+        if(!notifyCount.equals("0"))
+            badge_count.setText(notifyCount);
+
+        else
+            notificationBadge.setVisibility(GONE);
+
         itemView.addView(notificationBadge);
     }
 
-    private void refreshBadge()  //refresh badge
+    public void removeBadge()
     {
-        boolean badgeVisible = notificationBadge.getVisibility() != VISIBLE;
-        notificationBadge.setVisibility(badgeVisible ? VISIBLE : GONE);
+
+        String url = "https://www.iamannitian.co.in/test/remove_badge.php";
+        StringRequest sr = new StringRequest(1, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+                        if(response.equals("1")) {
+
+                            SharedPreferences.Editor editor = sharedPreferences.edit();
+                            editor.putString("notifyCount",Integer.toString(0));
+                            editor.apply();
+                            notificationBadge.setVisibility(GONE);
+
+                        }
+                    }
+                }, new Response.ErrorListener() { //error
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        }){
+            @Override
+            public Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> map =  new HashMap<>();
+                map.put("idKey",sharedPreferences.getString("userId",""));
+                return map;
+            }
+        };
+
+        RequestQueue rq = Volley.newRequestQueue(MainLibrary.this);
+        rq.add(sr);
     }
+
 
 
     private void parseJson()
@@ -229,7 +282,6 @@ public class MainLibrary extends AppCompatActivity  implements RecyclerViewAdapt
 
     }
 
-
     //setting side three dot menu
     private void setUpToolbarMenu()
     {
@@ -247,7 +299,8 @@ public class MainLibrary extends AppCompatActivity  implements RecyclerViewAdapt
         intent.putExtra(EXTRA_BOOK_CONTRIBUTER, clickedItem.getBookContributer());
         intent.putExtra(EXTRA_BOOK_DATE, clickedItem.getBookDate());
         intent.putExtra(EXTRA_BOOK_ID, clickedItem.getbookId());
-
         startActivity(intent);
     }
+
+
 }

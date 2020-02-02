@@ -14,7 +14,7 @@
         android:layout_marginStart="11dp"
         android:gravity="center"
         android:background="@drawable/badge_shape"
-        android:text="9"
+        android:text="0"
         android:paddingLeft="4dp"
         android:paddingRight="4dp"
         android:textColor="@color/white"

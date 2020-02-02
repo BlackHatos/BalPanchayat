@@ -2,6 +2,7 @@ package pnstech.com.myapplication;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.graphics.Typeface;
@@ -32,6 +33,8 @@ public class Donars extends AppCompatActivity {
 
     private RecyclerView donation_recycler_view;
 
+    private SharedPreferences sharedPreferences;
+
     private DonarAdapter donarAdapter;
     private ArrayList<ReturnDonarTags> mList;
     private RequestQueue requestQueue;
@@ -39,6 +42,8 @@ public class Donars extends AppCompatActivity {
 
     private Typeface myfont;
     private TextView donar_quote;
+
+    public static String USER_TYPEZ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +63,9 @@ public class Donars extends AppCompatActivity {
         mList = new ArrayList<>();
         requestQueue = Volley.newRequestQueue(this);
         parseJson();
+
+        sharedPreferences = getSharedPreferences("userData", MODE_PRIVATE);
+        USER_TYPEZ = sharedPreferences.getString("userType", "");
         
     }
 

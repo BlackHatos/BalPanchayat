@@ -146,12 +146,13 @@ public class Profile extends AppCompatActivity {
 
    //=============================  New Editing Ends
 
-
     private BottomNavigationView bottomNavigationView;
     private View notificationBadge;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
         bottomNavigationView = findViewById(R.id.navigation_view);
@@ -427,6 +428,8 @@ public class Profile extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch (menuItem.getItemId()) {
                     case R.id.notify:
+                        removeBadge();
+                        notificationBadge.setVisibility(GONE);
                         startActivity(new Intent(Profile.this, pnstech.com.myapplication.Notification.class));
                         break;
 
@@ -449,19 +452,61 @@ public class Profile extends AppCompatActivity {
 
 
 
-
-    public void showBadge() //showq notfication badge
+    public void showBadge() //show notification badge
     {
+
         BottomNavigationMenuView menuView = (BottomNavigationMenuView) bottomNavigationView.getChildAt(0);
         BottomNavigationItemView itemView = (BottomNavigationItemView) menuView.getChildAt(0);
         notificationBadge = LayoutInflater.from(this).inflate(R.layout.notification_badge, menuView,false);
+
+        sharedPreferences = getSharedPreferences("userData", MODE_PRIVATE);
+        String notifyCount = sharedPreferences.getString("notifyCount", "");
+
+        TextView badge_count =  notificationBadge.findViewById(R.id.notify_count);
+
+        if(!notifyCount.equals("0"))
+            badge_count.setText(notifyCount);
+
+        else
+            notificationBadge.setVisibility(GONE);
+
         itemView.addView(notificationBadge);
     }
 
-    private void refreshBadge()  //refresh badge
+    public void removeBadge()
     {
-        boolean badgeVisible = notificationBadge.getVisibility() != VISIBLE;
-        notificationBadge.setVisibility(badgeVisible ? VISIBLE : GONE);
+
+        String url = "https://www.iamannitian.co.in/test/remove_badge.php";
+        StringRequest sr = new StringRequest(1, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+                        if(response.equals("1")) {
+
+                            SharedPreferences.Editor editor = sharedPreferences.edit();
+                            editor.putString("notifyCount",Integer.toString(0));
+                            editor.apply();
+                            notificationBadge.setVisibility(GONE);
+
+                        }
+                    }
+                }, new Response.ErrorListener() { //error
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        }){
+            @Override
+            public Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> map =  new HashMap<>();
+                map.put("idKey",sharedPreferences.getString("userId",""));
+                return map;
+            }
+        };
+
+        RequestQueue rq = Volley.newRequestQueue(Profile.this);
+        rq.add(sr);
     }
 
 

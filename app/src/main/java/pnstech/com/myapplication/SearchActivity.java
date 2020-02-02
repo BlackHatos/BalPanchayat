@@ -53,7 +53,6 @@ public class SearchActivity extends AppCompatActivity  implements RecyclerViewAd
     public static final String EXTRA_BOOK_ID = "bookID";
 
 
-
     private RecyclerView recyclerView;
     private RecyclerViewAdapter recyclerViewAdapter;
     private ArrayList<ReturnTags> mList;

@@ -1,6 +1,7 @@
 package pnstech.com.myapplication;
 
 import android.annotation.SuppressLint;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -28,6 +29,8 @@ public class Team extends AppCompatActivity {
     private TeamAdapter teamAdapter;
     private ArrayList<ReturnTeamTags> mList;
     private RequestQueue requestQueue;
+    private SharedPreferences sharedPreferences;
+    public  static  String USER_TYPEY;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +45,9 @@ public class Team extends AppCompatActivity {
         mList = new ArrayList<>();
         requestQueue = Volley.newRequestQueue(this);
         parseJson();
+
+        sharedPreferences = getSharedPreferences("userData", MODE_PRIVATE);
+        USER_TYPEY = sharedPreferences.getString("userType", "");
         
     }
 

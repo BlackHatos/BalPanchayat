@@ -51,6 +51,7 @@ public class DashBoard extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dash_board);
         user_name = (TextView) findViewById(R.id.user_name);
@@ -58,13 +59,13 @@ public class DashBoard extends AppCompatActivity {
 
         bottomNavigationView = findViewById(R.id.navigation_view);
 
-
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch (menuItem.getItemId()) {
                     case R.id.notify:
-                       removeBadge(); //call remove badge method
+                        removeBadge(); //call remove badge method
+                        notificationBadge.setVisibility(GONE);
                         startActivity(new Intent(DashBoard.this, pnstech.com.myapplication.Notification.class));
                       break;
 
@@ -86,37 +87,35 @@ public class DashBoard extends AppCompatActivity {
          sharedPreferences = getSharedPreferences("userData", MODE_PRIVATE);
          user_name.setText(sharedPreferences.getString("userName", ""));
 
-         //================= setting badge count started
-        String notifyCount = sharedPreferences.getString("notifyCount", "");
-        final LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
-        View badgeView = inflater.inflate(R.layout.notification_badge,null);
-        TextView badge_count = badgeView.findViewById(R.id.notify_count);
-         if(!notifyCount.equals("0"))
-         {
-             badge_count.setText(notifyCount);
-             //Toast.makeText(getApplicationContext(), (CharSequence) badgeView.findViewById(R.id.notification_badge), Toast.LENGTH_LONG).show();
-         }
-       //================== settigbn badge count finished
-
          getImage();
          showBadge();
     }
 
+
+
     public void removeBadge()
     {
+
         String url = "https://www.iamannitian.co.in/test/remove_badge.php";
         StringRequest sr = new StringRequest(1, url,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
 
-                        if(response.equals("1"))
-                            notificationBadge.setVisibility(GONE);
+                       if(response.equals("1")) {
+
+
+                           SharedPreferences.Editor editor = sharedPreferences.edit();
+                           editor.putString("notifyCount",Integer.toString(0));
+                           editor.apply();
+
+                           notificationBadge.setVisibility(GONE);
+
+                       }
                     }
                 }, new Response.ErrorListener() { //error
             @Override
             public void onErrorResponse(VolleyError error) {
-                //  Toast.makeText(getApplicationContext(), String.valueOf(error), Toast.LENGTH_LONG).show();
 
             }
         }){
@@ -133,17 +132,31 @@ public class DashBoard extends AppCompatActivity {
     }
 
 
+
+
     public void showBadge() //show notfication badge
     {
+
         BottomNavigationMenuView menuView = (BottomNavigationMenuView) bottomNavigationView.getChildAt(0);
         BottomNavigationItemView itemView = (BottomNavigationItemView) menuView.getChildAt(0);
-        notificationBadge = LayoutInflater.from(this).inflate(R.layout.activity_notify_baadge, menuView,false);
+        notificationBadge = LayoutInflater.from(this).inflate(R.layout.notification_badge, menuView,false);
+
+        sharedPreferences = getSharedPreferences("userData", MODE_PRIVATE);
+        String notifyCount = sharedPreferences.getString("notifyCount", "");
+
+        TextView badge_count =  notificationBadge.findViewById(R.id.notify_count);
+
+        if(!notifyCount.equals("0"))
+        badge_count.setText(notifyCount);
+
+        else
+            notificationBadge.setVisibility(GONE);
+
         itemView.addView(notificationBadge);
     }
 
     private void getImage()
     {
-
         String url = "https://www.iamannitian.co.in/test/load_image.php";
         StringRequest sr = new StringRequest(1, url,
                 new Response.Listener<String>() {
@@ -224,6 +237,7 @@ public class DashBoard extends AppCompatActivity {
 
     public void   notAllowedPopup(View view)
     {
+
         final LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
         View popupView = inflater.inflate(R.layout.not_admin,null);
         boolean focusable = false;

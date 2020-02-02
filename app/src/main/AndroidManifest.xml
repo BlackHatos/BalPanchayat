@@ -112,7 +112,7 @@
             android:label="Add Team Member"
             android:parentActivityName=".SendNotification"
             android:theme="@style/ShowToolbar" />
-        <activity android:name=".NotifyBaadge"></activity>
+        <activity android:name=".AddActivity"></activity>
     </application>
 
 </manifest>

@@ -3,12 +3,11 @@ package pnstech.com.myapplication;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class NotifyBaadge extends AppCompatActivity {
+public class AddActivity extends AppCompatActivity {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_notify_baadge);
+        setContentView(R.layout.activity_add);
     }
 }

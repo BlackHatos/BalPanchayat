@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -28,11 +29,14 @@ import com.android.volley.toolbox.Volley;
 import java.util.HashMap;
 import java.util.Map;
 
+import static android.view.View.GONE;
+
 public class SendNotification extends AppCompatActivity {
 
     private EditText send_notify;
     private Button send_notify_button;
     private ProgressDialog progressDialog;
+    private SharedPreferences sharedPreferences;
 
     private BottomNavigationView bottomNavigationView;
     private View notificationBadge;
@@ -59,12 +63,16 @@ public class SendNotification extends AppCompatActivity {
         });
 
 
+        sharedPreferences = getSharedPreferences("userData", MODE_PRIVATE);
+
         //===========================  bottom navigation
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch (menuItem.getItemId()) {
                     case R.id.notify:
+                        removeBadge();
+                        notificationBadge.setVisibility(GONE);
                         startActivity(new Intent(SendNotification.this, pnstech.com.myapplication.Notification.class));
                         break;
 
@@ -89,7 +97,6 @@ public class SendNotification extends AppCompatActivity {
         showBadge();
 
     }
-
 
     private void sendNotification()
     {
@@ -149,18 +156,60 @@ public class SendNotification extends AppCompatActivity {
     }
 
 
+    public void removeBadge()
+    {
+
+        String url = "https://www.iamannitian.co.in/test/remove_badge.php";
+        StringRequest sr = new StringRequest(1, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+                        if(response.equals("1")) {
+
+                            SharedPreferences.Editor editor = sharedPreferences.edit();
+                            editor.putString("notifyCount",Integer.toString(0));
+                            editor.apply();
+                            notificationBadge.setVisibility(GONE);
+
+                        }
+                    }
+                }, new Response.ErrorListener() { //error
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        }){
+            @Override
+            public Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> map =  new HashMap<>();
+                map.put("idKey",sharedPreferences.getString("userId",""));
+                return map;
+            }
+        };
+
+        RequestQueue rq = Volley.newRequestQueue(SendNotification.this);
+        rq.add(sr);
+    }
+
     public void showBadge() //show notfication badge
     {
+
         BottomNavigationMenuView menuView = (BottomNavigationMenuView) bottomNavigationView.getChildAt(0);
         BottomNavigationItemView itemView = (BottomNavigationItemView) menuView.getChildAt(0);
         notificationBadge = LayoutInflater.from(this).inflate(R.layout.notification_badge, menuView,false);
+
+        sharedPreferences = getSharedPreferences("userData", MODE_PRIVATE);
+        String notifyCount = sharedPreferences.getString("notifyCount", "");
+        TextView badge_count =  notificationBadge.findViewById(R.id.notify_count);
+
+        if(!notifyCount.equals("0"))
+            badge_count.setText(notifyCount);
+        else
+            notificationBadge.setVisibility(GONE);
+
         itemView.addView(notificationBadge);
     }
-
-
-
-    //tool bar
-
 
     //testing
     @Override
@@ -189,6 +238,5 @@ public class SendNotification extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.admin_menu, menu);
         return true;
     }
-
 
 }

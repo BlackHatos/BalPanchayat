@@ -1,6 +1,7 @@
 package pnstech.com.myapplication;
 
 import android.annotation.SuppressLint;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -29,7 +30,9 @@ public class Notification extends AppCompatActivity {
     private NotificationAdapter notificationAdapter;
     private ArrayList<ReturnNotificationTags> mList;
     private RequestQueue requestQueue;
+    private SharedPreferences sharedPreferences;
 
+    public static  String USER_TYPEX;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +48,8 @@ public class Notification extends AppCompatActivity {
         requestQueue = Volley.newRequestQueue(this);
         parseJson();
 
+        sharedPreferences = getSharedPreferences("userData", MODE_PRIVATE);
+        USER_TYPEX = sharedPreferences.getString("userType", "");
     }
 
 

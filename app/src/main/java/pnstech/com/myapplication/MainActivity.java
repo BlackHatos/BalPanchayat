@@ -49,7 +49,6 @@ public class MainActivity extends AppCompatActivity {
        // custom_login =  (Button) findViewById(R.id.custom_login);
 
 
-
         progressDialog = new ProgressDialog(this,R.style.progressDialogTheme);
         progressDialog.setCanceledOnTouchOutside(false); //prevent disappearing
 
