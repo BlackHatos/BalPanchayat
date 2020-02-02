@@ -101,7 +101,6 @@ public class DashBoard extends AppCompatActivity {
     }
 
 
-
     public void removeBadge()
     {
 
@@ -139,8 +138,6 @@ public class DashBoard extends AppCompatActivity {
         RequestQueue rq = Volley.newRequestQueue(DashBoard.this);
         rq.add(sr);
     }
-
-
 
 
     public void showBadge() //show notfication badge
@@ -188,7 +185,7 @@ public class DashBoard extends AppCompatActivity {
                 }, new Response.ErrorListener() { //error
             @Override
             public void onErrorResponse(VolleyError error) {
-              //  Toast.makeText(getApplicationContext(), String.valueOf(error), Toast.LENGTH_LONG).show();
+              error.printStackTrace();
 
             }
         }){

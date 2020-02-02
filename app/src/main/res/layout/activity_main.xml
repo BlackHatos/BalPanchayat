@@ -75,17 +75,6 @@
         />
 
 
-<!--    <Button
-        android:id="@+id/custom_login"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@drawable/facebook_button_shape"
-        android:text="@string/login_fb"
-        android:textColor="#f4e6e3e3"
-        android:foreground="?attr/selectableItemBackground"
-        android:layout_marginTop="15dp"
-        /> -->
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

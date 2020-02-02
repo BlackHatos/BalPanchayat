@@ -113,7 +113,31 @@
             android:label="Add Team Member"
             android:parentActivityName=".SendNotification"
             android:theme="@style/ShowToolbar" />
-        <activity android:name=".AddActivity"></activity>
+        <activity android:name=".AddActivity" />
+
+
+        <activity android:name=".CreateNewPassword"
+            android:label="Create New Password"
+            android:theme="@style/ShowToolbar"
+            android:parentActivityName=".MainActivity"
+            android:windowSoftInputMode="adjustPan"
+            >
+
+            <intent-filter android:label="Create New Password"
+                tools:ignore="AppLinkUrlError">
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:scheme="http"
+                    android:host="www.pnstech.org"
+                    android:pathPrefix="/xyz.shtml"
+                    />
+
+            </intent-filter>
+
+        </activity>
+
+
     </application>
 
 </manifest>
