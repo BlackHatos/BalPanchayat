@@ -45,6 +45,9 @@
     <string name="testing">testing</string>
 
 
+    <string name="drawer_open">Open</string>
+    <string name="drawer_close">Close</string>
+
     <!-- ==============  Facebook login  ============ -->
     <!--   <string name="facebook_app_id">475358603147949</string>
     <string name="fb_login_protocol_scheme">fb475358603147949</string>-->

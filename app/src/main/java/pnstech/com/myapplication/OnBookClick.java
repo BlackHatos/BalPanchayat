@@ -3,13 +3,16 @@ package pnstech.com.myapplication;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.media.Image;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -37,10 +40,13 @@ public class OnBookClick extends AppCompatActivity {
 
     private SharedPreferences sharedPreferences;
     private ProgressDialog progressDialog;
+    private RelativeLayout relativeLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_on_book_click);
+
+        relativeLayout = findViewById(R.id.relative_layout);
 
         Intent intent = getIntent();
         String imageUrl = intent.getStringExtra(EXTRA_URL);
@@ -109,7 +115,7 @@ public class OnBookClick extends AppCompatActivity {
                     public void onResponse(String response) {
                         progressDialog.dismiss();
                         getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
-                        Toast.makeText(getApplicationContext(), response, Toast.LENGTH_LONG).show();
+                         showMessage(response);
                           }
                 }, new Response.ErrorListener() { //error
             @Override
@@ -122,7 +128,7 @@ public class OnBookClick extends AppCompatActivity {
             @Override
             public Map<String, String> getParams() throws AuthFailureError {
 
-                 sharedPreferences = getSharedPreferences("userData", MODE_PRIVATE);
+                sharedPreferences = getSharedPreferences("userData", MODE_PRIVATE);
                 Map<String, String> map =  new HashMap<>();
                 map.put("userIdKey", sharedPreferences.getString("userId", "").trim());
                 map.put("bookIdKey", bookId);
@@ -132,6 +138,19 @@ public class OnBookClick extends AppCompatActivity {
 
         RequestQueue rq = Volley.newRequestQueue(OnBookClick.this);
         rq.add(sr);
+    }
+
+    public void showMessage(String response)
+    {
+        final Snackbar snackbar = Snackbar.make(relativeLayout,response,Snackbar.LENGTH_INDEFINITE);
+        snackbar.setActionTextColor(Color.YELLOW);
+        snackbar.setAction("OK", new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                snackbar.dismiss();
+            }
+        });
+        snackbar.show();
     }
 
 }

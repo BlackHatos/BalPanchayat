@@ -1,26 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:adroid="http://schemas.android.com/apk/res-auto"
-    xmlns:app="http://schemas.android.com/tools"
-    >
-
-    <item
-        android:id="@+id/send_notify"
-        android:orderInCategory="100"
-        android:title="Upload Book"
-        app:showAsAction="never"/>
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
-    <item
-        android:id="@+id/add_donar"
-        android:orderInCategory="100"
-        android:title="Add Donar"
-        app:showAsAction="never"/>
+        <item
+            android:id="@+id/send_notify"
+            android:orderInCategory="100"
+            android:title="Send Notification"
+            android:checkable="true"
+            android:icon="@drawable/ic_message_black_24dp"/>
 
-    <item
-        android:id="@+id/add_member"
-        android:orderInCategory="100"
-        android:title="Add Member"
-        app:showAsAction="never"/>
+        <item
+            android:id="@+id/book_add"
+            android:orderInCategory="100"
+            android:title="Add Book"
+            android:checkable="true"
+            android:icon="@drawable/ic_book_black_24dp"
+            />
+
+        <item
+            android:id="@+id/book_upload"
+            android:orderInCategory="100"
+            android:title="Upload Book"
+            android:checkable="true"
+            android:icon="@drawable/upload_book"
+            />
+
+        <item
+            android:id="@+id/add_member"
+            android:orderInCategory="100"
+            android:title="Add Member"
+            android:checkable="true"
+            android:icon="@drawable/userx"/>
+
+
+        <item
+            android:id="@+id/add_donar"
+            android:orderInCategory="100"
+            android:title="Add Donar"
+            android:checkable="true"
+            android:icon="@drawable/ic_donut_small_black_24dp"/>
+
 
 </menu>

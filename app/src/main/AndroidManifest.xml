@@ -33,11 +33,12 @@
         <activity
             android:name=".SplashScreen"
             android:theme="@style/HideAppBar">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
         <activity android:name=".DashBoard" />
         <activity android:name=".MainLibrary" />
@@ -80,7 +81,8 @@
 
         <activity
             android:name=".OnBookClick"
-            android:label="Library"
+            android:label="Book"
+            android:parentActivityName=".MainLibrary"
             android:theme="@style/ShowToolbar" />
         <activity android:name=".SearchActivity" />
         <activity
@@ -114,30 +116,33 @@
             android:parentActivityName=".SendNotification"
             android:theme="@style/ShowToolbar" />
         <activity android:name=".AddActivity" />
-
-
-        <activity android:name=".CreateNewPassword"
+        <activity
+            android:name=".CreateNewPassword"
             android:label="Create New Password"
-            android:theme="@style/ShowToolbar"
             android:parentActivityName=".MainActivity"
-            android:windowSoftInputMode="adjustPan"
-            >
+            android:theme="@style/ShowToolbar"
+            android:windowSoftInputMode="adjustPan">
 
-            <intent-filter android:label="Create New Password"
+            <intent-filter
+                android:label="Create New Password"
                 tools:ignore="AppLinkUrlError">
-                <action android:name="android.intent.action.VIEW"/>
-                <category android:name="android.intent.category.BROWSABLE"/>
-                <category android:name="android.intent.category.DEFAULT"/>
-                <data android:scheme="http"
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data
                     android:host="www.pnstech.org"
                     android:pathPrefix="/xyz.shtml"
-                    />
-
+                    android:scheme="http" />
             </intent-filter>
 
         </activity>
 
+        <activity android:name=".Admin"
+            >
 
+        </activity>
     </application>
 
 </manifest>

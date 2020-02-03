@@ -7,105 +7,49 @@
     android:background="#9c282828"
     >
 
-
     <LinearLayout
-        android:layout_width="310dp"
-        android:layout_height="268dp"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
+        android:layout_width="310dp"
+        android:layout_height="268dp"
         android:background="@drawable/popup_shape"
         android:orientation="vertical"
+        android:gravity="center"
         >
 
         <ImageView
-            android:clickable="true"
-            android:focusable="true"
-            android:id="@+id/minimize"
-            android:layout_marginTop="5dp"
-            android:layout_marginRight="5dp"
-            android:layout_gravity="top|right"
             android:layout_width="45dp"
             android:layout_height="45dp"
-            android:background="@drawable/ic_remove_circle_outline_black_24dp"/>
-
-        <TextView
-            android:id="@+id/show_error"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="invalid code"
-            android:textAlignment="center"
-            android:layout_gravity="center"
-            android:textColor="#d4d0ca"
-            android:textSize="20sp"
-            android:textStyle="bold"/>
-
-
+            android:background="@drawable/ic_info_outline_black_24dp"/>
 
 
         <EditText
             android:focusable="true"
             android:focusableInTouchMode="true"
-            android:id="@+id/enter_reward_code"
-            android:layout_marginTop="15dp"
+            android:id="@+id/enter_book_id"
+            android:layout_marginTop="25dp"
             android:layout_gravity="center_horizontal"
-            android:hint="Enter reward code"
+            android:hint="Enter Book ID"
             android:textAlignment="center"
             android:layout_width="260dp"
             android:layout_height="50dp"
             android:paddingLeft="22dp"
             android:textSize="17sp"
-            android:textColor="#e5c8c8c8"
-            android:textColorHint="#b6c8c8c8"
-            android:background="@drawable/edittext_shape"
+            android:textColor="#bebebe"
+            android:textColorHint="#c8c8c8"
+            android:background="@drawable/popup_edit_text_shape"
             />
 
         <Button
-            android:id="@+id/click_to_submit_code"
+            android:id="@+id/click_to_submit_id"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="20dp"
+            android:layout_marginBottom="12dp"
             android:layout_width="260dp"
             android:layout_height="50dp"
             android:textColor="@color/white"
-            android:background="@drawable/button_shape"
+            android:background="@drawable/donate_button_shape"
             android:text="Submit"/>
-
-        <!--============= Congratulations Bar ================-->
-        <TextView
-            android:id="@+id/congrats"
-            android:visibility="gone"
-            android:textColor="#fe7dbc11"
-            android:layout_marginTop="12dp"
-            android:layout_gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="35sp"
-            android:textStyle="bold"
-            android:text="Congratulations"/>
-        <TextView
-            android:id="@+id/points"
-            android:visibility="gone"
-            android:layout_marginTop="5dp"
-            android:textAlignment="center"
-            android:textColor="#fe7dbc11"
-            android:layout_gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="28sp"
-            android:textStyle="bold"
-            android:text="you have earned 5 pointes"/>
-
-        <TextView
-            android:id="@+id/total_points"
-            android:visibility="gone"
-            android:layout_marginTop="5dp"
-            android:textAlignment="center"
-            android:textColor="#fe7dbc11"
-            android:layout_gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="28sp"
-            android:textStyle="bold"
-            android:text="Total Points : 500"/>
 
     </LinearLayout>
 

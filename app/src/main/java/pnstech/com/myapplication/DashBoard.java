@@ -240,7 +240,7 @@ public class DashBoard extends AppCompatActivity {
             if(code.equals("1"))
             {
                 //go to send notification
-                startActivity(new Intent(DashBoard.this, SendNotification.class));
+                startActivity(new Intent(DashBoard.this, Admin.class));
             }
             else
             {

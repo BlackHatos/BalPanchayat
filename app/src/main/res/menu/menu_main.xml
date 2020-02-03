@@ -5,10 +5,15 @@
   >
 
     <item
+        android:id="@+id/setting"
+        android:orderInCategory="100"
+        android:title="Setting"
+        app:showAsAction="never"/>
+
+    <item
         android:id="@+id/about"
         android:orderInCategory="100"
         android:title="About"
         app:showAsAction="never"/>
-
 
 </menu>
