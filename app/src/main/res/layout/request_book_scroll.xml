@@ -38,6 +38,20 @@
                 />
 
 
+
+                <TextView
+                    android:visibility="gone"
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ID: 458fhhdyyeyub"
+                    android:textColor="#616161"
+                    android:textSize="15sp"
+                    android:id="@+id/actual_book_id"
+                    android:layout_below="@id/book_name"
+                    android:layout_marginRight="7dp"
+                    />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -45,9 +59,11 @@
                 android:textColor="#616161"
                 android:textSize="16sp"
                 android:id="@+id/user_name"
-                android:layout_below="@id/book_name"
+                android:layout_below="@id/actual_book_id"
                 android:layout_marginRight="7dp"
                 />
+
+
 
             <TextView
                 android:layout_width="wrap_content"

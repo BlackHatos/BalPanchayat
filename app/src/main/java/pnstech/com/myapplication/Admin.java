@@ -129,11 +129,11 @@ public class Admin extends AppCompatActivity implements NavigationView.OnNavigat
                 break;
 
             case R.id.add_donar:
-                startActivity(new Intent(Admin.this, Donars.class));
+                startActivity(new Intent(Admin.this, AddDoner.class));
                 break;
 
             case R.id.add_member:
-                startActivity(new Intent(Admin.this, Team.class));
+                startActivity(new Intent(Admin.this, AddTeamMember.class));
                 Toast.makeText(getApplicationContext(), "Loading.....", Toast.LENGTH_LONG).show();
                 break;
 
@@ -178,11 +178,14 @@ public class Admin extends AppCompatActivity implements NavigationView.OnNavigat
 
                                 //checking isApproved  and isReturned
 
-                                String isReturnedx = data.getString("is_returned");
                                 String isApprovedx = data.getString("is_approved");
+                                String isIssuedx  = data.getString("is_issued");
+
+                                String actualBookIdx = data.getString("actual_book_id");
 
                                 mList.add(new ReturnBookRequestTags(bookIdx, bookNamex, userIdx, userNamex,
-                                        userDistx, userPhonex, requestDatex,num_copy, requested_copy,isApprovedx, isReturnedx ));
+                                        userDistx, userPhonex, requestDatex,num_copy,
+                                        requested_copy,isApprovedx,isIssuedx, actualBookIdx ));
                             }
 
 

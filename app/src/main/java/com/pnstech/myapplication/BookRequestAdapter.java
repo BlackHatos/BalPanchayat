@@ -1,6 +1,8 @@
 package com.pnstech.myapplication;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -87,11 +89,13 @@ public class BookRequestAdapter  extends RecyclerView.Adapter<BookRequestAdapter
 
         //checking if approved or returned
 
-        String isReturned = currentTag.getIsReturned();
         String isApproved = currentTag.getIsApprovedy();
+        String isIssued = currentTag.getIsIssued();
+
+        String actualBookId = currentTag.getActualBookId();
 
 
-        if(Integer.parseInt(requestedCopy) < Integer.parseInt(totalCopy))
+        if(Integer.parseInt(requestedCopy) <= Integer.parseInt(totalCopy))
         {
             holder.is_available.setVisibility(GONE);
             holder.approve_button.setVisibility(VISIBLE);
@@ -103,12 +107,27 @@ public class BookRequestAdapter  extends RecyclerView.Adapter<BookRequestAdapter
                 holder.approve_button.setVisibility(GONE);
                 holder.issue_button.setVisibility(VISIBLE);
                 holder.return_button.setVisibility(GONE);
+                holder.user_name.setText("Requested by "+userNamey);
             }
+
+            if(isIssued.equals("1"))
+            {
+                holder.is_available.setVisibility(GONE);
+                holder.approve_button.setVisibility(GONE);
+                holder.issue_button.setVisibility(GONE);
+                holder.return_button.setVisibility(VISIBLE);
+                holder.user_name.setText("Issued to "+userNamey);
+                holder.actual_book_id.setText("ID: "+actualBookId); //actual book id
+                holder.actual_book_id.setVisibility(VISIBLE);
+            }
+        }
+        else
+        {
+            holder.is_available.setVisibility(VISIBLE);
         }
 
 
         holder.user_id.setText(userIdy);
-        holder.user_name.setText("Requested by "+userNamey);
         holder.user_phone.setText(userPhoney);
         holder.user_district.setText(userDistricty);
         holder.request_date.setText(requestDatey);
@@ -130,7 +149,23 @@ public class BookRequestAdapter  extends RecyclerView.Adapter<BookRequestAdapter
         holder.issue_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showPopup(view, bookIdy);
+                showPopup(view, userIdy);
+            }
+        });
+
+        holder.return_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final AlertDialog dialog = new AlertDialog.Builder(mContext)
+                        .setTitle("Are you sure?")
+                        .setMessage("Press OK to confirm")
+                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                     returnBook(userIdy);
+                            }
+                        })
+                        .setNegativeButton("CANCEL",null).show(); //dismiss dialog box
             }
         });
 
@@ -154,6 +189,7 @@ public class BookRequestAdapter  extends RecyclerView.Adapter<BookRequestAdapter
         public Button approve_button;
         public Button issue_button;
         public Button return_button;
+        public TextView actual_book_id;
 
         public BookRequestViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -169,6 +205,7 @@ public class BookRequestAdapter  extends RecyclerView.Adapter<BookRequestAdapter
              approve_button = itemView.findViewById(R.id.approve_button);
              issue_button = itemView.findViewById(R.id.issue_button);
              return_button = itemView.findViewById(R.id.return_button);
+             actual_book_id = itemView.findViewById(R.id.actual_book_id);
         }
     }
 
@@ -206,7 +243,7 @@ public class BookRequestAdapter  extends RecyclerView.Adapter<BookRequestAdapter
         rq.add(sr);
     }
 
-    public void showPopup(View view, final String bookId)
+    public void showPopup(View view, final String userId)
     {
         final View popupView = LayoutInflater.from(mContext).inflate(R.layout.get_reward_popup, null);
         boolean focusable = false;
@@ -220,7 +257,6 @@ public class BookRequestAdapter  extends RecyclerView.Adapter<BookRequestAdapter
 
          final EditText enter_book_id =  popupView.findViewById(R.id.enter_book_id);
          Button click_to_submit_id = popupView.findViewById(R.id.click_to_submit_id);
-         ImageView click_to_dismiss = popupView.findViewById(R.id.click_to_dismiss);
 
          click_to_submit_id.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -229,40 +265,34 @@ public class BookRequestAdapter  extends RecyclerView.Adapter<BookRequestAdapter
                 String book_actual_id = enter_book_id.getText().toString().trim();
                 if(!book_actual_id.equals(""))
                 {
-                    goToServer(enter_book_id.getText().toString().trim(),bookId);
+                    goToServer(enter_book_id.getText().toString().trim(),userId);
                 }
 
             }
         });
 
-         click_to_dismiss.setOnClickListener(new View.OnClickListener() {
-             @Override
-             public void onClick(View view) {
-                 popupWindow.dismiss();
-             }
-         });
 
     }
 
-    public void goToServer(final String bookActualId, final String bookId)
+    public void goToServer(final String bookActualId, final String userId)
     {
-        String url = "https://www.iamannitian.co.in/test/issue_book.php";
+
+       String url = "https://www.iamannitian.co.in/test/issue_book.php";
         StringRequest sr = new StringRequest(1, url,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
 
-                        String response_array [] = response.split(",");
-
-                        if(response_array[0].equals("1"))
+                        if(response.equals("1"))
                         {
-                            Toast.makeText(mContext,response_array[1],Toast.LENGTH_LONG).show();
-                             mContext.startActivity(new Intent(mContext,Admin.class));
+                            Toast.makeText(mContext,"book issued successfully",Toast.LENGTH_LONG).show();
+                            mContext.startActivity(new Intent(mContext,Admin.class));
                         }
                         else
                         {
-                            Toast.makeText(mContext, "unable to issue book", Toast.LENGTH_LONG).show();
+                            Toast.makeText(mContext,"failed to issue the book",Toast.LENGTH_LONG).show();
                         }
+
                     }
                 }, new Response.ErrorListener() { //error
             @Override
@@ -273,8 +303,47 @@ public class BookRequestAdapter  extends RecyclerView.Adapter<BookRequestAdapter
             @Override
             public Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> map =  new HashMap<>();
-                map.put("bookIdKey",bookId);
-                map.put("actualIdKey",bookActualId);
+                map.put("bookIdKey",bookActualId);
+                map.put("userIdKey",userId);
+                return map;
+            }
+        };
+
+        RequestQueue rq = Volley.newRequestQueue(mContext);
+        rq.add(sr);
+    }
+
+
+    public void returnBook(final String userId)
+    {
+
+        String url = "https://www.iamannitian.co.in/test/return_book.php";
+        StringRequest sr = new StringRequest(1, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+                        if(response.equals("1"))
+                        {
+                            Toast.makeText(mContext,"book returned successfully",Toast.LENGTH_LONG).show();
+                            mContext.startActivity(new Intent(mContext,Admin.class));
+                        }
+                        else
+                        {
+                            Toast.makeText(mContext,"failed to return the book",Toast.LENGTH_LONG).show();
+                        }
+
+                    }
+                }, new Response.ErrorListener() { //error
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        }){
+            @Override
+            public Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> map =  new HashMap<>();
+                map.put("userIdKey",userId);
                 return map;
             }
         };

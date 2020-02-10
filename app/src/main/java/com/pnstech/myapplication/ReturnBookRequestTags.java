@@ -11,14 +11,16 @@ public class ReturnBookRequestTags {
     private String userPhone;
     private String requested_copy; //copy requested number
     private String num_copy; //total copies available
-    private String is_returned;
     private String is_approved;
+    private String is_issued;
+    private String actual_book_id;
 
     private String isAvailable; //checking availability of the book
 
     public ReturnBookRequestTags(String bookId, String bookName, String userId, String userName,
                                  String userDistrict, String userPhone,
-                                 String requestDate, String num_copy, String requested_copy, String is_approved, String is_returned)
+                                 String requestDate, String num_copy, String requested_copy,
+                                 String is_approved, String is_issued,String actual_book_id)
     {
 
         this.bookId = bookId;
@@ -30,9 +32,9 @@ public class ReturnBookRequestTags {
         this.requestDate = requestDate;
         this.num_copy = num_copy;
         this.requested_copy = requested_copy;
-        this.is_returned = is_returned;
         this.is_approved = is_approved;
-
+        this.is_issued = is_issued;
+        this.actual_book_id = actual_book_id;
     }
 
     public String getBookIdx()
@@ -86,9 +88,14 @@ public class ReturnBookRequestTags {
         return  is_approved;
     }
 
-    public String getIsReturned()
+    public String getActualBookId()
     {
-        return is_returned;
+        return actual_book_id;
+    }
+
+    public String getIsIssued()
+    {
+        return is_issued;
     }
 
 }
