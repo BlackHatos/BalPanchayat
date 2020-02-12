@@ -10,13 +10,6 @@
             android:checkable="true"
             android:icon="@drawable/ic_message_black_24dp"/>
 
-        <item
-            android:id="@+id/book_add"
-            android:orderInCategory="100"
-            android:title="Add Book"
-            android:checkable="true"
-            android:icon="@drawable/ic_book_black_24dp"
-            />
 
         <item
             android:id="@+id/book_upload"

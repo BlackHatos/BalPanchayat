@@ -18,8 +18,8 @@
         >
 
         <ImageView
-            android:layout_width="45dp"
-            android:layout_height="45dp"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
             android:background="@drawable/ic_info_outline_black_24dp"/>
 
 
@@ -27,7 +27,7 @@
             android:focusable="true"
             android:focusableInTouchMode="true"
             android:id="@+id/enter_book_id"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="28dp"
             android:layout_gravity="center_horizontal"
             android:hint="Enter Book ID"
             android:textAlignment="center"
@@ -35,8 +35,8 @@
             android:layout_height="50dp"
             android:paddingLeft="22dp"
             android:textSize="17sp"
-            android:textColor="#bebebe"
-            android:textColorHint="#c8c8c8"
+            android:textColor="#7b7a7a"
+            android:textColorHint="#7b7a7a"
             android:background="@drawable/popup_edit_text_shape"
             />
 

@@ -97,22 +97,21 @@ public class BookRequestAdapter  extends RecyclerView.Adapter<BookRequestAdapter
 
         if(Integer.parseInt(requestedCopy) <= Integer.parseInt(totalCopy))
         {
-            holder.is_available.setVisibility(GONE);
             holder.approve_button.setVisibility(VISIBLE);
             holder.issue_button.setVisibility(GONE);
             holder.return_button.setVisibility(GONE);
+
+            holder.user_name.setText("Requested by "+userNamey);
+
             if(isApproved.equals("1"))
             {
-                holder.is_available.setVisibility(GONE);
                 holder.approve_button.setVisibility(GONE);
                 holder.issue_button.setVisibility(VISIBLE);
                 holder.return_button.setVisibility(GONE);
-                holder.user_name.setText("Requested by "+userNamey);
             }
 
             if(isIssued.equals("1"))
             {
-                holder.is_available.setVisibility(GONE);
                 holder.approve_button.setVisibility(GONE);
                 holder.issue_button.setVisibility(GONE);
                 holder.return_button.setVisibility(VISIBLE);
@@ -121,11 +120,6 @@ public class BookRequestAdapter  extends RecyclerView.Adapter<BookRequestAdapter
                 holder.actual_book_id.setVisibility(VISIBLE);
             }
         }
-        else
-        {
-            holder.is_available.setVisibility(VISIBLE);
-        }
-
 
         holder.user_id.setText(userIdy);
         holder.user_phone.setText(userPhoney);
@@ -139,16 +133,28 @@ public class BookRequestAdapter  extends RecyclerView.Adapter<BookRequestAdapter
             @Override
             public void onClick(View view) {
 
-                changeDetail(userIdy, bookIdy);
+                final AlertDialog dialog = new AlertDialog.Builder(mContext)
+                        .setTitle("Are you sure?")
+                        .setMessage("press OK to confirm")
+                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                changeDetail(userIdy, bookIdy);
+                            }
+                        }).show();
 
-               // Toast.makeText(mContext, bookIdy, Toast.LENGTH_LONG).show();
+                dialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(Color.RED);
+
+
             }
         });
 
 
         holder.issue_button.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View view)
+            {
+
                 showPopup(view, userIdy);
             }
         });
@@ -158,14 +164,17 @@ public class BookRequestAdapter  extends RecyclerView.Adapter<BookRequestAdapter
             public void onClick(View view) {
                 final AlertDialog dialog = new AlertDialog.Builder(mContext)
                         .setTitle("Are you sure?")
-                        .setMessage("Press OK to confirm")
+                        .setMessage("press OK to confirm")
                         .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
                                      returnBook(userIdy);
                             }
-                        })
-                        .setNegativeButton("CANCEL",null).show(); //dismiss dialog box
+                        }).show();
+
+
+                dialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(Color.RED);
+
             }
         });
 
@@ -185,7 +194,6 @@ public class BookRequestAdapter  extends RecyclerView.Adapter<BookRequestAdapter
         public TextView user_name;
         public TextView user_district;
         public TextView user_phone;
-        public TextView is_available;
         public Button approve_button;
         public Button issue_button;
         public Button return_button;
@@ -201,7 +209,6 @@ public class BookRequestAdapter  extends RecyclerView.Adapter<BookRequestAdapter
              user_district= itemView.findViewById(R.id.user_district);
              user_phone= itemView.findViewById(R.id.user_phone);
              user_name= itemView.findViewById(R.id.user_name);
-             is_available= itemView.findViewById(R.id.is_avalable);
              approve_button = itemView.findViewById(R.id.approve_button);
              issue_button = itemView.findViewById(R.id.issue_button);
              return_button = itemView.findViewById(R.id.return_button);
@@ -218,11 +225,14 @@ public class BookRequestAdapter  extends RecyclerView.Adapter<BookRequestAdapter
                     @Override
                     public void onResponse(String response) {
 
-                        if(response.equals("1"))
+                        String response_array[] = response.split(",");
+
+                        if(response_array[0].equals("1"))
                         {
-                            Toast.makeText(mContext,"request approved",Toast.LENGTH_LONG).show();
                              mContext.startActivity(new Intent(mContext,Admin.class));
+                            ((Admin) mContext).finish();
                         }
+                        Toast.makeText(mContext,response_array[1],Toast.LENGTH_LONG).show();
                     }
                 }, new Response.ErrorListener() { //error
             @Override
@@ -271,7 +281,6 @@ public class BookRequestAdapter  extends RecyclerView.Adapter<BookRequestAdapter
             }
         });
 
-
     }
 
     public void goToServer(final String bookActualId, final String userId)
@@ -287,6 +296,7 @@ public class BookRequestAdapter  extends RecyclerView.Adapter<BookRequestAdapter
                         {
                             Toast.makeText(mContext,"book issued successfully",Toast.LENGTH_LONG).show();
                             mContext.startActivity(new Intent(mContext,Admin.class));
+                            ((Admin) mContext).finish();
                         }
                         else
                         {
@@ -327,6 +337,7 @@ public class BookRequestAdapter  extends RecyclerView.Adapter<BookRequestAdapter
                         {
                             Toast.makeText(mContext,"book returned successfully",Toast.LENGTH_LONG).show();
                             mContext.startActivity(new Intent(mContext,Admin.class));
+                            ((Admin) mContext).finish();
                         }
                         else
                         {

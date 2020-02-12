@@ -141,10 +141,6 @@ public class Admin extends AppCompatActivity implements NavigationView.OnNavigat
                 startActivity(new Intent(Admin.this, UploadBooks.class));
                 break;
 
-            case R.id.book_add:
-                Toast.makeText(getApplicationContext(), "not yet activated", Toast.LENGTH_SHORT).show();
-                break;
-
         }
         return true;
 
