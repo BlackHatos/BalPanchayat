@@ -4,6 +4,16 @@
     xmlns:app="http://schemas.android.com/tools"
   >
 
+
+    <item
+        android:id="@+id/search"
+        android:icon="@drawable/ic_search_black_24dp"
+        android:orderInCategory="100"
+        android:showAsAction="always"
+        android:title="Search"
+        adroid:showAsAction="always"
+        app:ignore="AppCompatResource" />
+
     <item
         android:id="@+id/setting"
         android:orderInCategory="100"

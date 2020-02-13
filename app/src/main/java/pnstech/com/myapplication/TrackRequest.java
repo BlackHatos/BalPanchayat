@@ -3,6 +3,7 @@ package pnstech.com.myapplication;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -40,8 +41,12 @@ public class TrackRequest extends AppCompatActivity {
     private TextView approve_date;
     private TextView issue_date;
     private TextView message;
+    private TextView end_msg;
 
     private ScrollView scrollView;
+
+    private TextView track;
+    private Typeface myfont;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,8 +67,16 @@ public class TrackRequest extends AppCompatActivity {
         approve_date = findViewById(R.id.approve_date);
         issue_date = findViewById(R.id.issue_date);
         message = findViewById(R.id.message);
+        end_msg = findViewById(R.id.end_msg);
 
         scrollView = findViewById(R.id.scroll_view);
+
+        track = findViewById(R.id.track);
+
+        myfont= Typeface.createFromAsset(this.getAssets(),"fonts/ArimaMaduraiRegular.otf");
+        track.setTypeface(myfont);
+        message.setTypeface(myfont);
+        end_msg.setTypeface(myfont);
 
 
         trackRequest();
@@ -96,6 +109,7 @@ public class TrackRequest extends AppCompatActivity {
                                 request_date.setVisibility(VISIBLE);
                                 request_date.setText(response_array[6]);
                                 pre_msg.setVisibility(GONE);
+                                scrollView.setVisibility(VISIBLE);
                             }
                             else
                             {

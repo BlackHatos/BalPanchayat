@@ -23,7 +23,7 @@
         <ImageView
             android:layout_width="45dp"
             android:layout_height="45dp"
-            android:src="@drawable/ic_info_outline_black_24dp"/>
+            android:src="@drawable/ic_warning_black_24dp"/>
 
         <TextView
             android:id="@+id/message"

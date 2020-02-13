@@ -65,10 +65,6 @@ public class OnBookClick extends AppCompatActivity {
         Button click_to_get_book = (Button) findViewById(R.id.click_to_get_book);
 
 
-        //book is currently owned by
-        TextView current_taker = (TextView) findViewById(R.id.current_taker);
-
-
         //load book cover
 
         Glide.with(this)

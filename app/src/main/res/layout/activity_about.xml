@@ -33,7 +33,7 @@
         android:paddingBottom="10dp"
         android:layout_centerHorizontal="true"
         android:textColor="#f4eaeaea"
-        android:text="version 1.0"/>
+        android:text="1.0"/>
 
     <ImageView
         android:id="@+id/about_app"

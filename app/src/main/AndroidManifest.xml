@@ -40,7 +40,11 @@
             </intent-filter>
         </activity>
         <activity android:name=".DashBoard" />
-        <activity android:name=".MainLibrary" />
+        <activity android:name=".MainLibrary"
+            android:windowSoftInputMode="adjustPan"
+            >
+
+        </activity>
         <activity
             android:name=".About"
             android:theme="@style/HideAppBar" />
@@ -54,7 +58,7 @@
         <activity
             android:name=".UploadBooks"
             android:label="Upload Books"
-            android:parentActivityName=".SendNotification"
+            android:parentActivityName=".Admin"
             android:theme="@style/ShowToolbar"
             android:windowSoftInputMode="adjustPan" />
 
@@ -83,7 +87,6 @@
             android:label="Book"
             android:parentActivityName=".MainLibrary"
             android:theme="@style/ShowToolbar" />
-        <activity android:name=".SearchActivity" />
         <activity
             android:name=".Notification"
             android:label="Notifications"
@@ -91,7 +94,7 @@
         <activity
             android:name=".SendNotification"
             android:label="Send Notification"
-            android:parentActivityName=".DashBoard"
+            android:parentActivityName=".Admin"
             android:theme="@style/ShowToolbar" />
         <activity
             android:name=".Donate"
@@ -102,7 +105,7 @@
         <activity
             android:name=".AddDoner"
             android:label="Add Doner"
-            android:parentActivityName=".SendNotification"
+            android:parentActivityName=".Admin"
             android:theme="@style/ShowToolbar" />
         <activity
             android:name=".Team"
@@ -112,9 +115,8 @@
         <activity
             android:name=".AddTeamMember"
             android:label="Add Team Member"
-            android:parentActivityName=".SendNotification"
+            android:parentActivityName=".Admin"
             android:theme="@style/ShowToolbar" />
-        <activity android:name=".AddActivity" />
         <activity
             android:name=".CreateNewPassword"
             android:label="Create New Password"

@@ -3,15 +3,15 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="190dp"
-    android:background="@drawable/bannermain">
+    android:background="@drawable/child1">
 
     <LinearLayout
+        android:layout_marginLeft="20dp"
         android:id="@+id/header_view"
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:layout_alignParentBottom="true"
         android:orientation="vertical"
-        android:gravity="center"
         android:paddingBottom="15dp"
         >
 
@@ -24,14 +24,15 @@
 
 
         <TextView
-            android:text="Shubham Maurya"
-            android:id="@+id/email_id"
+            android:text="Hello, Admin"
+            android:id="@+id/name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif"
             android:paddingTop="10dp"
             android:textColor="#fff"
-            android:textSize="14sp"/>
+            android:textSize="16sp"/>
+
 
     </LinearLayout>
 

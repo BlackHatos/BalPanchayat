@@ -51,7 +51,7 @@ public class Donars extends AppCompatActivity {
         setContentView(R.layout.activity_donars);
         
         donar_quote = (TextView) findViewById(R.id.donar_quote);
-        myfont=Typeface.createFromAsset(this.getAssets(),"fonts/hall_of_fame_x.ttf");
+        myfont=Typeface.createFromAsset(this.getAssets(),"fonts/greatvibe.otf");
         donar_quote.setTypeface(myfont);
 
 

@@ -1,17 +1,34 @@
 package pnstech.com.myapplication;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 public class About extends AppCompatActivity {
+
+    private TextView app_version;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about);
+
+        app_version = findViewById(R.id.app_version);
+
+        //=================getting version name
+        try {
+            PackageInfo packageInfo = this.getPackageManager().getPackageInfo(getPackageName(),0);
+            String version = packageInfo.versionName;
+            app_version.setText("version "+version);
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
 

@@ -1154,7 +1154,6 @@
         android:backgroundTint="@color/colorPrimary"
         android:background="@color/colorPrimary"
         android:src="@drawable/ic_message_black_24dp"
-        app:layout_anchor="@id/appbarx"
         app:layout_anchorGravity="bottom"
         tools:ignore="OnClick"
         />

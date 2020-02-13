@@ -82,7 +82,6 @@ public class RecyclerViewAdapter  extends RecyclerView.Adapter<RecyclerViewAdapt
 
             //image fixing
 
-
            Glide.with(mContext)
                    .load(imageUrl)
                    .fitCenter()
@@ -97,7 +96,6 @@ public class RecyclerViewAdapter  extends RecyclerView.Adapter<RecyclerViewAdapt
                         deleteCard(bookId,position);
                }
            });
-
     }
 
     @Override
@@ -156,16 +154,14 @@ public class RecyclerViewAdapter  extends RecyclerView.Adapter<RecyclerViewAdapt
     }
 
 
-
     public void deleteCard(final String idx, final int position)
     {
-
-
         String url = "https://www.iamannitian.co.in/test/delete_book.php";
         StringRequest sr = new StringRequest(1, url,
                 new Response.Listener<String>() {
                     @Override
-                    public void onResponse(String response) {
+                    public void onResponse(String response)
+                    {
 
                         if(response.equals("1"))
                         {
@@ -182,7 +178,8 @@ public class RecyclerViewAdapter  extends RecyclerView.Adapter<RecyclerViewAdapt
             public void onErrorResponse(VolleyError error) {
 
             }
-        }){
+        })
+        {
             @Override
             public Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> map =  new HashMap<>();
@@ -194,5 +191,4 @@ public class RecyclerViewAdapter  extends RecyclerView.Adapter<RecyclerViewAdapt
         RequestQueue rq = Volley.newRequestQueue(mContext);
         rq.add(sr);
     }
-
 }

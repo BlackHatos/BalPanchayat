@@ -54,8 +54,8 @@
                 android:layout_height="150dp"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
-               app:civ_border_overlay="true"
-                android:src="@drawable/me"/>
+                app:civ_border_overlay="true"
+               />
 
             <View
                 android:id="@+id/viewy"

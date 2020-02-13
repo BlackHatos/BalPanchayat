@@ -10,75 +10,64 @@
     tools:context=".MainLibrary"
     >
 
-<android.support.design.widget.CoordinatorLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    >
 
-    <android.support.design.widget.AppBarLayout
-        android:id="@+id/appbarx"
-        android:layout_width="match_parent"
-        android:layout_height="250dp"
-        android:fitsSystemWindows="true"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
-
-
-        <android.support.design.widget.CollapsingToolbarLayout
-            android:id="@+id/collapsing_toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:fitsSystemWindows="true"
-            app:expandedTitleMarginStart="40dp"
-            app:contentScrim="?attr/colorPrimary"
-            app:layout_scrollFlags="scroll|enterAlwaysCollapsed">
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:fitsSystemWindows="true"
-                android:scaleType="centerCrop"
-                android:src="@drawable/back2"
-                app:layout_collapseMode="parallax"
-                android:contentDescription="@string/testing" />
-
-            <android.support.v7.widget.Toolbar
-                android:id="@+id/toolbarx"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                android:elevation="7dp"
-                tools:targetApi="lollipop"/>
-
-        </android.support.design.widget.CollapsingToolbarLayout>
-
-
-    </android.support.design.widget.AppBarLayout>
-
-    <android.support.design.widget.FloatingActionButton
-        android:elevation="8dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:id="@+id/message_button"
-        app:layout_anchor="@id/appbarx"
-        app:layout_anchorGravity="bottom|right"
-        android:src="@drawable/ic_message_black_24dp"
-        android:backgroundTint="@color/colorPrimary"
+    <LinearLayout
+        android:elevation="2dp"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:id="@+id/search_layout"
+        android:orientation="horizontal"
         android:background="@color/colorPrimary"
-        />
+        android:layout_width="match_parent"
+        android:layout_height="65dp">
 
 
-        <android.support.v7.widget.RecyclerView
-            android:layout_marginBottom="55dp"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/recycler_view"
-            android:orientation="vertical"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+
+        <EditText
+            android:paddingLeft="15dp"
+            android:background="@drawable/search_shape"
+            android:layout_gravity="center"
+            android:id="@+id/search_view"
+            android:layout_width="280dp"
+            android:layout_height="45dp"
+            android:hint="Search"
+            android:textSize="16sp"
+            android:textColor="#515151"
             />
 
+        <LinearLayout
+            android:id="@+id/back_space"
+            android:foreground="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:background="@drawable/search_button_shape"
+            android:layout_gravity="center"
+            android:orientation="horizontal"
+            android:layout_width="45dp"
+            android:layout_height="45dp">
 
-</android.support.design.widget.CoordinatorLayout>
+            <ImageView
+                android:layout_gravity="center"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:src="@drawable/ic_search_black_24dp"/>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_below="@id/search_layout"
+        android:layout_marginBottom="55dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/recycler_view"
+        android:orientation="vertical"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        />
 
     <View
         android:layout_width="match_parent"
@@ -95,7 +84,7 @@
         app:itemBackground="@color/navigation_background"
         app:itemTextColor="@drawable/selector"
         app:itemIconTint="@drawable/selector"
-        app:menu="@menu/search_menu"
+        app:menu="@menu/menu_navigation"
         android:layout_alignParentBottom="true"
         app:layout_behavior="@string/hide_bottom_view_on_scroll_behavior"
         />

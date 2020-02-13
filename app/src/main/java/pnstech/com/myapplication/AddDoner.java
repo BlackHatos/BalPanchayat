@@ -34,10 +34,6 @@ public class AddDoner extends AppCompatActivity {
     private ProgressDialog progressDialog;
 
 
-    private BottomNavigationView bottomNavigationView;
-    private View notificationBadge;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,8 +42,6 @@ public class AddDoner extends AppCompatActivity {
         progressDialog = new ProgressDialog(this, R.style.progressDialogTheme);
         progressDialog.setCanceledOnTouchOutside(false); //prevent disappearing
 
-
-        bottomNavigationView = findViewById(R.id.navigation_view);
 
         donar_name = (TextView)findViewById(R.id.donar_name);
         donation_ammount = (TextView)findViewById(R.id.donation_ammount);
@@ -60,50 +54,7 @@ public class AddDoner extends AppCompatActivity {
              }
          });
 
-
-
-        //===========================  bottom navigation
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                switch (menuItem.getItemId()) {
-                    case R.id.notify:
-                        startActivity(new Intent(AddDoner.this, pnstech.com.myapplication.Notification.class));
-                        break;
-
-                    case R.id.donars:
-                        startActivity(new Intent(AddDoner.this, Donars.class));
-                        break;
-
-                    case R.id.settings:
-                        startActivity(new Intent(AddDoner.this, Settings.class));
-                        break;
-
-                    case R.id.library:
-                        startActivity(new Intent(AddDoner.this, MainLibrary.class));
-                        break;
-
-                }
-                return true;
-            }
-        });
-
-
-        showBadge();
-
     }
-
-
-
-    public void showBadge() //show notfication badge
-    {
-        BottomNavigationMenuView menuView = (BottomNavigationMenuView) bottomNavigationView.getChildAt(0);
-        BottomNavigationItemView itemView = (BottomNavigationItemView) menuView.getChildAt(0);
-        notificationBadge = LayoutInflater.from(this).inflate(R.layout.notification_badge, menuView,false);
-        itemView.addView(notificationBadge);
-    }
-
-
 
 
     public void addDoner()

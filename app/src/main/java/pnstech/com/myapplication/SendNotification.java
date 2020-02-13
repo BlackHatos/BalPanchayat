@@ -38,15 +38,12 @@ public class SendNotification extends AppCompatActivity {
     private ProgressDialog progressDialog;
     private SharedPreferences sharedPreferences;
 
-    private BottomNavigationView bottomNavigationView;
-    private View notificationBadge;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_send_notification);
 
-        bottomNavigationView = findViewById(R.id.navigation_view);
 
 
         send_notify = (EditText) findViewById(R.id.send_notify);
@@ -64,37 +61,6 @@ public class SendNotification extends AppCompatActivity {
 
 
         sharedPreferences = getSharedPreferences("userData", MODE_PRIVATE);
-
-        //===========================  bottom navigation
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                switch (menuItem.getItemId()) {
-                    case R.id.notify:
-                        removeBadge();
-                        notificationBadge.setVisibility(GONE);
-                        startActivity(new Intent(SendNotification.this, pnstech.com.myapplication.Notification.class));
-                        break;
-
-                    case R.id.donars:
-                        startActivity(new Intent(SendNotification.this, Donars.class));
-                        break;
-
-                    case R.id.settings:
-                        startActivity(new Intent(SendNotification.this, Settings.class));
-                        break;
-
-                    case R.id.library:
-                        startActivity(new Intent(SendNotification.this, MainLibrary.class));
-                        break;
-
-                }
-                return true;
-            }
-        });
-
-
-        showBadge();
 
     }
 
@@ -156,87 +122,5 @@ public class SendNotification extends AppCompatActivity {
     }
 
 
-    public void removeBadge()
-    {
-
-        String url = "https://www.iamannitian.co.in/test/remove_badge.php";
-        StringRequest sr = new StringRequest(1, url,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-
-                        if(response.equals("1")) {
-
-                            SharedPreferences.Editor editor = sharedPreferences.edit();
-                            editor.putString("notifyCount",Integer.toString(0));
-                            editor.apply();
-                            notificationBadge.setVisibility(GONE);
-
-                        }
-                    }
-                }, new Response.ErrorListener() { //error
-            @Override
-            public void onErrorResponse(VolleyError error) {
-
-            }
-        }){
-            @Override
-            public Map<String, String> getParams() throws AuthFailureError {
-                Map<String, String> map =  new HashMap<>();
-                map.put("idKey",sharedPreferences.getString("userId",""));
-                return map;
-            }
-        };
-
-        RequestQueue rq = Volley.newRequestQueue(SendNotification.this);
-        rq.add(sr);
-    }
-
-    public void showBadge() //show notfication badge
-    {
-
-        BottomNavigationMenuView menuView = (BottomNavigationMenuView) bottomNavigationView.getChildAt(0);
-        BottomNavigationItemView itemView = (BottomNavigationItemView) menuView.getChildAt(0);
-        notificationBadge = LayoutInflater.from(this).inflate(R.layout.notification_badge, menuView,false);
-
-        sharedPreferences = getSharedPreferences("userData", MODE_PRIVATE);
-        String notifyCount = sharedPreferences.getString("notifyCount", "");
-        TextView badge_count =  notificationBadge.findViewById(R.id.notify_count);
-
-        if(!notifyCount.equals("0"))
-            badge_count.setText(notifyCount);
-        else
-            notificationBadge.setVisibility(GONE);
-
-        itemView.addView(notificationBadge);
-    }
-
-    //testing
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId())
-        {
-            case R.id.send_notify:
-                startActivity(new Intent(SendNotification.this,UploadBooks.class));
-                break;
-
-            case R.id.add_donar:
-                startActivity(new Intent(SendNotification.this,AddDoner.class));
-                break;
-
-            case R.id.add_member:
-                startActivity(new Intent(SendNotification.this,AddTeamMember.class));
-                break;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-    //testing
-
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.admin_menu, menu);
-        return true;
-    }
 
 }

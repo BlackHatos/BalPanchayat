@@ -1,6 +1,9 @@
 package com.pnstech.myapplication;
 
+import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -69,10 +72,23 @@ public class TeamAdapter  extends RecyclerView.Adapter<TeamAdapter.TeamViewHolde
                 .into(holder.pic);
 
         holder.delete_memeber.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("ResourceAsColor")
             @Override
             public void onClick(View view) {
 
-                deleteCardZ(memberId,position);
+                final AlertDialog dialog = new AlertDialog.Builder(mContext)
+                        .setTitle("Are you sure?")
+                        .setMessage("press OK to confirm")
+                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                deleteCardZ(memberId,position);
+                            }
+                        }).show();
+
+                dialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(R.color.colorPrimaryDark);
+
+
             }
         });
 

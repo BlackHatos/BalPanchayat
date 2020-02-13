@@ -1,6 +1,9 @@
 package com.pnstech.myapplication;
 
+import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -61,10 +64,24 @@ public class DonarAdapter  extends RecyclerView.Adapter<DonarAdapter.DonarViewHo
         holder.donar_name.setText(donarName);
 
         holder.delete_donar.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("ResourceAsColor")
             @Override
             public void onClick(View view) {
 
-                deleteCardk(donationId,position);
+
+
+                final AlertDialog dialog = new AlertDialog.Builder(mContext)
+                        .setTitle("Are you sure?")
+                        .setMessage("press OK to confirm")
+                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                deleteCardk(donationId,position);
+                            }
+                        }).show();
+
+                dialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(R.color.colorPrimaryDark);
+
             }
         });
 

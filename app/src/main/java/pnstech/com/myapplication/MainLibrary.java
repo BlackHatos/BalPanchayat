@@ -2,6 +2,7 @@ package pnstech.com.myapplication;
 
 import android.annotation.SuppressLint;
 import android.app.Notification;
+import android.content.ClipData;
 import android.content.Intent;
 
 import android.content.SharedPreferences;
@@ -13,13 +14,17 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.view.menu.ActionMenuItem;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.android.volley.AuthFailureError;
@@ -42,11 +47,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static android.view.View.GONE;
-;
 
 public class MainLibrary extends AppCompatActivity  implements RecyclerViewAdapter.OnItemClickListener{
 
-    private Toolbar mtoolbar;
+    //private Toolbar mtoolbar;
     private FloatingActionButton message_button;
     private SharedPreferences sharedPreferences;
 
@@ -68,7 +72,7 @@ public class MainLibrary extends AppCompatActivity  implements RecyclerViewAdapt
     //notification badge
     private BottomNavigationView bottomNavigationView;
     private View notificationBadge;
-
+    private TextView search_activity;
 
     public static String USER_TYPE;
 
@@ -81,23 +85,7 @@ public class MainLibrary extends AppCompatActivity  implements RecyclerViewAdapt
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_library);
 
-        message_button = (FloatingActionButton) findViewById(R.id.message_button);
 
-
-        message_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(android.content.Intent.ACTION_SEND);
-                intent.setData(Uri.parse("mailto:"));
-                String[] to = {"pnssoftwares7@gmail.com"};
-                intent.putExtra(Intent.EXTRA_EMAIL, to);
-                intent.putExtra(Intent.EXTRA_SUBJECT, "Have You Any Query Or Suggestion?");
-                intent.putExtra(Intent.EXTRA_TEXT, "Write Here....");
-                intent.setType("message/rfc822");// this is must
-                Intent.createChooser(intent, "Choose Email"); //second argument is optional
-                startActivity(intent);
-            }
-        });
 
         recyclerView =  findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true); //recycler view dont change its width and height
@@ -107,26 +95,7 @@ public class MainLibrary extends AppCompatActivity  implements RecyclerViewAdapt
         requestQueue = Volley.newRequestQueue(this);
         parseJson();
 
-        //creating side three dot menu
-        mtoolbar = (Toolbar) findViewById(R.id.toolbarx);
         bottomNavigationView = findViewById(R.id.navigation_view);
-
-        mtoolbar.inflateMenu(R.menu.menu_main);
-
-        //test
-
-        mtoolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem menuItem) {
-                switch (menuItem.getItemId()) {
-                    case R.id.about:
-                        startActivity(new Intent(MainLibrary.this, About.class));
-                        break;
-
-                        }
-                return true;
-            }
-        });
 
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -147,23 +116,62 @@ public class MainLibrary extends AppCompatActivity  implements RecyclerViewAdapt
                         startActivity(new Intent(MainLibrary.this, Settings.class));
                         break;
 
-                    case R.id.search:
-                        startActivity(new Intent(MainLibrary.this, SearchActivity.class));
+                    case R.id.profile:
+                        startActivity(new Intent(MainLibrary.this, Profile.class));
                         break;
                 }
                 return true;
             }
             });
 
-        setUpToolbarMenu(); //enabling three dot menu
        showBadge();
-
 
        // getting user type
         sharedPreferences = getSharedPreferences("userData", MODE_PRIVATE);
 
         USER_TYPE = sharedPreferences.getString("userType","");
+
+
+        search_activity = (EditText) findViewById(R.id.search_view);
+
+
+        search_activity.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                filter(s.toString());
+            }
+        });
+
+
     }
+
+
+    private void filter(String text)
+    {
+        ArrayList<ReturnTags> filteredList = new ArrayList<>();
+
+        for (ReturnTags item: mList)
+        {
+            if(item.getBookName().toLowerCase().contains(text.toLowerCase()))
+            {
+                filteredList.add(item);
+            }
+        }
+
+        recyclerViewAdapter.filterList(filteredList);
+
+    }
+
 
 
     public void showBadge() //show notfication badge
@@ -272,22 +280,7 @@ public class MainLibrary extends AppCompatActivity  implements RecyclerViewAdapt
     }
 
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu)
-    {
-        getMenuInflater().inflate(R.menu.menu_main,menu);
-
-        //remaining methods
-        return super.onCreateOptionsMenu(menu);
-
-    }
-
-    //setting side three dot menu
-    private void setUpToolbarMenu()
-    {
-        mtoolbar = findViewById(R.id.toolbarx);
-        mtoolbar.setTitle("Library");
-    }
+    //opening card
 
     @Override
     public void onItemClick(int position) {

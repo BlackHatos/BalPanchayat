@@ -1,5 +1,6 @@
 package com.pnstech.myapplication;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -134,6 +135,7 @@ public class BookRequestAdapter  extends RecyclerView.Adapter<BookRequestAdapter
 
 
         holder.approve_button.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("ResourceAsColor")
             @Override
             public void onClick(View view) {
 
@@ -147,7 +149,7 @@ public class BookRequestAdapter  extends RecyclerView.Adapter<BookRequestAdapter
                             }
                         }).show();
 
-                dialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(Color.RED);
+                dialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(R.color.colorPrimaryDark);
 
 
             }
@@ -164,6 +166,7 @@ public class BookRequestAdapter  extends RecyclerView.Adapter<BookRequestAdapter
         });
 
         holder.return_button.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("ResourceAsColor")
             @Override
             public void onClick(View view) {
                 final AlertDialog dialog = new AlertDialog.Builder(mContext)
@@ -176,9 +179,7 @@ public class BookRequestAdapter  extends RecyclerView.Adapter<BookRequestAdapter
                             }
                         }).show();
 
-
-                dialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(Color.RED);
-
+                dialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(R.color.colorPrimaryDark);
             }
         });
 
@@ -188,6 +189,16 @@ public class BookRequestAdapter  extends RecyclerView.Adapter<BookRequestAdapter
     public int getItemCount() {
         return mList.size();
     }
+
+
+    //filter from the list
+
+    public void search(ArrayList<ReturnBookRequestTags> filteredList)
+    {
+        mList = filteredList;
+        notifyDataSetChanged();
+    }
+
 
     public class BookRequestViewHolder  extends  RecyclerView.ViewHolder{
 
@@ -228,7 +239,6 @@ public class BookRequestAdapter  extends RecyclerView.Adapter<BookRequestAdapter
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-
                         String response_array[] = response.split(",");
 
                         if(response_array[0].equals("1"))

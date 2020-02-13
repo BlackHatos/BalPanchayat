@@ -1,6 +1,10 @@
 package com.pnstech.myapplication;
 
+import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.graphics.Typeface;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -63,10 +67,22 @@ public class NotificationAdapter  extends RecyclerView.Adapter<NotificationAdapt
         holder.notification_text.setText(notificationText);
 
         holder.delete_notify.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("ResourceAsColor")
             @Override
             public void onClick(View view) {
 
-                deleteCardx(notificationId,position);
+                final AlertDialog dialog = new AlertDialog.Builder(mContext)
+                        .setTitle("Are you sure?")
+                        .setMessage("press OK to confirm")
+                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                deleteCardx(notificationId,position);
+                            }
+                        }).show();
+
+                dialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(R.color.colorPrimaryDark);
+
             }
         });
 
@@ -83,6 +99,7 @@ public class NotificationAdapter  extends RecyclerView.Adapter<NotificationAdapt
         public TextView notification_id;
         public TextView notification_date;
         public TextView delete_notify;
+        private Typeface myfont;
 
         public NotificationViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -91,6 +108,9 @@ public class NotificationAdapter  extends RecyclerView.Adapter<NotificationAdapt
             notification_id = itemView.findViewById(R.id.notification_id); //notification id
             notification_date = itemView.findViewById(R.id.notification_date);
             delete_notify = itemView.findViewById(R.id.delete_notify);
+
+            myfont= Typeface.createFromAsset(mContext.getAssets(),"fonts/ArimaMaduraiRegular.otf");
+            notification_text.setTypeface(myfont);
 
             if(pnstech.com.myapplication.Notification.USER_TYPEX.equals("1"))
             {

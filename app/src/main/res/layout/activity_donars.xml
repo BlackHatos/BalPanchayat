@@ -21,12 +21,12 @@
 
         <TextView
             android:id="@+id/donar_quote"
-            android:layout_marginLeft="15dp"
+            android:layout_marginLeft="10dp"
             android:layout_centerVertical="true"
             android:layout_alignParentLeft="true"
             android:layout_marginRight="10dp"
             android:textStyle="bold"
-            android:textSize="34sp"
+            android:textSize="26sp"
             android:textColor="@color/white"
             android:text="Donate With Love"
             android:layout_width="wrap_content"
