@@ -169,6 +169,8 @@ public class Admin extends AppCompatActivity implements NavigationView.OnNavigat
                                 String  userDistx = data.getString("district");
                                 String  userPhonex = data.getString("phone");
                                 String  requestDatex = data.getString("request_date");
+                                String  approveDatex = data.getString("approve_date");
+                                String  issueDatex = data.getString("issue_date");
                                 String  requested_copy = data.getString("requested_copy");
                                 String  num_copy = data.getString("num_copy");
 
@@ -181,7 +183,7 @@ public class Admin extends AppCompatActivity implements NavigationView.OnNavigat
 
                                 mList.add(new ReturnBookRequestTags(bookIdx, bookNamex, userIdx, userNamex,
                                         userDistx, userPhonex, requestDatex,num_copy,
-                                        requested_copy,isApprovedx,isIssuedx, actualBookIdx ));
+                                        requested_copy,isApprovedx,isIssuedx, actualBookIdx, approveDatex, issueDatex ));
                             }
 
 

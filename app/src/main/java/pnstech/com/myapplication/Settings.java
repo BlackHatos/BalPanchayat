@@ -62,4 +62,9 @@ public class Settings extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void goToTrack(View view)
+    {
+        startActivity(new Intent(Settings.this, TrackRequest.class));
+    }
+
 }

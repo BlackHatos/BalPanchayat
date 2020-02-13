@@ -41,6 +41,7 @@
             />
 
         <Button
+            android:foreground="?attr/selectableItemBackground"
             android:id="@+id/click_to_submit_id"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="20dp"

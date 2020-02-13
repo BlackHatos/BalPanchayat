@@ -81,6 +81,8 @@ public class BookRequestAdapter  extends RecyclerView.Adapter<BookRequestAdapter
         String userDistricty  = currentTag.getUserDistrictx();
         String userPhoney  = currentTag.getUserPhonex();
         String requestDatey = currentTag.getRequestDatex();
+        String approveDatey = currentTag.getApproveDatex();
+        String issueDatey = currentTag.getIssueDatex();
 
 
         //checking availability status
@@ -100,6 +102,7 @@ public class BookRequestAdapter  extends RecyclerView.Adapter<BookRequestAdapter
             holder.approve_button.setVisibility(VISIBLE);
             holder.issue_button.setVisibility(GONE);
             holder.return_button.setVisibility(GONE);
+            holder.request_date.setText(requestDatey);
 
             holder.user_name.setText("Requested by "+userNamey);
 
@@ -108,6 +111,7 @@ public class BookRequestAdapter  extends RecyclerView.Adapter<BookRequestAdapter
                 holder.approve_button.setVisibility(GONE);
                 holder.issue_button.setVisibility(VISIBLE);
                 holder.return_button.setVisibility(GONE);
+                holder.request_date.setText(approveDatey);
             }
 
             if(isIssued.equals("1"))
@@ -118,13 +122,13 @@ public class BookRequestAdapter  extends RecyclerView.Adapter<BookRequestAdapter
                 holder.user_name.setText("Issued to "+userNamey);
                 holder.actual_book_id.setText("ID: "+actualBookId); //actual book id
                 holder.actual_book_id.setVisibility(VISIBLE);
+                holder.request_date.setText(issueDatey);
             }
         }
 
         holder.user_id.setText(userIdy);
         holder.user_phone.setText(userPhoney);
         holder.user_district.setText(userDistricty);
-        holder.request_date.setText(requestDatey);
         holder.book_id.setText(bookIdy);
         holder.book_name.setText("Book: "+bookNamey);
 

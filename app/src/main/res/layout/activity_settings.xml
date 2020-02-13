@@ -10,6 +10,35 @@
     android:orientation="vertical">
 
 
+
+    <LinearLayout
+        android:background="#f2f2f2"
+        android:layout_marginTop="5dp"
+        android:clickable="true"
+        android:focusable="true"
+        tools:ignore="OnClick"
+        android:onClick="goToTrack"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:foreground="?attr/selectableItemBackground"
+        android:orientation="horizontal">
+
+        <TextView
+            android:textAlignment="center"
+            android:layout_gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Track request"
+            android:textSize="17sp"
+            android:textColor="#606060"
+            />
+
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#c8d6d6d6"
+        />
     <LinearLayout
         android:background="#f2f2f2"
         android:layout_marginTop="5dp"

@@ -136,7 +136,11 @@
             </intent-filter>
         </activity>
         <activity android:name=".Admin"></activity>
-        <activity android:name=".TrackRequest"></activity>
+        <activity android:name=".TrackRequest"
+           android:theme="@style/ShowToolbar"
+            android:label="Track Your Request"
+            android:parentActivityName=".Settings"
+            ></activity>
     </application>
 
 </manifest>

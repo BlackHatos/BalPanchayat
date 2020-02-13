@@ -332,4 +332,5 @@ public class DashBoard extends AppCompatActivity {
         return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 
+
 }

@@ -48,8 +48,9 @@
                 android:layout_height="wrap_content">
 
                 <TextView
+                    android:textStyle="bold"
                     android:textColor="#686868"
-                    android:textSize="20sp"
+                    android:textSize="18sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="+91-8130512823"/>
@@ -90,8 +91,8 @@
             <de.hdodenhof.circleimageview.CircleImageView
                 android:layout_marginRight="10dp"
                 android:src="@drawable/paypal"
-                android:layout_width="85dp"
-                android:layout_height="85dp" />
+                android:layout_width="80dp"
+                android:layout_height="80dp" />
 
 
             <LinearLayout
@@ -102,8 +103,9 @@
 
 
                 <TextView
+                    android:textStyle="bold"
                     android:textColor="#686868"
-                    android:textSize="20sp"
+                    android:textSize="18sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="+91-8130512823"/>
@@ -145,8 +147,8 @@
         <de.hdodenhof.circleimageview.CircleImageView
             android:layout_marginRight="10dp"
             android:src="@drawable/phonepe"
-            android:layout_width="85dp"
-            android:layout_height="85dp" />
+            android:layout_width="80dp"
+            android:layout_height="80dp" />
 
         <LinearLayout
             android:layout_marginLeft="10dp"
@@ -155,8 +157,9 @@
             android:layout_height="wrap_content">
 
             <TextView
+                android:textStyle="bold"
                 android:textColor="#686868"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="+91-8130512823"/>
@@ -195,9 +198,9 @@
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:layout_marginRight="10dp"
-                android:src="@drawable/paytm"
-                android:layout_width="85dp"
-                android:layout_height="85dp" />
+                android:src="@drawable/patm"
+                android:layout_width="80dp"
+                android:layout_height="80dp" />
 
             <LinearLayout
                 android:layout_marginLeft="10dp"
@@ -206,8 +209,9 @@
                 android:layout_height="wrap_content">
 
                 <TextView
+                    android:textStyle="bold"
                     android:textColor="#686868"
-                    android:textSize="20sp"
+                    android:textSize="18sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="+91-8130512823"/>

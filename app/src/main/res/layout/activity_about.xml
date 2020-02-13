@@ -126,9 +126,9 @@
             android:src="@drawable/linkx"
             android:clickable="true"
             android:focusable="true"
-            android:id="@+id/linkedin"
-            android:layout_width="52dp"
-            android:layout_height="52dp"
+            android:id="@+id/linkx"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:onClick="goToLinked"
             tools:ignore="OnClick"
             />
@@ -140,15 +140,15 @@
             android:clickable="true"
             android:focusable="true"
             android:id="@+id/instagram"
-            android:layout_width="45dp"
-            android:layout_height="45dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:onClick="goToInsta"
             tools:ignore="OnClick"
             />
 
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:src="@drawable/facebookx"
+            android:src="@drawable/fbx"
             android:clickable="true"
             android:focusable="true"
             android:id="@+id/facebook"
