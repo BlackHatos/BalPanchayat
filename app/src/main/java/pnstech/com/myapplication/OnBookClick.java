@@ -30,7 +30,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static pnstech.com.myapplication.MainLibrary.EXTRA_BOOK_AUTHOR;
-import static pnstech.com.myapplication.MainLibrary.EXTRA_BOOK_CONTRIBUTER;
 import static pnstech.com.myapplication.MainLibrary.EXTRA_BOOK_DATE;
 import static pnstech.com.myapplication.MainLibrary.EXTRA_BOOK_ID;
 import static pnstech.com.myapplication.MainLibrary.EXTRA_BOOK_NAME;
@@ -52,7 +51,6 @@ public class OnBookClick extends AppCompatActivity {
         String imageUrl = intent.getStringExtra(EXTRA_URL);
         String bookName = intent.getStringExtra(EXTRA_BOOK_NAME);
         String bookAuthor = intent.getStringExtra(EXTRA_BOOK_AUTHOR);
-        String bookContributer  = intent.getStringExtra(EXTRA_BOOK_CONTRIBUTER);
         String bookDate = intent.getStringExtra(EXTRA_BOOK_DATE);
         final String bookId = intent.getStringExtra(EXTRA_BOOK_ID); //book id
 
@@ -60,7 +58,6 @@ public class OnBookClick extends AppCompatActivity {
         ImageView book_cover =(ImageView) findViewById(R.id.book_cover);
         TextView book_name = (TextView) findViewById(R.id.book_name);
         TextView book_author = (TextView) findViewById(R.id.book_author);
-        TextView book_contributer = (TextView) findViewById(R.id.book_contributer);
         TextView book_date = (TextView) findViewById(R.id.book_date);
         Button click_to_get_book = (Button) findViewById(R.id.click_to_get_book);
 
@@ -75,11 +72,9 @@ public class OnBookClick extends AppCompatActivity {
 
          book_name.setText(bookName);
          book_author.setText(bookAuthor);
-         book_contributer.setText("Contributed by "+bookContributer);
          book_date.setText(bookDate);
 
          //creating shared preferences to own the book
-
 
 
     click_to_get_book.setOnClickListener(new View.OnClickListener() {

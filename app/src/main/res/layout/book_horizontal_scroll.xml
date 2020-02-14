@@ -43,7 +43,7 @@
                android:textColor="#616161"
                 android:textSize="18sp"
                 android:textStyle="bold"
-                android:layout_marginTop="22dp"
+                android:layout_marginTop="28dp"
                 android:id="@+id/book_name"
                android:layout_toEndOf="@+id/book_image"
                android:layout_centerHorizontal="true"
@@ -65,19 +65,7 @@
             android:layout_marginLeft="15dp"
             />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Contributed by Shubham"
-            android:textColor="#616161"
-            android:textSize="15sp"
-            android:layout_marginTop="1dp"
-            android:id="@+id/book_contributer"
-            android:layout_toEndOf="@+id/book_image"
-            android:layout_below="@id/book_author"
-            android:layout_centerHorizontal="true"
-            android:layout_marginLeft="15dp"
-            />
+
 
         <TextView
             android:layout_width="wrap_content"
@@ -88,7 +76,7 @@
             android:layout_marginTop="4dp"
             android:id="@+id/book_date"
             android:layout_toEndOf="@+id/book_image"
-            android:layout_below="@id/book_contributer"
+            android:layout_below="@id/book_author"
             android:layout_centerHorizontal="true"
             android:layout_marginLeft="15dp"
             />

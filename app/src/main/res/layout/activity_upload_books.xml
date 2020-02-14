@@ -7,15 +7,15 @@
     android:layout_gravity="center"
     android:gravity="center"
     android:orientation="vertical"
-    android:padding="16dp"
+    android:padding="20dp"
     tools:context=".UploadBooks">
 
 
     <LinearLayout
+        android:orientation="horizontal"
         android:id="@+id/linaear_layout"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#e5c8c8c8"
         android:gravity="center">
 
 
@@ -28,6 +28,35 @@
             android:foreground="?attr/selectableItemBackground"
             android:scaleType="centerCrop"
             android:src="@drawable/ic_image_black_24dp" />
+
+        <LinearLayout
+            android:layout_marginLeft="20dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <EditText
+                android:textColor="#ec646464"
+                android:textColorHint="#b66c6b6b"
+                android:textAlignment="center"
+                android:id="@+id/num_copy"
+                android:hint="Copies"
+                android:background="@drawable/edittext_shape"
+                android:layout_width="match_parent"
+                android:layout_height="50dp" />
+
+            <Button
+                android:id="@+id/image_select"
+                android:foreground="?attr/selectableItemBackground"
+                android:textColor="@color/white"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/button_shape"
+                android:text="Select Image"
+                android:layout_width="match_parent"
+                android:layout_height="50dp" />
+
+        </LinearLayout>
 
     </LinearLayout>
 
@@ -60,24 +89,11 @@
         android:textSize="16sp" />
 
 
-    <EditText
-        android:id="@+id/contributer_name"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/edittext_shape"
-        android:hint="Contributer name"
-        android:textAlignment="center"
-        android:textColor="#ec646464"
-        android:textColorHint="#b66c6b6b"
-        android:textSize="16sp" />
-
-
     <Button
         android:id="@+id/click_to_upload"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_below="@id/contributer_name"
+        android:layout_below="@id/writer_name"
         android:layout_marginTop="10dp"
         android:background="@drawable/button_shape"
         android:foreground="?attr/selectableItemBackground"

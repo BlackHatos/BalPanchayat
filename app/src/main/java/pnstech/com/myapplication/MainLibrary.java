@@ -57,7 +57,6 @@ public class MainLibrary extends AppCompatActivity  implements RecyclerViewAdapt
     public static final String EXTRA_URL = "imageUrl";
     public static final String EXTRA_BOOK_NAME = "bookName";
     public static final String EXTRA_BOOK_AUTHOR = "bookWriter";
-    public static final String EXTRA_BOOK_CONTRIBUTER = "bookContributer";
     public static final String EXTRA_BOOK_DATE = "bookDate";
     public static final String EXTRA_BOOK_ID = "bookID";
 
@@ -160,7 +159,7 @@ public class MainLibrary extends AppCompatActivity  implements RecyclerViewAdapt
     {
         ArrayList<ReturnTags> filteredList = new ArrayList<>();
 
-        for (ReturnTags item: mList)
+        for (ReturnTags item: mList) //here mlist is filtered list
         {
             if(item.getBookName().toLowerCase().contains(text.toLowerCase()))
             {
@@ -250,11 +249,10 @@ public class MainLibrary extends AppCompatActivity  implements RecyclerViewAdapt
                                 String bookIdx = data.getString("id");
                                 String bookNamex = data.getString("book_name");
                                 String writerNamex = data.getString("writer_name");
-                                String contributerNamex = data.getString("contributer_name");
                                 String datex = data.getString("datex");
                                 String urlx = "https://iamannitian.co.in/test/book_covers/"+data.getString("url");
 
-                                mList.add(new ReturnTags(urlx, bookNamex, writerNamex, contributerNamex, datex, bookIdx));
+                                mList.add(new ReturnTags(urlx, bookNamex, writerNamex, datex, bookIdx));
                             }
 
                             recyclerViewAdapter = new RecyclerViewAdapter(MainLibrary.this,mList);
@@ -289,7 +287,6 @@ public class MainLibrary extends AppCompatActivity  implements RecyclerViewAdapt
         intent.putExtra(EXTRA_URL, clickedItem.getImageUrl());
         intent.putExtra(EXTRA_BOOK_NAME, clickedItem.getBookName());
         intent.putExtra(EXTRA_BOOK_AUTHOR, clickedItem.getBookWriter());
-        intent.putExtra(EXTRA_BOOK_CONTRIBUTER, clickedItem.getBookContributer());
         intent.putExtra(EXTRA_BOOK_DATE, clickedItem.getBookDate());
         intent.putExtra(EXTRA_BOOK_ID, clickedItem.getbookId());
         startActivity(intent);

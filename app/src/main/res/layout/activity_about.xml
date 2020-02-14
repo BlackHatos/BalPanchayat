@@ -88,7 +88,6 @@
         android:textColor="#f4eaeaea"/>
 
 
-
     <TextView
         android:layout_below="@id/developer"
         android:layout_width="wrap_content"

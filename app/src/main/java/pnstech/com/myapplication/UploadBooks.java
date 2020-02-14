@@ -51,7 +51,8 @@ private Bitmap bitmap;
     private Button click_to_upload;
     private EditText book_name;
     private EditText writer_name;
-    private EditText contributer_name;
+    private EditText num_copy;
+    private Button select_image;
 
 
 
@@ -68,10 +69,11 @@ private Bitmap bitmap;
         click_to_upload = (Button) findViewById(R.id.click_to_upload);
         book_name = (EditText) findViewById(R.id.book_name);
         writer_name = (EditText) findViewById(R.id.writer_name);
-        contributer_name = (EditText) findViewById(R.id.contributer_name);
+        num_copy = (EditText) findViewById(R.id.num_copy);
+        select_image = findViewById(R.id.image_select);
 
 
-        book_cover.setOnClickListener(new View.OnClickListener() {
+        select_image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 selectImage();
@@ -86,7 +88,7 @@ private Bitmap bitmap;
                     public void onClick(View view) {
                         if(!book_name.getText().toString().trim().equals("")
                                 && !writer_name.getText().toString().trim().equals("")
-                                && !contributer_name.getText().toString().trim().equals("")
+                                && !num_copy.getText().toString().trim().equals("")
                                 && bitmap != null)
                         {
 
@@ -162,7 +164,7 @@ private Bitmap bitmap;
 
                             book_name.setText("");
                             writer_name.setText("");
-                            contributer_name.setText("");
+                             num_copy.setText("");
                             book_cover.setImageResource(R.drawable.ic_image_black_24dp);
                         }
                         Toast.makeText(getApplicationContext(), response_array[1], Toast.LENGTH_LONG).show();
@@ -180,10 +182,9 @@ private Bitmap bitmap;
                 Map<String, String> map =  new HashMap<>();
                     map.put("bookNameKey", book_name.getText().toString().trim());
                     map.put("bookWriterKey", writer_name.getText().toString().trim());
-                    map.put("bookContributerKey", contributer_name.getText().toString().trim());
+                    map.put("numKey", num_copy.getText().toString().trim());
                     map.put("imageKey", imageToString(bitmap));
                     return map;
-
             }
         };
 

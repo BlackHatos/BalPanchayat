@@ -70,13 +70,11 @@ public class RecyclerViewAdapter  extends RecyclerView.Adapter<RecyclerViewAdapt
             String imageUrl = currentTag.getImageUrl();
             String bookName = currentTag.getBookName();
             String bookWriter = currentTag.getBookWriter();
-            String bookContributer  = currentTag.getBookContributer();
             String bookDate  = currentTag.getBookDate();
             final String bookId = currentTag.getbookId();
 
             holder.book_name.setText(bookName);
             holder.book_author.setText(bookWriter);
-            holder.book_contributer.setText("Contributed by "+bookContributer);
             holder.book_date.setText(bookDate);
             holder.book_id.setText(bookId); //no need to do this
 
@@ -114,7 +112,6 @@ public class RecyclerViewAdapter  extends RecyclerView.Adapter<RecyclerViewAdapt
         public ImageView book_image;
         public  TextView book_name;
         public TextView book_author;
-        public TextView book_contributer;
         public TextView book_date;
         public TextView book_id;
         public TextView delete_card;
@@ -125,7 +122,6 @@ public class RecyclerViewAdapter  extends RecyclerView.Adapter<RecyclerViewAdapt
             book_image = itemView.findViewById(R.id.book_image);
             book_name = itemView.findViewById(R.id.book_name);
             book_author = itemView.findViewById(R.id.book_author);
-            book_contributer = itemView.findViewById(R.id.book_contributer);
             book_date = itemView.findViewById(R.id.book_date);
             book_id = itemView.findViewById(R.id.book_id); //book id
             delete_card  =itemView.findViewById(R.id.delete_card);

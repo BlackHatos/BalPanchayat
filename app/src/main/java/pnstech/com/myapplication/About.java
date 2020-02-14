@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -13,13 +14,21 @@ import android.widget.TextView;
 public class About extends AppCompatActivity {
 
     private TextView app_version;
-
+    private TextView company_name;
+    private TextView all_rights;
+    private TextView developer;
+    private TextView ceo;
+    private Typeface myfont;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about);
-
+        company_name = findViewById(R.id.company_name);
+        all_rights = findViewById(R.id.all_rights);
+        developer = findViewById(R.id.developer);
+        ceo = findViewById(R.id.ceo);
         app_version = findViewById(R.id.app_version);
+
 
         //=================getting version name
         try {
@@ -29,6 +38,14 @@ public class About extends AppCompatActivity {
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
         }
+
+        myfont= Typeface.createFromAsset(getAssets(),"fonts/ArimaMaduraiRegular.otf");
+        app_version.setTypeface(myfont);
+        company_name.setTypeface(myfont);
+        developer.setTypeface(myfont);
+        ceo.setTypeface(myfont);
+        all_rights.setTypeface(myfont);
+
     }
 
 

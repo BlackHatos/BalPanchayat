@@ -53,6 +53,7 @@
 
 
     <TextView
+        android:visibility="gone"
         android:textColor="#616161"
         android:layout_centerHorizontal="true"
         android:id="@+id/book_contributer"
