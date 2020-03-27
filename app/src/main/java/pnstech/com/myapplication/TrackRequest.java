@@ -88,6 +88,14 @@ public class TrackRequest extends AppCompatActivity {
     {
         SharedPreferences sharedPreferences = getSharedPreferences("userData",MODE_PRIVATE);
         final String userId = sharedPreferences.getString("userId","");
+        final String track_value = sharedPreferences.getString("track_value","");
+
+        if(track_value.equals("1"))
+        {
+            pre_msg.setVisibility(GONE);
+        }
+
+        final SharedPreferences.Editor editor = sharedPreferences.edit();
 
         String url = "https://www.iamannitian.co.in/test/track_request.php";
         StringRequest sr = new StringRequest(1, url,
@@ -100,11 +108,14 @@ public class TrackRequest extends AppCompatActivity {
                         if(response_array[0].equals("1"))
                         {
 
+
+
                             book_name.setText(response_array[1]);
                             author_name.setText(response_array[2]);
 
                             if(response_array[3].equals("1")) //if requested
                             {
+
                                 badge_1.setBackgroundColor(Color.GREEN);
                                 request_date.setVisibility(VISIBLE);
                                 request_date.setText(response_array[6]);

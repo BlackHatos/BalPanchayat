@@ -72,8 +72,10 @@ public class SplashScreen extends AppCompatActivity {
                     @Override
                     public void onResponse(String response) {
 
+                        String response_array[] = response.split(",");
                         SharedPreferences.Editor editor = sharedPreferences.edit();
-                        editor.putString("notifyCount",response);
+                        editor.putString("notifyCount",response_array[0]);
+                        editor.putString("track_value",response_array[1]);
                         editor.apply();
 
                     }

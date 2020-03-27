@@ -109,8 +109,8 @@ public class NotificationAdapter  extends RecyclerView.Adapter<NotificationAdapt
             notification_date = itemView.findViewById(R.id.notification_date);
             delete_notify = itemView.findViewById(R.id.delete_notify);
 
-            myfont= Typeface.createFromAsset(mContext.getAssets(),"fonts/ArimaMaduraiRegular.otf");
-            notification_text.setTypeface(myfont);
+            /*myfont= Typeface.createFromAsset(mContext.getAssets(),"fonts/ArimaMaduraiRegular.otf");
+            notification_text.setTypeface(myfont);*/
 
             if(pnstech.com.myapplication.Notification.USER_TYPEX.equals("1"))
             {

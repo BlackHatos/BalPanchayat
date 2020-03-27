@@ -17,7 +17,7 @@ public class About extends AppCompatActivity {
     private TextView company_name;
     private TextView all_rights;
     private TextView developer;
-    private TextView ceo;
+    //private TextView ceo;
     private Typeface myfont;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +26,7 @@ public class About extends AppCompatActivity {
         company_name = findViewById(R.id.company_name);
         all_rights = findViewById(R.id.all_rights);
         developer = findViewById(R.id.developer);
-        ceo = findViewById(R.id.ceo);
+        //ceo = findViewById(R.id.ceo);
         app_version = findViewById(R.id.app_version);
 
 
@@ -43,7 +43,7 @@ public class About extends AppCompatActivity {
         app_version.setTypeface(myfont);
         company_name.setTypeface(myfont);
         developer.setTypeface(myfont);
-        ceo.setTypeface(myfont);
+        //ceo.setTypeface(myfont);
         all_rights.setTypeface(myfont);
 
     }
@@ -51,7 +51,7 @@ public class About extends AppCompatActivity {
 
     public void goToGit(View viewe)
     {
-        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/pnstech"));
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/BlackHatos"));
         startActivity(intent);
     }
 

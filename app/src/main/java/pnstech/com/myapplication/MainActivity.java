@@ -103,6 +103,7 @@ public class MainActivity extends AppCompatActivity {
                                             //also get notify count
 
                                             editor.putString("notifyCount",response_array[8]);
+                                            editor.putString("track_value",response_array[9]);
 
                                             editor.apply();
 

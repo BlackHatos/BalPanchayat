@@ -88,7 +88,7 @@
         android:textColor="#f4eaeaea"/>
 
 
-    <TextView
+   <!-- <TextView
         android:layout_below="@id/developer"
         android:layout_width="wrap_content"
         android:textSize="15sp"
@@ -96,13 +96,13 @@
         android:id="@+id/ceo"
         android:layout_centerHorizontal="true"
         android:text="ceo &amp; founder pnstech"
-        android:textColor="#f4eaeaea"/>
+        android:textColor="#f4eaeaea"/> -->
 
 
     <LinearLayout
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"
-        android:layout_below="@id/ceo"
+        android:layout_below="@id/developer"
         android:orientation="horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">

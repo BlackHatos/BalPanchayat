@@ -74,7 +74,7 @@ public class DashBoard extends AppCompatActivity {
                 switch (menuItem.getItemId()) {
                     case R.id.notify:
                         removeBadge(); //call remove badge method
-                        notificationBadge.setVisibility(GONE);
+                        //notificationBadge.setVisibility(GONE);
                         startActivity(new Intent(DashBoard.this, pnstech.com.myapplication.Notification.class));
                       break;
 

@@ -72,7 +72,7 @@ public class OnBookClick extends AppCompatActivity {
 
          book_name.setText(bookName);
          book_author.setText(bookAuthor);
-         book_date.setText(bookDate);
+         book_date.setText("uploaded at "+bookDate);
 
          //creating shared preferences to own the book
 
@@ -106,7 +106,17 @@ public class OnBookClick extends AppCompatActivity {
                     public void onResponse(String response) {
                         progressDialog.dismiss();
                         getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
-                         showMessage(response);
+
+                        String response_array [] = response.split(",");
+
+                         if(response_array[0].equals("1"));
+                         {
+                            sharedPreferences = getSharedPreferences("userData", MODE_PRIVATE);
+                            SharedPreferences.Editor editor = sharedPreferences.edit();
+                            editor.putString("track_value",response_array[0]);
+                         }
+
+                         showMessage(response_array[1]);
                           }
                 }, new Response.ErrorListener() { //error
             @Override
