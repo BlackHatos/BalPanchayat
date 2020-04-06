@@ -6,6 +6,7 @@ package pnstech.com.myapplication;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
@@ -14,6 +15,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -30,6 +32,8 @@ public class MainActivity extends AppCompatActivity {
     private EditText emailPhone;
     private EditText password;
     private Button click_to_login;
+    private TextView app_name;
+    private Typeface myfont;
    // private Button custom_login;
    // private  CallbackManager callbackManager;
 
@@ -46,8 +50,11 @@ public class MainActivity extends AppCompatActivity {
         emailPhone = (EditText) findViewById(R.id.email_phone);
         password  = (EditText) findViewById(R.id.password);
         click_to_login = (Button) findViewById(R.id.click_to_login);
+        app_name = (TextView) findViewById(R.id.app_name);
        // custom_login =  (Button) findViewById(R.id.custom_login);
 
+        myfont=Typeface.createFromAsset(this.getAssets(),"fonts/gvr.otf");
+       app_name.setTypeface(myfont);
 
         progressDialog = new ProgressDialog(this,R.style.progressDialogTheme);
         progressDialog.setCanceledOnTouchOutside(false); //prevent disappearing

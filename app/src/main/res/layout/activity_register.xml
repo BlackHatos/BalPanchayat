@@ -12,41 +12,46 @@
     tools:context=".MainActivity">
 
 
-
     <LinearLayout
-        android:layout_centerVertical="true"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:gravity="center"
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:orientation="vertical">
 
         <ImageView
             android:layout_width="110dp"
             android:layout_height="110dp"
             android:contentDescription="@string/logo"
-            android:src="@drawable/team"
-            />
+            android:src="@drawable/team" />
 
+        <TextView
+            android:id="@+id/app_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Bal Panchayat"
+            android:textSize="36sp"
+            android:textStyle="bold" />
 
 
         <EditText
+            android:id="@+id/name"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="21dp"
             android:background="@drawable/edittext_shape"
             android:hint="@string/name"
             android:inputType="text"
             android:paddingLeft="22dp"
-            android:textSize="17sp"
             android:textColor="#ec646464"
             android:textColorHint="#b66c6b6b"
-            android:id="@+id/name"
-            />
-
+            android:textSize="17sp" />
 
 
         <EditText
+            android:id="@+id/email"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginTop="22dp"
@@ -54,14 +59,13 @@
             android:hint="@string/email"
             android:inputType="text"
             android:paddingLeft="22dp"
-            android:textSize="17sp"
             android:textColor="#ec646464"
             android:textColorHint="#b66c6b6b"
-            android:id="@+id/email"
-            />
+            android:textSize="17sp" />
 
 
         <EditText
+            android:id="@+id/phone"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginTop="22dp"
@@ -69,14 +73,13 @@
             android:hint="@string/phone"
             android:inputType="text"
             android:paddingLeft="22dp"
-            android:textSize="17sp"
             android:textColor="#ec646464"
             android:textColorHint="#b66c6b6b"
-            android:id="@+id/phone"
-            />
+            android:textSize="17sp" />
 
 
         <EditText
+            android:id="@+id/password"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginTop="22dp"
@@ -84,12 +87,9 @@
             android:hint="@string/password"
             android:inputType="textPassword"
             android:paddingLeft="22dp"
-            android:textSize="17sp"
             android:textColor="#ec646464"
             android:textColorHint="#b66c6b6b"
-            android:id="@+id/password"
-            />
-
+            android:textSize="17sp" />
 
 
         <Button
@@ -98,14 +98,13 @@
             android:layout_height="50dp"
             android:layout_marginTop="23dp"
             android:background="@drawable/button_shape"
+            android:foreground="?attr/selectableItemBackground"
             android:text="@string/register_now"
             android:textColor="#f4f4f4"
-            android:textSize="16sp"
-            android:foreground="?attr/selectableItemBackground"
-            />
+            android:textSize="16sp" />
 
 
-     <!--   <Button
+        <!--   <Button
             android:id="@+id/fb_custom_button"
             android:layout_width="match_parent"
             android:layout_height="50dp"
@@ -121,19 +120,17 @@
             /> -->
 
 
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/new_login"
-            android:textColor="#595757"
             android:layout_marginTop="23dp"
             android:clickable="true"
-            android:onClick="goToLogin"
-            tools:ignore="OnClick"
-            android:foreground="?attr/selectableItemBackground"
             android:focusable="true"
-            />
+            android:foreground="?attr/selectableItemBackground"
+            android:onClick="goToLogin"
+            android:text="@string/new_login"
+            android:textColor="#595757"
+            tools:ignore="OnClick" />
 
     </LinearLayout>
 

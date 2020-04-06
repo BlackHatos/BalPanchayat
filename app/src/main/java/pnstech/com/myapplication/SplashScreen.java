@@ -64,7 +64,7 @@ public class SplashScreen extends AppCompatActivity {
 
     public void updateNotification(final String user_id)
     {
-          sharedPreferences = getSharedPreferences("userData", MODE_PRIVATE);
+         // sharedPreferences = getSharedPreferences("userData", MODE_PRIVATE);
 
         String url = "https://www.iamannitian.co.in/test/get_count.php";
         StringRequest sr = new StringRequest(1, url,
@@ -73,10 +73,12 @@ public class SplashScreen extends AppCompatActivity {
                     public void onResponse(String response) {
 
                         String response_array[] = response.split(",");
-                        SharedPreferences.Editor editor = sharedPreferences.edit();
-                        editor.putString("notifyCount",response_array[0]);
-                        editor.putString("track_value",response_array[1]);
-                        editor.apply();
+                        if(response_array[0].equals(1)) {
+                            SharedPreferences.Editor editor = sharedPreferences.edit();
+                            editor.putString("notifyCount", response_array[1]);
+                            editor.putString("track_value", response_array[2]);
+                            editor.apply();
+                        }
 
                     }
                 }, new Response.ErrorListener() {

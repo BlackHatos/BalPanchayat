@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,6 +13,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -33,7 +35,8 @@ public class CreateNewPassword extends AppCompatActivity {
     private ProgressDialog progressDialog;
     private LinearLayout linearLayout;
     private SharedPreferences sharedPreferences;
-
+    private TextView app_name;
+    private Typeface myfont;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,7 +57,14 @@ public class CreateNewPassword extends AppCompatActivity {
             }
         });
 
-       sharedPreferences = getSharedPreferences("forgotPassword", MODE_PRIVATE);
+        app_name = (TextView) findViewById(R.id.app_name);
+        // custom_login =  (Button) findViewById(R.id.custom_login);
+
+        myfont=Typeface.createFromAsset(this.getAssets(),"fonts/gvr.otf");
+        app_name.setTypeface(myfont);
+
+
+        sharedPreferences = getSharedPreferences("forgotPassword", MODE_PRIVATE);
 
     }
 
