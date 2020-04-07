@@ -9,12 +9,27 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import static android.view.View.GONE;
+
 public class Settings extends AppCompatActivity {
+
+    private static String link ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
+        getLink();
     }
 
     public void goToShare(View view) //sharing tbe app link to the wjatsapp
@@ -26,10 +41,10 @@ public class Settings extends AppCompatActivity {
 
 
         a.setType("text/link");
-        String shareBody = "Download BalPanchayat app for regular updates."+
-                "\n\t\t\t\t\t-Team BalPanchayat"+
-                "\n"+"----------------------------"+"\n"+
-                "https://www.iamannitian.co.in";
+        String shareBody = "Download BalPanchayat app, follow the link given below."+
+                "\n\t\t\t\t\t\t-Team BalPanchayat"+
+                "\n"+"----------------------------"+"\n"+ link;
+
 
         String shareSub = "Team BalPanchayat";
         a.putExtra(Intent.EXTRA_SUBJECT, shareSub);
@@ -66,5 +81,36 @@ public class Settings extends AppCompatActivity {
     {
         startActivity(new Intent(Settings.this, TrackRequest.class));
     }
+
+
+
+    public void getLink()
+    {
+
+        String url = "https://www.iamannitian.co.in/test/get_link.php";
+        StringRequest sr = new StringRequest(1, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        link = response;
+                    }
+                }, new Response.ErrorListener() { //error
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        }){
+            @Override
+            public Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> map =  new HashMap<>();
+                map.put("testKey", "hello");
+                return map;
+            }
+        };
+
+        RequestQueue rq = Volley.newRequestQueue(Settings.this);
+        rq.add(sr);
+    }
+
 
 }

@@ -139,16 +139,17 @@ public class Admin extends AppCompatActivity implements NavigationView.OnNavigat
     {
         ArrayList<ReturnBookRequestTags> filteredList = new ArrayList<>();
 
-        for (ReturnBookRequestTags item: mList)
+        if(mList.size() != 0)  //if size is empty then app will crash on searching
         {
-            if(item.getBookNamex().toLowerCase().contains(text.toLowerCase()) || item.getUserNamex().toLowerCase().contains(text.toLowerCase()) ||
-                    item.getUserDistrictx().toLowerCase().contains(text.toLowerCase()))
-            {
-                filteredList.add(item);
+            for (ReturnBookRequestTags item : mList) {
+                if (item.getBookNamex().toLowerCase().contains(text.toLowerCase()) || item.getUserNamex().toLowerCase().contains(text.toLowerCase()) ||
+                        item.getUserDistrictx().toLowerCase().contains(text.toLowerCase())) {
+                    filteredList.add(item);
+                }
             }
-        }
 
-        requestAdapter.search(filteredList);
+            requestAdapter.search(filteredList);
+        }
     }
 
 

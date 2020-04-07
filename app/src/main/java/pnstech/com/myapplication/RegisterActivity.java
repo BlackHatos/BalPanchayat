@@ -169,42 +169,4 @@ public class RegisterActivity extends AppCompatActivity {
         finish();
     }
 
-    /*public void showPopup(View view)
-    {
-        final LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
-        View popupView = inflater.inflate(R.layout.activity_popup,null);
-        boolean focusable = false;
-        int width = RelativeLayout.LayoutParams.MATCH_PARENT;
-        int height = RelativeLayout.LayoutParams.MATCH_PARENT;
-        final PopupWindow popupWindow = new PopupWindow(popupView,width,height,focusable);
-          popupWindow.setAnimationStyle(R.style.windowAnimationTransition);
-        popupWindow.showAtLocation(view ,Gravity.CENTER,0,0);
-
-        //closing window after a given time
-        Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                popupWindow.dismiss();
-                   }
-        },3000);
-
-
-        //then go to dashboard activity
-        Intent intent = new Intent(RegisterActivity.this, DashBoard.class);
-        startActivity(intent);
-        finish();
-
-       /*
-       ** close window on touch
-
-       popupView.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                popupWindow.dismiss();
-                return true;
-            }
-        });*/
-
-    //}
 }

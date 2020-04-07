@@ -9,6 +9,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.design.internal.BottomNavigationItemView;
 import android.support.design.internal.BottomNavigationMenuView;
@@ -17,10 +18,12 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Base64;
+import android.view.Display;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.FrameLayout;
@@ -50,6 +53,8 @@ public class DashBoard extends AppCompatActivity {
     private ImageView user_image;
     private SharedPreferences sharedPreferences;
     private Button leave_admin;
+    private ImageView kill_corona;
+    private TextView visit_corona;
     private RelativeLayout relativeLayout;
 
     private BottomNavigationView bottomNavigationView;
@@ -204,15 +209,25 @@ public class DashBoard extends AppCompatActivity {
 
     //method to visit to profile
     public void goToProfile(View view){
-        startActivity(new Intent(DashBoard.this,Profile.class));
+
+        //here this is used so that this is called only on first startup not always
+     SharedPreferences coronaCount = getSharedPreferences("coronaCount", MODE_PRIVATE);
+        boolean firstStart =coronaCount.getBoolean("firstStart",true);
+        if(firstStart)
+            coronaPopup(view); //calling corona popup method
+        else {
+            startActivity(new Intent(DashBoard.this, Profile.class));
+        }
     }
 
     //method to go to library
 
     public void goToLibrary(View view){
         boolean isConnected  = checkInternetConnection();
-        if(isConnected)
-        startActivity(new Intent(DashBoard.this,MainLibrary.class));
+        if(isConnected) {
+            startActivity(new Intent(DashBoard.this, MainLibrary.class));
+            Toast.makeText(getApplicationContext(),"Loading...", Toast.LENGTH_LONG).show();
+        }
         else
         {
             final Snackbar snackbar = Snackbar.make(relativeLayout,"You need an active internet connection",Snackbar.LENGTH_INDEFINITE);
@@ -239,8 +254,8 @@ public class DashBoard extends AppCompatActivity {
         {
             if(code.equals("1"))
             {
-                //go to send notification
                 startActivity(new Intent(DashBoard.this, Admin.class));
+                Toast.makeText(getApplicationContext(),"Loading...", Toast.LENGTH_LONG).show();
             }
             else
             {
@@ -266,8 +281,11 @@ public class DashBoard extends AppCompatActivity {
     {
 
         boolean isConnected  = checkInternetConnection();
-        if(isConnected)
-            startActivity(new Intent(DashBoard.this,Donars.class));
+        if(isConnected) {
+            startActivity(new Intent(DashBoard.this, Donars.class));
+            Toast.makeText(getApplicationContext(), "Loading...", Toast.LENGTH_LONG).show();
+        }
+
         else
         {
             final Snackbar snackbar = Snackbar.make(relativeLayout,"You need an active internet connection",Snackbar.LENGTH_INDEFINITE);
@@ -286,8 +304,11 @@ public class DashBoard extends AppCompatActivity {
     public void goToTeam(View view)
     {
         boolean isConnected  = checkInternetConnection();
-        if(isConnected)
+
+        if(isConnected) {
             startActivity(new Intent(DashBoard.this, Team.class));
+            Toast.makeText(getApplicationContext(), "Loading...", Toast.LENGTH_LONG).show();
+        }
         else
         {
             final Snackbar snackbar = Snackbar.make(relativeLayout,"You need an active internet connection",Snackbar.LENGTH_INDEFINITE);
@@ -324,6 +345,48 @@ public class DashBoard extends AppCompatActivity {
         });
 
     }
+
+
+
+
+    public void  coronaPopup(View view)
+    {
+         final LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
+        View popupView = inflater.inflate(R.layout.corona_popup,null);
+        boolean focusable = false;
+        int width = RelativeLayout.LayoutParams.MATCH_PARENT;
+        int height = RelativeLayout.LayoutParams.MATCH_PARENT;
+        final PopupWindow popupWindow = new PopupWindow(popupView,width,height,focusable);
+        popupWindow.setAnimationStyle(R.style.windowAnimationTransition);
+        popupWindow.showAtLocation(view , Gravity.CENTER,0,0);
+
+        //show this popup only once
+        SharedPreferences coronaCount = getSharedPreferences("coronaCount", MODE_PRIVATE);
+        SharedPreferences.Editor editor = coronaCount.edit();
+        editor.putBoolean("firstStart", false);
+        editor.apply();
+
+        kill_corona = (ImageView)popupView.findViewById(R.id.kill_corona);
+        visit_corona = (TextView) popupView.findViewById(R.id.visit_corona);
+        kill_corona.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                popupWindow.dismiss(); //dismiss popup on button click
+                startActivity(new Intent(DashBoard.this, Profile.class));
+            }
+        });
+
+        visit_corona.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://mohfw.gov.in"));
+                startActivity(intent);
+            }
+        });
+
+    }
+
+
 
     public boolean checkInternetConnection()
     {

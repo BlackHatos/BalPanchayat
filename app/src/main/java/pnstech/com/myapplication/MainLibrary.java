@@ -107,8 +107,10 @@ public class MainLibrary extends AppCompatActivity  implements RecyclerViewAdapt
                         startActivity(new Intent(MainLibrary.this, pnstech.com.myapplication.Notification.class));
                         break;
 
-                    case R.id.home:
-                        startActivity(new Intent(MainLibrary.this, DashBoard.class));
+                    case R.id.home: //clear all the previous taks
+                        Intent intent = new Intent(MainLibrary.this, DashBoard.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(intent);
                         break;
 
                     case R.id.settings:
@@ -159,18 +161,18 @@ public class MainLibrary extends AppCompatActivity  implements RecyclerViewAdapt
     {
         ArrayList<ReturnTags> filteredList = new ArrayList<>();
 
-        for (ReturnTags item: mList) //here mlist is filtered list
-        {
-            if(item.getBookName().toLowerCase().contains(text.toLowerCase()))
-            {
-                filteredList.add(item);
-            }
-        }
+       if(mList.size() != 0) //check if the list is empty (if empty then it will give error on search)
+       {
+           for (ReturnTags item : mList) //here mlist is filtered list
+           {
+               if (item.getBookName().toLowerCase().contains(text.toLowerCase()) || item.getBookWriter().toLowerCase().contains(text.toLowerCase())) {
+                   filteredList.add(item);
+               }
+           }
 
-        recyclerViewAdapter.filterList(filteredList);
-
+           recyclerViewAdapter.filterList(filteredList);
+       }
     }
-
 
 
     public void showBadge() //show notfication badge

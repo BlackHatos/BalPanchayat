@@ -415,7 +415,7 @@ public class Profile extends AppCompatActivity {
                intent.putExtra(Intent.EXTRA_SUBJECT, "Have you any query or suggestion?");
                intent.putExtra(Intent.EXTRA_TEXT, "Write here....");
                intent.setType("message/rfc822");// this is must
-               Intent.createChooser(intent, "Choose email"); //second argument is optional
+               Intent.createChooser(intent, "Choose Email"); //second argument is optional
                startActivity(intent);
            }
        });
@@ -433,8 +433,11 @@ public class Profile extends AppCompatActivity {
                         startActivity(new Intent(Profile.this, pnstech.com.myapplication.Notification.class));
                         break;
 
-                    case R.id.home:
-                        startActivity(new Intent(Profile.this, DashBoard.class));
+                    case R.id.home://this will clear all the previous activities
+                        Intent intent = new Intent(Profile.this, DashBoard.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(intent);
+
                         break;
                     case R.id.settings:
                         startActivity(new Intent(Profile.this, Settings.class));

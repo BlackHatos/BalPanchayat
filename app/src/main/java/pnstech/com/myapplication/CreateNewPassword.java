@@ -80,7 +80,7 @@ public class CreateNewPassword extends AppCompatActivity {
             progressDialog.dismiss();
             getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
         }
-        if(password.getText().toString().trim().length()<6)
+        else if(password.getText().toString().trim().length()<6)
         {
             Toast.makeText(getApplicationContext(),"password is too short", Toast.LENGTH_LONG).show();
             progressDialog.dismiss();

@@ -27,7 +27,9 @@ import java.util.Map;
 public class SplashScreen extends AppCompatActivity {
 
     public static int SPLASH_TIME_OUT=3000;
-    private SharedPreferences sharedPreferences;
+    private SharedPreferences sharedPreferences, coronaCount;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -37,7 +39,7 @@ public class SplashScreen extends AppCompatActivity {
          sharedPreferences = getSharedPreferences("userData", MODE_PRIVATE);
         final String user_id = sharedPreferences.getString("userId", "");
 
-         updateNotification(user_id);
+                 updateNotification(user_id);
 
         new Handler().postDelayed(new Runnable(){
             @Override
@@ -73,7 +75,7 @@ public class SplashScreen extends AppCompatActivity {
                     public void onResponse(String response) {
 
                         String response_array[] = response.split(",");
-                        if(response_array[0].equals(1)) {
+                        if(response_array[0].equals("1")) {
                             SharedPreferences.Editor editor = sharedPreferences.edit();
                             editor.putString("notifyCount", response_array[1]);
                             editor.putString("track_value", response_array[2]);
