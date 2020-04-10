@@ -1,3 +1,3 @@
 # BalPanchayat
 
-![](images/img1.PNG)
+![](/images/img2.PNG)
