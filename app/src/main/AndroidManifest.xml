@@ -40,11 +40,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".DashBoard" />
-        <activity android:name=".MainLibrary"
-            android:windowSoftInputMode="adjustPan"
-            >
-
-        </activity>
+        <activity
+            android:name=".MainLibrary"
+            android:windowSoftInputMode="adjustPan"></activity>
         <activity
             android:name=".About"
             android:theme="@style/HideAppBar" />
@@ -137,12 +135,13 @@
                     android:scheme="http" />
             </intent-filter>
         </activity>
-        <activity android:name=".Admin"></activity>
-        <activity android:name=".TrackRequest"
-           android:theme="@style/ShowToolbar"
+        <activity android:name=".Admin" />
+        <activity
+            android:name=".TrackRequest"
             android:label="Track Your Request"
             android:parentActivityName=".Settings"
-            ></activity>
+            android:theme="@style/ShowToolbar" />
+        <activity android:name=".NewsActivity"></activity>
     </application>
 
 </manifest>
