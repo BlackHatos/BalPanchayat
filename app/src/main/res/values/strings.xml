@@ -47,6 +47,7 @@
 
     <string name="drawer_open">Open</string>
     <string name="drawer_close">Close</string>
+    <string name="card_view_text">This is another test activity</string>
 
     <!-- ==============  Facebook login  ============ -->
     <!--   <string name="facebook_app_id">475358603147949</string>

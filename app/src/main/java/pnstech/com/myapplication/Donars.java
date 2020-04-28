@@ -3,11 +3,11 @@ package pnstech.com.myapplication;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.graphics.Typeface;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
@@ -18,8 +18,6 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.pnstech.myapplication.DonarAdapter;
-import com.pnstech.myapplication.DonarAdapter;
-import com.pnstech.myapplication.ReturnDonarTags;
 import com.pnstech.myapplication.ReturnDonarTags;
 
 import org.json.JSONArray;

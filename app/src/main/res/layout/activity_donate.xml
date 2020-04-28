@@ -13,7 +13,7 @@
     tools:context=".Donate">
 
 
-    <android.support.v7.widget.CardView
+    <androidx.cardview.widget.CardView
         android:foreground="?attr/selectableItemBackground"
         android:clickable="true"
         android:focusable="true"
@@ -65,10 +65,10 @@
 
         </LinearLayout>
 
-    </android.support.v7.widget.CardView>
+    </androidx.cardview.widget.CardView>
 
 
-    <android.support.v7.widget.CardView
+    <androidx.cardview.widget.CardView
         android:foreground="?attr/selectableItemBackground"
         android:clickable="true"
         android:focusable="true"
@@ -121,12 +121,12 @@
 
         </LinearLayout>
 
-    </android.support.v7.widget.CardView>
+    </androidx.cardview.widget.CardView>
 
 
 
 
-    <android.support.v7.widget.CardView
+    <androidx.cardview.widget.CardView
         android:foreground="?attr/selectableItemBackground"
         android:clickable="true"
         android:focusable="true"
@@ -174,12 +174,12 @@
 
         </LinearLayout>
 
-    </android.support.v7.widget.CardView>
+    </androidx.cardview.widget.CardView>
 
 
 
 
-    <android.support.v7.widget.CardView
+    <androidx.cardview.widget.CardView
         android:foreground="?attr/selectableItemBackground"
         android:clickable="true"
         android:focusable="true"
@@ -226,5 +226,5 @@
 
         </LinearLayout>
 
-    </android.support.v7.widget.CardView>
+    </androidx.cardview.widget.CardView>
 </LinearLayout>

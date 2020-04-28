@@ -2,23 +2,22 @@ package pnstech.com.myapplication;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.support.annotation.NonNull;
-import android.support.design.widget.NavigationView;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.NonNull;
+import com.google.android.material.navigation.NavigationView;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.appcompat.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -165,7 +164,8 @@ public class Admin extends AppCompatActivity implements NavigationView.OnNavigat
         NavigationView navigationView = findViewById(R.id.navigation_id);
         navigationView.setNavigationItemSelectedListener(this);
         mdrawerLayout = findViewById(R.id.drawer_id);
-        ActionBarDrawerToggle actionbar_drawer_toogle = new ActionBarDrawerToggle(this, mdrawerLayout, mtoolbar, R.string.drawer_open, R.string.drawer_close);
+        ActionBarDrawerToggle actionbar_drawer_toogle = 
+		new ActionBarDrawerToggle(this, mdrawerLayout, mtoolbar, R.string.drawer_open, R.string.drawer_close);
         mdrawerLayout.addDrawerListener(actionbar_drawer_toogle);
         actionbar_drawer_toogle.syncState();
     }
