@@ -66,7 +66,7 @@ public class Settings extends AppCompatActivity {
         startActivity(new Intent(Settings.this,About.class));
     }
 
-    public void goToLogout(View view)
+    public void goTooLogout(View view)
     {
         SharedPreferences sharedPreferences = getSharedPreferences("userData", MODE_PRIVATE);
         sharedPreferences.edit().clear().apply();
@@ -79,7 +79,6 @@ public class Settings extends AppCompatActivity {
     {
         startActivity(new Intent(Settings.this, TrackRequest.class));
     }
-
 
 
     public void getLink()

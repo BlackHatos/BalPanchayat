@@ -65,6 +65,7 @@ public class DashBoard extends AppCompatActivity {
         user_image = (ImageView) findViewById(R.id.user_image);
 
         bottomNavigationView = findViewById(R.id.navigation_view);
+        bottomNavigationView.setSelectedItemId(R.id.home);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -74,16 +75,20 @@ public class DashBoard extends AppCompatActivity {
                         removeBadge(); //call remove badge method
                         //notificationBadge.setVisibility(GONE);
                         startActivity(new Intent(DashBoard.this, pnstech.com.myapplication.Notification.class));
-                      break;
+                        overridePendingTransition(0,0);
+                        break;
 
                     case R.id.home:
-                        //startActivity(new Intent(DashBoard.this, DashBoard.class));
+                        startActivity(new Intent(DashBoard.this, DashBoard.class));
+                         overridePendingTransition(0,0);
                         break;
                     case R.id.settings:
                         startActivity(new Intent(DashBoard.this, Settings.class));
+                        overridePendingTransition(0,0);
                         break;
                     case R.id.profile:
                         startActivity(new Intent(DashBoard.this, Profile.class));
+                        overridePendingTransition(0,0);
                         break;
                 }
                 return true;
@@ -142,7 +147,7 @@ public class DashBoard extends AppCompatActivity {
     {
 
         BottomNavigationMenuView menuView = (BottomNavigationMenuView) bottomNavigationView.getChildAt(0);
-        BottomNavigationItemView itemView = (BottomNavigationItemView) menuView.getChildAt(0);
+        BottomNavigationItemView itemView = (BottomNavigationItemView) menuView.getChildAt(2);
         notificationBadge = LayoutInflater.from(this).inflate(R.layout.notification_badge, menuView,false);
 
         sharedPreferences = getSharedPreferences("userData", MODE_PRIVATE);

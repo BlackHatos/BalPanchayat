@@ -49,7 +49,8 @@ public class RegisterActivity extends AppCompatActivity {
         password = (EditText) findViewById(R.id.password);
         click_to_login = (Button) findViewById(R.id.click_to_login);
         app_name = (TextView) findViewById(R.id.app_name);
-        progressDialog = new ProgressDialog(this, R.style.progressDialogTheme);
+       
+    	   progressDialog = new ProgressDialog(this, R.style.progressDialogTheme);
         progressDialog.setCanceledOnTouchOutside(false); //prevent disappearing
 
 

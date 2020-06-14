@@ -137,6 +137,7 @@ public class Profile extends AppCompatActivity {
         setContentView(R.layout.activity_profile);
         bottomNavigationView = findViewById(R.id.navigation_view);
 
+        bottomNavigationView.setSelectedItemId(R.id.profile);
         //progress dialog
         progressDialog = new ProgressDialog(this, R.style.progressDialogTheme);
         progressDialog.setCanceledOnTouchOutside(false); //prevent disappearing
@@ -274,10 +275,7 @@ public class Profile extends AppCompatActivity {
             }
         });
 
-
-
         // =================>>>>>>>>> 4 : Editing saving mobile number  <<<<<<<<<<<================
-
 
         edit_new_email.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -295,9 +293,6 @@ public class Profile extends AppCompatActivity {
                 updateProfile();
             }
         });
-
-
-
 
         edit_new_state.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -407,22 +402,28 @@ public class Profile extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch (menuItem.getItemId()) {
+
+                    case R.id.profile:
+                        startActivity(new Intent(Profile.this, pnstech.com.myapplication.Profile.class));
+                        overridePendingTransition(0,0);
+                         break;
                     case R.id.notify:
                         removeBadge();
                         notificationBadge.setVisibility(GONE);
                         startActivity(new Intent(Profile.this, pnstech.com.myapplication.Notification.class));
+                        overridePendingTransition(0,0);
                         break;
 
                     case R.id.home://this will clear all the previous activities
                         Intent intent = new Intent(Profile.this, DashBoard.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(intent);
-
+                        overridePendingTransition(0,0);
                         break;
                     case R.id.settings:
                         startActivity(new Intent(Profile.this, Settings.class));
+                        overridePendingTransition(0,0);
                         break;
-
                 }
                 return true;
             }
@@ -433,13 +434,11 @@ public class Profile extends AppCompatActivity {
       showBadge();
     }
 
-
-
     public void showBadge() //show notification badge
     {
 
         BottomNavigationMenuView menuView = (BottomNavigationMenuView) bottomNavigationView.getChildAt(0);
-        BottomNavigationItemView itemView = (BottomNavigationItemView) menuView.getChildAt(0);
+        BottomNavigationItemView itemView = (BottomNavigationItemView) menuView.getChildAt(2);
         notificationBadge = LayoutInflater.from(this).inflate(R.layout.notification_badge, menuView,false);
 
         sharedPreferences = getSharedPreferences("userData", MODE_PRIVATE);

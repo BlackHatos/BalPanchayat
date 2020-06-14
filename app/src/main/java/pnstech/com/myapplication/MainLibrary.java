@@ -76,12 +76,8 @@ public class MainLibrary extends AppCompatActivity  implements RecyclerViewAdapt
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_library);
-
-
 
         recyclerView =  findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true); //recycler view dont change its width and height
@@ -93,7 +89,6 @@ public class MainLibrary extends AppCompatActivity  implements RecyclerViewAdapt
 
         bottomNavigationView = findViewById(R.id.navigation_view);
 
-
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
@@ -102,20 +97,24 @@ public class MainLibrary extends AppCompatActivity  implements RecyclerViewAdapt
                         removeBadge();
                         notificationBadge.setVisibility(GONE);
                         startActivity(new Intent(MainLibrary.this, pnstech.com.myapplication.Notification.class));
+                        overridePendingTransition(0,0);
                         break;
 
                     case R.id.home: //clear all the previous taks
                         Intent intent = new Intent(MainLibrary.this, DashBoard.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        overridePendingTransition(0,0);
                         startActivity(intent);
                         break;
 
                     case R.id.settings:
                         startActivity(new Intent(MainLibrary.this, Settings.class));
+                        overridePendingTransition(0,0);
                         break;
 
                     case R.id.profile:
                         startActivity(new Intent(MainLibrary.this, Profile.class));
+                        overridePendingTransition(0,0);
                         break;
                 }
                 return true;
@@ -129,9 +128,7 @@ public class MainLibrary extends AppCompatActivity  implements RecyclerViewAdapt
 
         USER_TYPE = sharedPreferences.getString("userType","");
 
-
         search_activity = (EditText) findViewById(R.id.search_view);
-
 
         search_activity.addTextChangedListener(new TextWatcher() {
             @Override
@@ -150,9 +147,7 @@ public class MainLibrary extends AppCompatActivity  implements RecyclerViewAdapt
             }
         });
 
-
     }
-
 
     private void filter(String text)
     {

@@ -170,12 +170,14 @@ public class Admin extends AppCompatActivity implements NavigationView.OnNavigat
         actionbar_drawer_toogle.syncState();
     }
 
-    private void closeDrawer() {
+    private void closeDrawer()
+	{
         mdrawerLayout.closeDrawer(GravityCompat.START); //START can be replaced by END depending upon pupose
     }
     //open drawer
 
-    private void showDrawer() {
+    private void showDrawer() 
+	{
         mdrawerLayout.openDrawer(GravityCompat.START);
     }
 

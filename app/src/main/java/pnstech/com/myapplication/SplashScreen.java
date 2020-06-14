@@ -29,7 +29,7 @@ public class SplashScreen extends AppCompatActivity {
         setContentView(R.layout.activity_splash_screen);
 
          sharedPreferences = getSharedPreferences("userData", MODE_PRIVATE);
-        final String user_id = sharedPreferences.getString("userId", "");
+          final String user_id = sharedPreferences.getString("userId", "");
 
                  updateNotification(user_id);
 
